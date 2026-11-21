@@ -2,80 +2,523 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>NextGen GSM Searcher — Automated GSM Tool Compatibility</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script>
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.ready();
-      window.Telegram.WebApp.expand();
-    }
+    (function () {
+      try {
+        if (window.Telegram && window.Telegram.WebApp) {
+          window.Telegram.WebApp.ready();
+          window.Telegram.WebApp.expand();
+        }
+      } catch (e) {}
+    })();
   </script>
   <style>
     :root {
-      --bg: #0b1120; --panel: #111827; --panel-2: #1e293b; --border: #263449;
-      --text: #f1f5f9; --muted: #94a3b8; --accent: #38bdf8; --accent-2: #22c55e;
-      --warn: #f59e0b; --purple: #a78bfa; --radius: 12px;
+      --bg: #0b1120;
+      --panel: #111827;
+      --panel-2: #1e293b;
+      --border: #263449;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --purple: #a78bfa;
+      --radius: 12px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
-    header { background: linear-gradient(135deg, #0f172a 0%, #172554 100%); border-bottom: 1px solid var(--border); padding: 16px 20px; position: sticky; top: 0; z-index: 50; }
-    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #172554 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 18px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
     .brand { display: flex; align-items: center; gap: 10px; }
-    .brand-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, #38bdf8, #6366f1); display: grid; place-items: center; font-weight: 800; font-size: 16px; color: #0b1120; }
-    .brand h1 { font-size: 18px; font-weight: 700; }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 15px;
+      color: #0b1120;
+      flex-shrink: 0;
+    }
+
+    .brand h1 { font-size: 18px; font-weight: 700; letter-spacing: 0.2px; }
     .brand small { color: var(--muted); font-size: 12px; display: block; }
-    .sync-badge { font-size: 12px; padding: 6px 12px; border-radius: 999px; background: rgba(34, 197, 94, 0.14); border: 1px solid rgba(34, 197, 94, 0.35); color: #86efac; display: flex; align-items: center; gap: 6px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); display: inline-block; }
-    nav.tabs { max-width: 1200px; margin: 14px auto 0; padding: 0 20px; display: flex; gap: 8px; overflow-x: auto; }
-    .tab-btn { background: var(--panel); border: 1px solid var(--border); color: var(--muted); padding: 9px 15px; border-radius: 10px; cursor: pointer; font-size: 13px; font-weight: 600; white-space: nowrap; }
-    .tab-btn.active, .tab-btn:hover { background: var(--panel-2); color: var(--text); border-color: var(--accent); }
-    main { max-width: 1200px; margin: 16px auto 48px; padding: 0 20px; }
+
+    .sync-badge {
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #86efac;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      max-width: 100%;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      flex-shrink: 0;
+    }
+
+    nav.tabs {
+      max-width: 1200px;
+      margin: 14px auto 0;
+      padding: 0 18px 4px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    .tab-btn {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 9px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: var(--panel-2);
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 14px auto 48px;
+      padding: 0 18px;
+    }
+
     .view { display: none; }
     .view.active { display: block; }
-    .search-box { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 16px; }
-    .search-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .search-input { flex: 1; min-width: 220px; background: #0b1120; border: 1px solid var(--border); color: var(--text); padding: 12px 14px; border-radius: 10px; font-size: 15px; outline: none; }
-    .search-input:focus { border-color: var(--accent); }
-    .btn { background: var(--accent); color: #0b1120; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 13px; }
-    .btn-ghost { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
-    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .pill { padding: 5px 11px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #0f172a; border: 1px solid var(--border); color: var(--muted); cursor: pointer; }
-    .pill.active { background: rgba(56, 189, 248, 0.16); border-color: var(--accent); color: var(--accent); }
-    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 16px; }
-    .stat-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+    }
+
     .stat-card .num { font-size: 22px; font-weight: 800; color: var(--accent); }
     .stat-card .lbl { font-size: 12px; color: var(--muted); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
-    .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; cursor: pointer; transition: transform 0.12s, border-color 0.15s; }
+
+    .search-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+
+    .search-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .search-input {
+      flex: 1;
+      min-width: 200px;
+      background: #0b1120;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 11px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-input:focus { border-color: var(--accent); }
+
+    .btn {
+      background: var(--accent);
+      color: #0b1120;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 13px;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.92; }
+
+    .btn-ghost {
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-danger {
+      background: rgba(239, 68, 68, 0.16);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 11px;
+    }
+
+    .pill {
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .pill:hover { color: var(--text); border-color: #475569; }
+
+    .pill.active {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .active-filter-bar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 8px 12px;
+      border-radius: 9px;
+      background: rgba(167, 139, 250, 0.12);
+      border: 1px solid rgba(167, 139, 250, 0.35);
+      font-size: 13px;
+    }
+
+    .active-filter-bar.show { display: flex; }
+
+    .results-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      cursor: pointer;
+      transition: transform 0.12s, border-color 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .card:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
-    .brand-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent); letter-spacing: 0.5px; }
-    .model-title { font-size: 16px; font-weight: 700; margin-top: 2px; }
-    .code-badge { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: #0b1120; border: 1px solid var(--border); padding: 3px 8px; border-radius: 6px; color: #cbd5e1; white-space: nowrap; }
-    .meta-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; font-size: 11px; color: var(--muted); }
-    .ver-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(245, 158, 11, 0.14); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
-    .mode-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(56, 189, 248, 0.14); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .card.static-card { cursor: default; }
+    .card.static-card:hover { transform: none; border-color: var(--border); }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .brand-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+
+    .model-title { font-size: 16px; font-weight: 700; word-break: break-word; }
+
+    .code-badge {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      background: #0b1120;
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: #cbd5e1;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .ver-chip {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: rgba(245, 158, 11, 0.14);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .mode-chip {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: rgba(56, 189, 248, 0.14);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
     .tool-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tool-chip { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: rgba(167, 139, 250, 0.15); border: 1px solid rgba(167, 139, 250, 0.35); color: #ddd6fe; }
-    .op-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(34, 197, 94, 0.12); color: #86efac; border: 1px solid rgba(34, 197, 94, 0.25); }
-    .modal-backdrop { position: fixed; inset: 0; background: rgba(2, 6, 23, 0.78); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 100; }
+
+    .tool-chip {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(167, 139, 250, 0.15);
+      border: 1px solid rgba(167, 139, 250, 0.35);
+      color: #ddd6fe;
+    }
+
+    .op-chip {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: rgba(34, 197, 94, 0.12);
+      color: #86efac;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+
+    .load-more-wrap {
+      text-align: center;
+      margin-top: 18px;
+      display: none;
+    }
+
+    .load-more-wrap.show { display: block; }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 100;
+    }
+
     .modal-backdrop.open { display: flex; }
-    .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; max-width: 660px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 20px; }
-    .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 14px; }
-    .close-btn { background: var(--panel-2); border: 1px solid var(--border); color: var(--text); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 16px; }
-    .tool-row { background: #0b1120; border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
-    .tool-row-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
-    .tool-row a { color: var(--accent); font-size: 12px; text-decoration: none; font-weight: 600; }
-    table { width: 100%; border-collapse: collapse; background: var(--panel); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
-    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
-    th { background: var(--panel-2); color: var(--muted); font-weight: 700; }
+
+    .modal {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 86vh;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .close-btn {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .tool-row {
+      background: #0b1120;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .tool-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tool-row a {
+      color: var(--accent);
+      font-size: 12px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .tool-row a:hover { text-decoration: underline; }
+
+    /* Table */
+    .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    th { background: var(--panel-2); color: var(--muted); font-weight: 700; white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+
     .status-online { color: #86efac; }
     .status-pending { color: #fcd34d; }
     .status-error { color: #fca5a5; }
-    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 12px; }
-    .form-grid input { background: #0b1120; border: 1px solid var(--border); color: var(--text); padding: 10px; border-radius: 8px; font-size: 13px; }
-    .empty { text-align: center; padding: 36px 16px; color: var(--muted); background: var(--panel); border: 1px dashed var(--border); border-radius: var(--radius); }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .form-grid input {
+      background: #0b1120;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .form-grid input:focus { border-color: var(--accent); }
+
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid var(--accent);
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 200;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .empty {
+      text-align: center;
+      padding: 36px 16px;
+      color: var(--muted);
+      background: var(--panel);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 12px 14px; }
+      nav.tabs, main { padding-left: 14px; padding-right: 14px; }
+      .grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -85,358 +528,1031 @@
         <div class="brand-icon">NG</div>
         <div>
           <h1>NextGen GSM Searcher</h1>
-          <small>Auto-Synced Model, Tool, BIT &amp; OS Compatibility</small>
+          <small>Auto-Synced GSM Tool, BIT &amp; OS Compatibility</small>
         </div>
       </div>
-      <div class="sync-badge"><span class="dot"></span><span id="syncText">Loading database...</span></div>
+      <div class="sync-badge">
+        <span class="dot"></span>
+        <span id="syncText">Loading database...</span>
+      </div>
     </div>
   </header>
 
-  <nav class="tabs">
-    <button class="tab-btn active" data-tab="models">📱 Supported Models</button>
-    <button class="tab-btn" data-tab="cpu">🧠 CPU Finder</button>
-    <button class="tab-btn" data-tab="sources">🔌 Sources &amp; Status</button>
-    <button class="tab-btn" data-tab="updates">🔥 What's New</button>
-    <button class="tab-btn" data-tab="manager">⚙️ No-Code Manager</button>
+  <nav class="tabs" aria-label="Main Navigation">
+    <button type="button" class="tab-btn active" data-tab="models">📱 Supported Models</button>
+    <button type="button" class="tab-btn" data-tab="cpu">🧠 CPU Finder</button>
+    <button type="button" class="tab-btn" data-tab="sources">🔌 Sources &amp; Status</button>
+    <button type="button" class="tab-btn" data-tab="updates">🔥 What's New</button>
+    <button type="button" class="tab-btn" data-tab="manager">⚙️ No-Code Manager</button>
   </nav>
 
   <main>
+    <!-- SUPPORTED MODELS -->
     <section class="view active" id="view-models">
       <div class="stats-bar">
         <div class="stat-card"><div class="num" id="statModels">0</div><div class="lbl">Indexed Models</div></div>
         <div class="stat-card"><div class="num" id="statTools">0</div><div class="lbl">Tracked GSM Tools</div></div>
         <div class="stat-card"><div class="num" id="statBrands">0</div><div class="lbl">Brands Covered</div></div>
       </div>
+
       <div class="search-box">
         <div class="search-row">
-          <input id="searchInput" class="search-input" type="text" placeholder="Search model (SM-A155F), tool (Cheetah, AMT), BIT (BIT 4), Android 15, or EDL..." />
-          <button class="btn btn-ghost" id="clearFiltersBtn">Reset</button>
+          <input
+            id="searchInput"
+            class="search-input"
+            type="search"
+            autocomplete="off"
+            placeholder="Search model (SM-A155F), tool (AMT, UnlockTool), BIT (BIT 4), Android 15, or EDL..."
+          />
+          <button type="button" class="btn btn-ghost" id="clearFiltersBtn">Reset</button>
         </div>
+
+        <div class="active-filter-bar" id="activeToolBar">
+          <span>Filtering by tool: <strong id="activeToolName"></strong></span>
+          <button type="button" class="btn btn-ghost" id="clearToolOnlyBtn" style="padding:5px 10px;font-size:12px;">Clear Tool Filter</button>
+        </div>
+
         <div class="pill-row" id="opPills"></div>
         <div class="pill-row" id="brandPills"></div>
       </div>
+
+      <div class="results-meta" id="resultsMeta"></div>
       <div class="grid" id="modelsGrid"></div>
+      <div class="load-more-wrap" id="loadMoreWrap">
+        <button type="button" class="btn btn-ghost" id="loadMoreBtn">Load More Models</button>
+      </div>
     </section>
 
+    <!-- CPU FINDER -->
     <section class="view" id="view-cpu">
-      <div class="grid" style="margin-bottom: 16px;" id="cpuCards"></div>
+      <div class="grid" style="margin-bottom: 14px;" id="cpuCards"></div>
       <div class="search-box">
-        <input id="cpuSearch" class="search-input" style="width:100%;" placeholder="Filter devices by model or chipset (MediaTek, Qualcomm, Unisoc, Exynos)..." />
+        <input
+          id="cpuSearch"
+          class="search-input"
+          style="width:100%;"
+          type="search"
+          placeholder="Filter devices by model, code, or chipset (MediaTek, Qualcomm, Unisoc, Exynos, Kirin)..."
+        />
       </div>
-      <div style="overflow-x:auto;">
+      <div class="table-wrap">
         <table>
-          <thead><tr><th>Brand</th><th>Model</th><th>Code</th><th>Chipset</th><th>Boot Mode</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Brand</th>
+              <th>Model</th>
+              <th>Code</th>
+              <th>Chipset</th>
+              <th>Boot Mode</th>
+            </tr>
+          </thead>
           <tbody id="cpuTableBody"></tbody>
         </table>
       </div>
     </section>
 
+    <!-- SOURCES & STATUS -->
     <section class="view" id="view-sources">
       <div class="search-box">
-        <p style="font-size:13px; color:var(--muted);">Click any GSM tool card to see every model supported by that tool, including BIT and Android/OS versions detected from its official Telegram channel or website.</p>
+        <h3 style="font-size:16px;margin-bottom:4px;">Sources &amp; Status</h3>
+        <p id="sourcesHeaderText" style="font-size:13px;color:var(--muted);">
+          Every source is re-checked about every 30 minutes. Click any tool card to view its supported models.
+        </p>
       </div>
       <div class="grid" id="sourcesGrid"></div>
     </section>
 
+    <!-- WHAT'S NEW -->
     <section class="view" id="view-updates">
       <div class="search-box">
-        <h3 style="margin-bottom:6px;">Latest Auto-Synced Updates</h3>
-        <p style="font-size:13px; color:var(--muted);">Models automatically pulled from official GSM Telegram handles &amp; websites with BIT, version, and proof link.</p>
+        <h3 style="font-size:16px;margin-bottom:4px;">Latest Auto-Synced Updates</h3>
+        <p style="font-size:13px;color:var(--muted);">
+          Newly detected models pulled from official GSM websites and Telegram channels with BIT, OS version, mode, and proof link.
+        </p>
       </div>
       <div id="updatesList"></div>
     </section>
 
+    <!-- NO-CODE MANAGER -->
     <section class="view" id="view-manager">
       <div class="search-box">
-        <h3 style="margin-bottom:10px;">Add / Merge Model Entry (Saved Locally)</h3>
+        <h3 style="font-size:16px;margin-bottom:10px;">Add or Merge Model Entry</h3>
         <div class="form-grid">
           <input id="mBrand" placeholder="Brand (e.g. Samsung)" />
           <input id="mName" placeholder="Model Name (e.g. Galaxy A15)" />
           <input id="mCode" placeholder="Model Code (e.g. SM-A155F)" />
           <input id="mBit" placeholder="BIT / Binary (e.g. BIT 4)" />
           <input id="mOs" placeholder="Android / OS (e.g. Android 15)" />
-          <input id="mMode" placeholder="Mode (e.g. Preloader / EDL)" />
+          <input id="mCpu" placeholder="Chipset (e.g. Helio G99)" />
+          <input id="mMode" placeholder="Mode (e.g. Preloader / EDL 9008)" />
           <input id="mTool" placeholder="GSM Tool (e.g. UnlockTool)" />
-          <input id="mOps" placeholder="Operations (FRP, Factory Reset)" />
+          <input id="mOps" placeholder="Operations (FRP, Factory Reset, Flash)" />
         </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn" id="addModelBtn">+ Save Model</button>
-          <button class="btn btn-ghost" id="exportJsonBtn">Export JSON</button>
-          <button class="btn btn-ghost" id="resetLocalBtn">Clear Local Edits</button>
+        <div class="btn-row">
+          <button type="button" class="btn" id="addModelBtn">+ Save Model</button>
+          <button type="button" class="btn btn-ghost" id="downloadTemplateBtn">Sample CSV Template</button>
+          <button type="button" class="btn btn-ghost" id="exportJsonBtn">Export JSON</button>
+          <button type="button" class="btn btn-danger" id="resetLocalBtn">Clear Local Edits</button>
+        </div>
+      </div>
+
+      <div class="search-box">
+        <h3 style="font-size:16px;margin-bottom:6px;">Import from Google Sheets or Local CSV</h3>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">
+          Columns: <code>brand,model_name,model_code,bit,os_version,mode,tool,operations</code> (separate multiple operations with <code>|</code>).
+        </p>
+        <div class="search-row" style="margin-bottom:10px;">
+          <input id="sheetUrlInput" class="search-input" placeholder="Paste published Google Sheet CSV URL..." />
+          <button type="button" class="btn" id="loadSheetBtn">Sync Sheet</button>
+        </div>
+        <div class="btn-row">
+          <input id="csvFileInput" type="file" accept=".csv,text/csv" style="font-size:12px;color:var(--muted);" />
         </div>
       </div>
     </section>
   </main>
 
-  <div class="modal-backdrop" id="detailModal">
+  <!-- MODEL DETAIL MODAL -->
+  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal">
       <div class="modal-header">
         <div>
           <div class="brand-tag" id="modalBrand"></div>
-          <h2 id="modalTitle" style="font-size:20px;"></h2>
+          <h2 id="modalTitle" style="font-size:19px;"></h2>
         </div>
-        <button class="close-btn" id="closeModal">&times;</button>
+        <button type="button" class="close-btn" id="closeModal" aria-label="Close">&times;</button>
       </div>
-      <div class="meta-row" id="modalMeta"></div>
+      <div class="meta-row" id="modalMeta" style="margin-bottom:14px;"></div>
       <div id="modalTools"></div>
     </div>
   </div>
 
+  <div class="toast" id="toast"></div>
+
   <script>
-    const OPERATIONS = ["All", "FRP", "Factory Reset", "Flash", "MDM/KG", "Bootloader", "IMEI", "Screen Lock"];
-    const CPU_PROFILES = [
-      { cpu: "MediaTek (MTK)", mode: "BROM / Preloader (Vol+ & Vol-)", note: "Use MTK Preloader Auth / SLA bypass on Dimensity & Helio chips." },
-      { cpu: "Qualcomm Snapdragon", mode: "EDL 9008 (Test Point / EDL Cable)", note: "Requires matching firehose loader or server auth." },
-      { cpu: "Unisoc / Spreadtrum (SPD)", mode: "Diag / Boot Mode (Vol-)", note: "Supported via FDL1/FDL2 custom loaders on Tecno, Itel, Realme." },
-      { cpu: "Samsung Exynos", mode: "EUB Mode / Download / MTP", note: "EUB Test Point or MTP/Server FRP depending on BIT level." },
-      { cpu: "Google Tensor", mode: "Fastboot / ADB / Recovery", note: "Bootloader & OEM unlock policies apply." },
-      { cpu: "HiSilicon Kirin", mode: "Huawei USB COM 1.0 (Test Point)", note: "Test point required for Huawei/Honor Kirin repair." }
-    ];
+    (function () {
+      "use strict";
 
-    const SEED_MODELS = [
-      { brand: "Samsung", model_name: "Galaxy A15", model_code: "SM-A155F", bit: "BIT 1-4", os_version: "Android 14, Android 15", cpu: "MediaTek Helio G99", mode: "Preloader / MTP", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "MDM/KG"], bit: "BIT 1-4", os_version: "Android 15", mode: "Preloader", updated_at: "2026-11-20" }, "Chimera Tool": { operations: ["FRP", "IMEI", "Flash"], bit: "BIT 1-4", os_version: "Android 15", mode: "EUB / MTP", updated_at: "2026-11-20" } } },
-      { brand: "Samsung", model_name: "Galaxy A05s", model_code: "SM-A057F", bit: "BIT 1-6", os_version: "Android 15", cpu: "Qualcomm Snapdragon 680", mode: "EDL 9008", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-19" }, "TSM Tool": { operations: ["FRP", "MDM/KG"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-18" } } },
-      { brand: "Xiaomi", model_name: "Redmi Note 13 4G", model_code: "23129RAA4G", bit: "", os_version: "Android 15, HyperOS 2", cpu: "Qualcomm Snapdragon 685", mode: "EDL 9008 / Mi Assistant", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash"], os_version: "HyperOS 2", mode: "EDL 9008", updated_at: "2026-11-20" }, "Android Multi Tool (AMT)": { operations: ["FRP", "Flash"], os_version: "HyperOS 2", mode: "Server / Auth", updated_at: "2026-11-19" } } }
-    ];
+      const PAGE_SIZE = 60;
+      const STORAGE_KEY = "nextgen_gsm_local_v2";
+      const OPERATIONS = ["All", "FRP", "Factory Reset", "Flash", "MDM/KG", "Bootloader", "IMEI", "Screen Lock"];
 
-    let state = { models: [], sources: [], changelog: [], lastSync: null, search: "", selectedOp: "All", selectedBrand: "All", selectedTool: "" };
+      const CPU_PROFILES = [
+        { cpu: "MediaTek (MTK)", mode: "BROM / Preloader (Vol+ & Vol-)", note: "Use Preloader Auth or SLA/DAA bypass on Helio and Dimensity chips." },
+        { cpu: "Qualcomm Snapdragon", mode: "EDL 9008 (Test Point / EDL Cable)", note: "Requires matching firehose loader or server authentication." },
+        { cpu: "Unisoc / Spreadtrum (SPD)", mode: "Unisoc Diag / Boot Mode (Vol-)", note: "Uses FDL1/FDL2 custom loaders on Tecno, Itel, Infinix, and Realme." },
+        { cpu: "Samsung Exynos", mode: "EUB Mode / Download / MTP", note: "EUB test point or MTP/server methods depending on BIT level." },
+        { cpu: "Google Tensor", mode: "Fastboot / ADB / Recovery", note: "Fastboot and OEM unlock rules apply per carrier variant." },
+        { cpu: "HiSilicon Kirin", mode: "Huawei USB COM 1.0 (Test Point)", note: "Test point required for Kirin FRP, Huawei ID, and board repair." }
+      ];
 
-    function loadLocalEdits() {
-      try { return JSON.parse(localStorage.getItem("nextgen_gsm_local") || "[]"); } catch { return []; }
-    }
-
-    function mergeModelArrays(baseList, extraList) {
-      const map = new Map();
-      [...baseList, ...extraList].forEach(item => {
-        const key = (item.model_code || item.model_name).toUpperCase();
-        if (!map.has(key)) {
-          map.set(key, { ...item, tools: { ...(item.tools || {}) } });
-        } else {
-          const ex = map.get(key);
-          ex.tools = { ...ex.tools, ...(item.tools || {}) };
-          if (item.bit && !ex.bit) ex.bit = item.bit;
-          if (item.os_version && !ex.os_version) ex.os_version = item.os_version;
-          if (item.cpu && !ex.cpu) ex.cpu = item.cpu;
-          if (item.mode && !ex.mode) ex.mode = item.mode;
+      const SEED_MODELS = [
+        {
+          brand: "Samsung", model_name: "Galaxy A15", model_code: "SM-A155F",
+          bit: "BIT 1-4", os_version: "Android 14, Android 15", cpu: "MediaTek Helio G99", mode: "Preloader / MTP",
+          tools: {
+            "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "MDM/KG"], bit: "BIT 1-4", os_version: "Android 15", mode: "Preloader", updated_at: "2026-11-20", source_url: "https://t.me/unlocktool_channel" },
+            "Chimera Tool": { operations: ["FRP", "IMEI", "Flash"], bit: "BIT 1-4", os_version: "Android 15", mode: "EUB / MTP", updated_at: "2026-11-20", source_url: "https://chimeratool.com/en/download" },
+            "AMT": { operations: ["FRP", "Factory Reset"], bit: "BIT 1-4", os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-18", source_url: "https://androidmultitool.com/supported_models/" }
+          }
+        },
+        {
+          brand: "Samsung", model_name: "Galaxy A05s", model_code: "SM-A057F",
+          bit: "BIT 1-6", os_version: "Android 14, Android 15", cpu: "Qualcomm Snapdragon 680", mode: "EDL 9008",
+          tools: {
+            "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-19", source_url: "https://t.me/unlocktool_channel" },
+            "TSM Tool": { operations: ["FRP", "MDM/KG"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-19", source_url: "https://t.me/TSMPRO" },
+            "Galaxy Unlock": { operations: ["FRP", "Factory Reset"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-18", source_url: "https://galaxyunlock.in/supported-models" }
+          }
+        },
+        {
+          brand: "Xiaomi", model_name: "Redmi Note 13 4G", model_code: "23129RAA4G",
+          bit: "", os_version: "Android 15, HyperOS 2", cpu: "Qualcomm Snapdragon 685", mode: "EDL 9008 / Server",
+          tools: {
+            "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "Screen Lock"], os_version: "HyperOS 2", mode: "EDL 9008", updated_at: "2026-11-20", source_url: "https://t.me/unlocktool_channel" },
+            "AMT": { operations: ["FRP", "Flash"], os_version: "HyperOS 2", mode: "Server / Auth", updated_at: "2026-11-19", source_url: "https://androidmultitool.com/supported_models/" }
+          }
+        },
+        {
+          brand: "Oppo", model_name: "Oppo A38", model_code: "CPH2579",
+          bit: "", os_version: "Android 14, ColorOS 14", cpu: "MediaTek Helio G85", mode: "Preloader",
+          tools: {
+            "UnlockTool": { operations: ["FRP", "Factory Reset", "Screen Lock"], os_version: "ColorOS 14", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/unlocktool_channel" },
+            "TFM Tool": { operations: ["FRP", "Factory Reset"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/tfmtoolpro" }
+          }
+        },
+        {
+          brand: "Vivo", model_name: "Vivo Y28", model_code: "V2352",
+          bit: "", os_version: "Android 14, Funtouch OS 14", cpu: "MediaTek Helio G85", mode: "Preloader",
+          tools: {
+            "AMT": { operations: ["FRP", "Factory Reset", "Screen Lock"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-20", source_url: "https://androidmultitool.com/supported_models/" },
+            "TFM Tool": { operations: ["FRP", "Factory Reset"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/tfmtoolpro" }
+          }
+        },
+        {
+          brand: "Tecno", model_name: "Spark 20", model_code: "KJ5",
+          bit: "", os_version: "Android 13, HiOS 13", cpu: "MediaTek Helio G85", mode: "Preloader",
+          tools: {
+            "TSM Tool": { operations: ["FRP", "MDM/KG", "Factory Reset"], os_version: "Android 13", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/TSMPRO" },
+            "Cheetah Tool": { operations: ["FRP", "IMEI", "MDM/KG"], os_version: "Android 13", mode: "Preloader", updated_at: "2026-11-18", source_url: "https://t.me/cheetahtool" }
+          }
+        },
+        {
+          brand: "Infinix", model_name: "Hot 40i", model_code: "X6528",
+          bit: "", os_version: "Android 13, XOS 13", cpu: "Unisoc T606", mode: "Unisoc Diag",
+          tools: {
+            "UnlockTool": { operations: ["FRP", "Factory Reset", "MDM/KG"], os_version: "Android 13", mode: "Unisoc Diag", updated_at: "2026-11-19", source_url: "https://t.me/unlocktool_channel" },
+            "Infinity CM2": { operations: ["Flash", "FRP", "Factory Reset"], os_version: "Android 13", mode: "Unisoc Diag", updated_at: "2026-11-17", source_url: "https://infinity-box.com/news/" }
+          }
+        },
+        {
+          brand: "Motorola", model_name: "Moto G24", model_code: "XT2423-1",
+          bit: "", os_version: "Android 14", cpu: "MediaTek Helio G85", mode: "Preloader",
+          tools: {
+            "TSM Tool": { operations: ["FRP", "MDM/KG"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/TSMPRO" },
+            "UMT": { operations: ["FRP", "Factory Reset"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-18", source_url: "https://www.ultimatemultitool.com/downloads" }
+          }
         }
-      });
-      return Array.from(map.values());
-    }
+      ];
 
-    async function initApp() {
-      let liveModels = [], liveSources = [], liveChangelog = [];
-      try {
-        const res = await fetch("./data/models.json?t=" + Date.now());
-        if (res.ok) {
-          const payload = await res.json();
-          liveModels = Object.values(payload.models || {});
-          liveSources = payload.sources || [];
-          state.lastSync = payload.last_sync;
-        }
-      } catch (e) {}
+      const state = {
+        models: [],
+        sources: [],
+        changelog: [],
+        lastSync: null,
+        search: "",
+        selectedOp: "All",
+        selectedBrand: "All",
+        selectedTool: "",
+        visibleCount: PAGE_SIZE
+      };
 
-      if (liveSources.length === 0) {
+      /* ---------- Safe Utilities ---------- */
+
+      function esc(str) {
+        return String(str == null ? "" : str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function safeUrl(url) {
+        const s = String(url || "").trim();
+        return /^https?:\/\//i.test(s) ? s : "";
+      }
+
+      function timeAgo(isoStr) {
+        if (!isoStr) return "";
+        const ts = new Date(isoStr).getTime();
+        if (Number.isNaN(ts)) return "";
+        const diffSec = Math.max(0, Math.floor((Date.now() - ts) / 1000));
+        if (diffSec < 60) return "just now";
+        const min = Math.floor(diffSec / 60);
+        if (min < 60) return min + " min ago";
+        const hr = Math.floor(min / 60);
+        if (hr < 24) return hr + " h ago";
+        const days = Math.floor(hr / 24);
+        return days + " d ago";
+      }
+
+      function mergeCommaText(a, b) {
+        const out = [];
+        [a, b].forEach(raw => {
+          String(raw || "").split(",").forEach(part => {
+            const p = part.trim();
+            if (p && !out.includes(p)) out.push(p);
+          });
+        });
+        return out.slice(0, 4).join(", ");
+      }
+
+      let toastTimer = null;
+      function showToast(msg) {
+        const el = document.getElementById("toast");
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
+      }
+
+      function loadLocalEdits() {
         try {
-          const sRes = await fetch("./sources.json?t=" + Date.now());
-          if (sRes.ok) liveSources = ((await sRes.json()).sources || []).map(s => ({ ...s, status: s.url ? "ready" : "pending_url", count: 0 }));
-        } catch (e) {}
-      }
-
-      try {
-        const cRes = await fetch("./data/changelog.json?t=" + Date.now());
-        if (cRes.ok) liveChangelog = await cRes.json();
-      } catch (e) {}
-
-      state.models = mergeModelArrays(SEED_MODELS, [...liveModels, ...loadLocalEdits()]);
-      state.sources = liveSources;
-      state.changelog = liveChangelog;
-
-      document.getElementById("syncText").textContent = state.lastSync
-        ? "Auto-Synced: " + state.lastSync.slice(0, 16).replace("T", " ") + " UTC"
-        : "Ready (" + state.models.length + " seed models — run Action to sync)";
-
-      renderAll();
-    }
-
-    function renderAll() { renderStats(); renderPills(); renderModels(); renderCpuFinder(); renderSources(); renderUpdates(); }
-
-    function renderStats() {
-      document.getElementById("statModels").textContent = state.models.length;
-      const toolSet = new Set(state.sources.map(s => s.name));
-      state.models.forEach(m => Object.keys(m.tools || {}).forEach(t => toolSet.add(t)));
-      document.getElementById("statTools").textContent = toolSet.size;
-      document.getElementById("statBrands").textContent = new Set(state.models.map(m => m.brand)).size;
-    }
-
-    function renderPills() {
-      const opContainer = document.getElementById("opPills");
-      opContainer.innerHTML = OPERATIONS.map(op => `<button class="pill ${state.selectedOp === op ? "active" : ""}" data-op="${op}">${op}</button>`).join("");
-      opContainer.querySelectorAll(".pill").forEach(btn => { btn.onclick = () => { state.selectedOp = btn.dataset.op; renderPills(); renderModels(); }; });
-
-      const counts = {};
-      state.models.forEach(m => { counts[m.brand] = (counts[m.brand] || 0) + 1; });
-      const brands = ["All", ...Object.keys(counts).sort()];
-      const brandContainer = document.getElementById("brandPills");
-      brandContainer.innerHTML = brands.map(b => `<button class="pill ${state.selectedBrand === b ? "active" : ""}" data-brand="${b}">${b}${b !== "All" ? ` (${counts[b]})` : ""}</button>`).join("");
-      brandContainer.querySelectorAll(".pill").forEach(btn => { btn.onclick = () => { state.selectedBrand = btn.dataset.brand; renderPills(); renderModels(); }; });
-    }
-
-    function renderModels() {
-      const q = state.search.trim().toLowerCase();
-      const filtered = state.models.filter(m => {
-        if (state.selectedBrand !== "All" && m.brand !== state.selectedBrand) return false;
-        const toolEntries = Object.entries(m.tools || {});
-        if (state.selectedTool && !toolEntries.some(([t]) => t.toLowerCase() === state.selectedTool.toLowerCase())) return false;
-        if (state.selectedOp !== "All" && !toolEntries.some(([, meta]) => (meta.operations || []).includes(state.selectedOp))) return false;
-        if (q) {
-          const toolBlob = toolEntries.map(([t, meta]) => `${t} ${meta.bit || ""} ${meta.os_version || ""} ${meta.security_patch || ""} ${meta.mode || ""}`).join(" ");
-          const hay = `${m.brand} ${m.model_name} ${m.model_code} ${m.bit || ""} ${m.os_version || ""} ${m.cpu || ""} ${m.mode || ""} ${toolBlob}`.toLowerCase();
-          if (!hay.includes(q)) return false;
+          const raw = localStorage.getItem(STORAGE_KEY);
+          const parsed = JSON.parse(raw || "[]");
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (e) {
+          return [];
         }
-        return true;
-      });
-
-      const grid = document.getElementById("modelsGrid");
-      if (filtered.length === 0) {
-        grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No matching models found. Try another model code, BIT, Android version, or click <b>Reset</b>.</div>`;
-        return;
       }
 
-      grid.innerHTML = filtered.slice(0, 120).map(m => {
-        const tools = Object.keys(m.tools || {});
-        const ops = [...new Set(Object.values(m.tools || {}).flatMap(x => x.operations || []))];
-        return `
-          <div class="card" data-code="${m.model_code}">
-            <div class="card-head">
-              <div><div class="brand-tag">${m.brand}</div><div class="model-title">${m.model_name}</div></div>
-              <span class="code-badge">${m.model_code}</span>
-            </div>
-            <div class="meta-row">
-              ${m.bit ? `<span class="ver-chip">🔒 ${m.bit}</span>` : ""}
-              ${m.os_version ? `<span class="ver-chip">🤖 ${m.os_version}</span>` : ""}
-              ${m.mode ? `<span class="mode-chip">🔌 ${m.mode}</span>` : ""}
-              ${m.cpu ? `<span>🧠 ${m.cpu}</span>` : ""}
-            </div>
-            <div class="tool-chips" style="margin-bottom:8px;">${tools.map(t => `<span class="tool-chip">🛠 ${t}</span>`).join("")}</div>
-            <div class="tool-chips">${ops.slice(0, 5).map(o => `<span class="op-chip">${o}</span>`).join("")}</div>
-          </div>`;
-      }).join("");
-      grid.querySelectorAll(".card").forEach(card => { card.onclick = () => openModal(card.dataset.code); });
-    }
-
-    function openModal(code) {
-      const m = state.models.find(x => x.model_code === code);
-      if (!m) return;
-      document.getElementById("modalBrand").textContent = m.brand;
-      document.getElementById("modalTitle").textContent = `${m.model_name} (${m.model_code})`;
-      document.getElementById("modalMeta").innerHTML = `
-        <span class="code-badge">${m.model_code}</span>
-        ${m.bit ? `<span class="ver-chip">🔒 ${m.bit}</span>` : ""}
-        ${m.os_version ? `<span class="ver-chip">🤖 ${m.os_version}</span>` : ""}
-        ${m.cpu ? `<span class="code-badge">🧠 ${m.cpu}</span>` : ""}
-        ${m.mode ? `<span class="mode-chip">🔌 ${m.mode}</span>` : ""}
-      `;
-      document.getElementById("modalTools").innerHTML = Object.entries(m.tools || {}).map(([tool, meta]) => `
-        <div class="tool-row">
-          <div class="tool-row-top">
-            <div>
-              <strong>🛠 ${tool}</strong>
-              ${meta.tool_version ? `<span class="code-badge" style="margin-left:6px;">${meta.tool_version}</span>` : ""}
-            </div>
-            <div>
-              ${meta.updated_at ? `<span style="font-size:11px;color:var(--muted);margin-right:8px;">${meta.updated_at}</span>` : ""}
-              ${(meta.post_url || meta.source_url) ? `<a href="${meta.post_url || meta.source_url}" target="_blank" rel="noopener">View Official Post ↗</a>` : ""}
-            </div>
-          </div>
-          <div class="meta-row" style="margin-bottom:8px;">
-            ${meta.bit ? `<span class="ver-chip">🔒 ${meta.bit}</span>` : ""}
-            ${meta.os_version ? `<span class="ver-chip">🤖 ${meta.os_version}</span>` : ""}
-            ${meta.security_patch ? `<span class="ver-chip">🛡 Patch: ${meta.security_patch}</span>` : ""}
-            ${meta.mode ? `<span class="mode-chip">🔌 ${meta.mode}</span>` : ""}
-          </div>
-          <div class="tool-chips">${(meta.operations || []).map(o => `<span class="op-chip">${o}</span>`).join("")}</div>
-        </div>`).join("");
-      document.getElementById("detailModal").classList.add("open");
-    }
-
-    function renderCpuFinder() {
-      document.getElementById("cpuCards").innerHTML = CPU_PROFILES.map(p => `<div class="card" style="cursor:default;"><div class="brand-tag">${p.cpu}</div><div class="model-title" style="font-size:14px;margin:4px 0;">${p.mode}</div><p style="font-size:12px;color:var(--muted);">${p.note}</p></div>`).join("");
-      const q = (document.getElementById("cpuSearch").value || "").toLowerCase();
-      const rows = state.models.filter(m => m.cpu && `${m.brand} ${m.model_name} ${m.model_code} ${m.cpu}`.toLowerCase().includes(q));
-      document.getElementById("cpuTableBody").innerHTML = rows.map(m => `<tr><td>${m.brand}</td><td><b>${m.model_name}</b></td><td><code>${m.model_code}</code></td><td>${m.cpu}</td><td>${m.mode || "Auto"}</td></tr>`).join("") || `<tr><td colspan="5" style="text-align:center;color:var(--muted);">No chipset entries match your filter.</td></tr>`;
-    }
-
-    function renderSources() {
-      const grid = document.getElementById("sourcesGrid");
-      grid.innerHTML = state.sources.map(s => {
-        const cls = s.status === "online" || s.status === "ready" ? "status-online" : (s.status === "pending_url" ? "status-pending" : "status-error");
-        const modelCount = state.models.filter(m => Object.keys(m.tools || {}).some(t => t.toLowerCase() === s.name.toLowerCase())).length;
-        return `
-          <div class="card" data-tool="${s.name}">
-            <div class="card-head">
-              <div><div class="model-title" style="font-size:15px;">${s.name}</div><div style="font-size:12px;" class="${cls}">● ${s.status}</div></div>
-              <span class="code-badge">${Math.max(s.count || 0, modelCount)} models</span>
-            </div>
-            ${s.url ? `<a href="${s.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="font-size:11px;color:var(--accent);word-break:break-all;">${s.url}</a>` : ""}
-          </div>`;
-      }).join("");
-      grid.querySelectorAll(".card").forEach(card => {
-        card.onclick = () => { state.selectedTool = card.dataset.tool; document.getElementById("searchInput").value = card.dataset.tool; state.search = card.dataset.tool; switchTab("models"); renderModels(); };
-      });
-    }
-
-    function renderUpdates() {
-      const el = document.getElementById("updatesList");
-      if (!state.changelog.length) {
-        el.innerHTML = `<div class="empty">No auto-sync logs yet. Run <b>Auto-Sync NextGen GSM Models</b> in GitHub Actions to pull live updates.</div>`;
-        return;
+      function saveLocalEdits(list) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+          return true;
+        } catch (e) {
+          showToast("Storage unavailable in this browser.");
+          return false;
+        }
       }
-      el.innerHTML = state.changelog.map(c => `
-        <div class="tool-row">
-          <div class="tool-row-top">
-            <div><span class="code-badge">${c.model}</span> <strong style="margin-left:8px;">🛠 ${c.tool}</strong></div>
-            <div>
-              <span style="font-size:12px;color:var(--muted);margin-right:8px;">${c.date || ""}</span>
-              ${c.post_url ? `<a href="${c.post_url}" target="_blank" rel="noopener">View Post ↗</a>` : ""}
-            </div>
-          </div>
-          <div class="meta-row" style="margin-bottom:6px;">
-            ${c.bit ? `<span class="ver-chip">🔒 ${c.bit}</span>` : ""}
-            ${c.os_version ? `<span class="ver-chip">🤖 ${c.os_version}</span>` : ""}
-            ${c.mode ? `<span class="mode-chip">🔌 ${c.mode}</span>` : ""}
-          </div>
-          <div class="tool-chips">${(c.ops || []).map(o => `<span class="op-chip">${o}</span>`).join("")}</div>
-        </div>`).join("");
-    }
 
-    function switchTab(tabName) {
-      document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tabName));
-      document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === "view-" + tabName));
-    }
+      function mergeModelArrays(baseList, extraList) {
+        const map = new Map();
+        [...baseList, ...extraList].forEach(item => {
+          if (!item || typeof item !== "object") return;
+          const code = String(item.model_code || item.model_name || "").trim().toUpperCase();
+          if (!code) return;
 
-    document.querySelectorAll(".tab-btn").forEach(b => b.onclick = () => switchTab(b.dataset.tab));
-    document.getElementById("searchInput").oninput = e => { state.search = e.target.value; state.selectedTool = ""; renderModels(); };
-    document.getElementById("cpuSearch").oninput = renderCpuFinder;
-    document.getElementById("clearFiltersBtn").onclick = () => { state.search = ""; state.selectedOp = "All"; state.selectedBrand = "All"; state.selectedTool = ""; document.getElementById("searchInput").value = ""; renderPills(); renderModels(); };
-    document.getElementById("closeModal").onclick = () => document.getElementById("detailModal").classList.remove("open");
-    document.getElementById("detailModal").onclick = e => { if (e.target.id === "detailModal") e.target.classList.remove("open"); };
+          const incomingTools = item.tools && typeof item.tools === "object" ? item.tools : {};
+          if (!map.has(code)) {
+            const clonedTools = {};
+            Object.entries(incomingTools).forEach(([tName, meta]) => {
+              clonedTools[tName] = {
+                operations: Array.isArray(meta && meta.operations) ? [...meta.operations] : ["FRP"],
+                bit: (meta && meta.bit) || "",
+                os_version: (meta && meta.os_version) || "",
+                security_patch: (meta && meta.security_patch) || "",
+                mode: (meta && meta.mode) || "",
+                tool_version: (meta && meta.tool_version) || "",
+                source_url: (meta && meta.source_url) || "",
+                post_url: (meta && meta.post_url) || "",
+                updated_at: (meta && meta.updated_at) || ""
+              };
+            });
+            map.set(code, {
+              brand: String(item.brand || "Other").trim() || "Other",
+              model_name: String(item.model_name || code).trim() || code,
+              model_code: code,
+              bit: String(item.bit || "").trim(),
+              os_version: String(item.os_version || "").trim(),
+              cpu: String(item.cpu || "").trim(),
+              mode: String(item.mode || "").trim(),
+              tools: clonedTools
+            });
+          } else {
+            const ex = map.get(code);
+            // Prefer friendly marketing name over raw code
+            if (ex.model_name === ex.model_code && item.model_name && item.model_name !== code) {
+              ex.model_name = String(item.model_name).trim();
+            }
+            if (ex.brand === "Other" && item.brand && item.brand !== "Other") {
+              ex.brand = String(item.brand).trim();
+            }
+            ex.bit = mergeCommaText(ex.bit, item.bit);
+            ex.os_version = mergeCommaText(ex.os_version, item.os_version);
+            ex.cpu = mergeCommaText(ex.cpu, item.cpu);
+            ex.mode = mergeCommaText(ex.mode, item.mode);
 
-    document.getElementById("addModelBtn").onclick = () => {
-      const brand = document.getElementById("mBrand").value.trim(), model_name = document.getElementById("mName").value.trim(), model_code = document.getElementById("mCode").value.trim().toUpperCase(), bit = document.getElementById("mBit").value.trim(), os_version = document.getElementById("mOs").value.trim(), mode = document.getElementById("mMode").value.trim(), tool = document.getElementById("mTool").value.trim() || "Custom Tool", ops = document.getElementById("mOps").value.split(",").map(s => s.trim()).filter(Boolean);
-      if (!brand || !model_code) return alert("Please enter at least Brand and Model Code.");
-      const entry = { brand, model_name: model_name || model_code, model_code, bit, os_version, mode, tools: { [tool]: { operations: ops.length ? ops : ["FRP"], bit, os_version, mode, updated_at: new Date().toISOString().slice(0, 10) } } };
-      const local = loadLocalEdits(); local.push(entry); localStorage.setItem("nextgen_gsm_local", JSON.stringify(local));
-      state.models = mergeModelArrays(state.models, [entry]); renderAll(); alert("Saved " + model_code + "!");
-    };
+            Object.entries(incomingTools).forEach(([tName, meta]) => {
+              if (!meta || typeof meta !== "object") return;
+              const prev = ex.tools[tName];
+              if (!prev) {
+                ex.tools[tName] = {
+                  operations: Array.isArray(meta.operations) ? [...meta.operations] : ["FRP"],
+                  bit: meta.bit || "",
+                  os_version: meta.os_version || "",
+                  security_patch: meta.security_patch || "",
+                  mode: meta.mode || "",
+                  tool_version: meta.tool_version || "",
+                  source_url: meta.source_url || "",
+                  post_url: meta.post_url || "",
+                  updated_at: meta.updated_at || ""
+                };
+              } else {
+                const ops = new Set([...(prev.operations || []), ...(Array.isArray(meta.operations) ? meta.operations : [])]);
+                ex.tools[tName] = {
+                  operations: Array.from(ops),
+                  bit: mergeCommaText(prev.bit, meta.bit),
+                  os_version: mergeCommaText(prev.os_version, meta.os_version),
+                  security_patch: meta.security_patch || prev.security_patch || "",
+                  mode: mergeCommaText(prev.mode, meta.mode),
+                  tool_version: meta.tool_version || prev.tool_version || "",
+                  source_url: meta.source_url || prev.source_url || "",
+                  post_url: meta.post_url || prev.post_url || "",
+                  updated_at: meta.updated_at || prev.updated_at || ""
+                };
+              }
+            });
+          }
+        });
+        return Array.from(map.values());
+      }
 
-    document.getElementById("exportJsonBtn").onclick = () => {
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(new Blob([JSON.stringify(state.models, null, 2)], { type: "application/json" }));
-      a.download = "nextgen_gsm_models.json"; a.click();
-    };
-    document.getElementById("resetLocalBtn").onclick = () => { localStorage.removeItem("nextgen_gsm_local"); initApp(); };
+      /* ---------- Data Loading ---------- */
 
-    initApp();
+      async function initApp() {
+        let liveModels = [];
+        let liveSources = [];
+        let liveChangelog = [];
+
+        try {
+          const res = await fetch("./data/models.json?t=" + Date.now());
+          if (res.ok) {
+            const payload = await res.json();
+            if (Array.isArray(payload.models)) {
+              liveModels = payload.models;
+            } else if (payload.models && typeof payload.models === "object") {
+              liveModels = Object.values(payload.models);
+            }
+            if (Array.isArray(payload.sources)) liveSources = payload.sources;
+            state.lastSync = payload.last_sync || null;
+          }
+        } catch (e) {}
+
+        if (liveSources.length === 0) {
+          try {
+            const sRes = await fetch("./sources.json?t=" + Date.now());
+            if (sRes.ok) {
+              const sJson = await sRes.json();
+              liveSources = (sJson.sources || []).map(s => {
+                const firstFeedUrl = Array.isArray(s.feeds) && s.feeds[0] ? s.feeds[0].url : "";
+                const resolvedUrl = s.display_url || s.url || firstFeedUrl || "";
+                return {
+                  id: s.id || s.name,
+                  name: s.name || "Unknown Tool",
+                  status: resolvedUrl ? "Working" : "Pending",
+                  count: 0,
+                  source_label: s.source_label || "from its website",
+                  url: resolvedUrl,
+                  last_checked: "",
+                  last_new_data: ""
+                };
+              });
+            }
+          } catch (e) {}
+        }
+
+        try {
+          const cRes = await fetch("./data/changelog.json?t=" + Date.now());
+          if (cRes.ok) {
+            const cJson = await cRes.json();
+            if (Array.isArray(cJson)) liveChangelog = cJson;
+          }
+        } catch (e) {}
+
+        state.models = mergeModelArrays(SEED_MODELS, [...liveModels, ...loadLocalEdits()]);
+        state.sources = liveSources;
+        state.changelog = liveChangelog;
+
+        const syncEl = document.getElementById("syncText");
+        if (state.lastSync) {
+          const ago = timeAgo(state.lastSync);
+          syncEl.textContent = ago ? "Refreshed " + ago : "Auto-Synced";
+        } else {
+          syncEl.textContent = "Ready (" + state.models.length + " models)";
+        }
+
+        renderAll();
+      }
+
+      /* ---------- Rendering ---------- */
+
+      function renderAll() {
+        renderStats();
+        renderPills();
+        renderModels();
+        renderCpuFinder();
+        renderSources();
+        renderUpdates();
+      }
+
+      function renderStats() {
+        document.getElementById("statModels").textContent = state.models.length.toLocaleString();
+        const toolSet = new Set(state.sources.map(s => s.name));
+        state.models.forEach(m => Object.keys(m.tools || {}).forEach(t => toolSet.add(t)));
+        document.getElementById("statTools").textContent = toolSet.size.toLocaleString();
+        document.getElementById("statBrands").textContent = new Set(state.models.map(m => m.brand)).size.toLocaleString();
+      }
+
+      function renderPills() {
+        const opContainer = document.getElementById("opPills");
+        opContainer.innerHTML = OPERATIONS.map(op =>
+          `<button type="button" class="pill ${state.selectedOp === op ? "active" : ""}" data-op="${esc(op)}">${esc(op)}</button>`
+        ).join("");
+
+        const counts = {};
+        state.models.forEach(m => { counts[m.brand] = (counts[m.brand] || 0) + 1; });
+        const brands = ["All", ...Object.keys(counts).sort((a, b) => counts[b] - counts[a])];
+
+        const brandContainer = document.getElementById("brandPills");
+        brandContainer.innerHTML = brands.map(b =>
+          `<button type="button" class="pill ${state.selectedBrand === b ? "active" : ""}" data-brand="${esc(b)}">${esc(b)}${b !== "All" ? ` (${counts[b]})` : ""}</button>`
+        ).join("");
+
+        const toolBar = document.getElementById("activeToolBar");
+        const toolNameEl = document.getElementById("activeToolName");
+        if (state.selectedTool) {
+          toolNameEl.textContent = state.selectedTool;
+          toolBar.classList.add("show");
+        } else {
+          toolBar.classList.remove("show");
+        }
+      }
+
+      function getFilteredModels() {
+        const q = state.search.trim().toLowerCase();
+        const toolFilter = state.selectedTool.toLowerCase();
+
+        return state.models.filter(m => {
+          if (state.selectedBrand !== "All" && m.brand !== state.selectedBrand) return false;
+
+          const toolEntries = Object.entries(m.tools || {});
+          if (toolFilter && !toolEntries.some(([t]) => t.toLowerCase() === toolFilter)) return false;
+
+          if (state.selectedOp !== "All") {
+            const hasOp = toolEntries.some(([, meta]) => Array.isArray(meta.operations) && meta.operations.includes(state.selectedOp));
+            if (!hasOp) return false;
+          }
+
+          if (q) {
+            const toolBlob = toolEntries
+              .map(([t, meta]) => `${t} ${meta.bit || ""} ${meta.os_version || ""} ${meta.security_patch || ""} ${meta.mode || ""} ${(meta.operations || []).join(" ")}`)
+              .join(" ");
+            const hay = `${m.brand} ${m.model_name} ${m.model_code} ${m.bit || ""} ${m.os_version || ""} ${m.cpu || ""} ${m.mode || ""} ${toolBlob}`.toLowerCase();
+            if (!hay.includes(q)) return false;
+          }
+          return true;
+        });
+      }
+
+      function renderModels() {
+        const filtered = getFilteredModels();
+        const grid = document.getElementById("modelsGrid");
+        const metaEl = document.getElementById("resultsMeta");
+        const loadMoreWrap = document.getElementById("loadMoreWrap");
+
+        if (filtered.length === 0) {
+          metaEl.textContent = "Showing 0 results";
+          loadMoreWrap.classList.remove("show");
+          grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No matching models found. Try another model code, BIT, Android version, or click <b>Reset</b>.</div>`;
+          return;
+        }
+
+        const slice = filtered.slice(0, state.visibleCount);
+        metaEl.textContent = `Showing ${slice.length.toLocaleString()} of ${filtered.length.toLocaleString()} matching models`;
+
+        grid.innerHTML = slice.map(m => {
+          const tools = Object.keys(m.tools || {});
+          const ops = Array.from(new Set(Object.values(m.tools || {}).flatMap(x => x.operations || [])));
+          return `
+            <div class="card" data-code="${esc(m.model_code)}">
+              <div class="card-head">
+                <div>
+                  <div class="brand-tag">${esc(m.brand)}</div>
+                  <div class="model-title">${esc(m.model_name)}</div>
+                </div>
+                <span class="code-badge">${esc(m.model_code)}</span>
+              </div>
+              <div class="meta-row">
+                ${m.bit ? `<span class="ver-chip">🔒 ${esc(m.bit)}</span>` : ""}
+                ${m.os_version ? `<span class="ver-chip">🤖 ${esc(m.os_version)}</span>` : ""}
+                ${m.mode ? `<span class="mode-chip">🔌 ${esc(m.mode)}</span>` : ""}
+                ${m.cpu ? `<span>🧠 ${esc(m.cpu)}</span>` : ""}
+              </div>
+              <div class="tool-chips">
+                ${tools.map(t => `<span class="tool-chip">🛠 ${esc(t)}</span>`).join("")}
+              </div>
+              <div class="tool-chips">
+                ${ops.slice(0, 6).map(o => `<span class="op-chip">${esc(o)}</span>`).join("")}
+              </div>
+            </div>`;
+        }).join("");
+
+        if (filtered.length > state.visibleCount) {
+          const remaining = filtered.length - state.visibleCount;
+          document.getElementById("loadMoreBtn").textContent = `Load More (${remaining.toLocaleString()} remaining)`;
+          loadMoreWrap.classList.add("show");
+        } else {
+          loadMoreWrap.classList.remove("show");
+        }
+      }
+
+      function openModal(code) {
+        const m = state.models.find(x => x.model_code === code);
+        if (!m) return;
+
+        document.getElementById("modalBrand").textContent = m.brand;
+        document.getElementById("modalTitle").textContent =
+          m.model_name && m.model_name !== m.model_code ? `${m.model_name} (${m.model_code})` : m.model_code;
+
+        document.getElementById("modalMeta").innerHTML = [
+          `<span class="code-badge">${esc(m.model_code)}</span>`,
+          m.bit ? `<span class="ver-chip">🔒 ${esc(m.bit)}</span>` : "",
+          m.os_version ? `<span class="ver-chip">🤖 ${esc(m.os_version)}</span>` : "",
+          m.cpu ? `<span class="code-badge">🧠 ${esc(m.cpu)}</span>` : "",
+          m.mode ? `<span class="mode-chip">🔌 ${esc(m.mode)}</span>` : ""
+        ].filter(Boolean).join("");
+
+        const toolEntries = Object.entries(m.tools || {});
+        document.getElementById("modalTools").innerHTML = toolEntries.length
+          ? toolEntries.map(([tool, meta]) => {
+              const proofUrl = safeUrl(meta.post_url || meta.source_url);
+              return `
+                <div class="tool-row">
+                  <div class="tool-row-top">
+                    <div>
+                      <strong>🛠 ${esc(tool)}</strong>
+                      ${meta.tool_version ? `<span class="code-badge" style="margin-left:6px;">${esc(meta.tool_version)}</span>` : ""}
+                    </div>
+                    <div>
+                      ${meta.updated_at ? `<span style="font-size:11px;color:var(--muted);margin-right:8px;">${esc(meta.updated_at)}</span>` : ""}
+                      ${proofUrl ? `<a href="${esc(proofUrl)}" target="_blank" rel="noopener noreferrer">Official Post ↗</a>` : ""}
+                    </div>
+                  </div>
+                  <div class="meta-row" style="margin-bottom:8px;">
+                    ${meta.bit ? `<span class="ver-chip">🔒 ${esc(meta.bit)}</span>` : ""}
+                    ${meta.os_version ? `<span class="ver-chip">🤖 ${esc(meta.os_version)}</span>` : ""}
+                    ${meta.security_patch ? `<span class="ver-chip">🛡 Patch: ${esc(meta.security_patch)}</span>` : ""}
+                    ${meta.mode ? `<span class="mode-chip">🔌 ${esc(meta.mode)}</span>` : ""}
+                  </div>
+                  <div class="tool-chips">
+                    ${(meta.operations || []).map(o => `<span class="op-chip">${esc(o)}</span>`).join("")}
+                  </div>
+                </div>`;
+            }).join("")
+          : `<div class="empty">No tool details recorded for this model yet.</div>`;
+
+        document.getElementById("detailModal").classList.add("open");
+      }
+
+      function closeModal() {
+        document.getElementById("detailModal").classList.remove("open");
+      }
+
+      function renderCpuFinder() {
+        document.getElementById("cpuCards").innerHTML = CPU_PROFILES.map(p => `
+          <div class="card static-card">
+            <div class="brand-tag">${esc(p.cpu)}</div>
+            <div class="model-title" style="font-size:14px;">${esc(p.mode)}</div>
+            <p style="font-size:12px;color:var(--muted);">${esc(p.note)}</p>
+          </div>`).join("");
+
+        const q = (document.getElementById("cpuSearch").value || "").trim().toLowerCase();
+        const rows = state.models.filter(m =>
+          m.cpu && `${m.brand} ${m.model_name} ${m.model_code} ${m.cpu} ${m.mode || ""}`.toLowerCase().includes(q)
+        );
+
+        document.getElementById("cpuTableBody").innerHTML = rows.length
+          ? rows.slice(0, 150).map(m => `
+              <tr>
+                <td>${esc(m.brand)}</td>
+                <td><strong>${esc(m.model_name)}</strong></td>
+                <td><code>${esc(m.model_code)}</code></td>
+                <td>${esc(m.cpu)}</td>
+                <td>${esc(m.mode || "Auto")}</td>
+              </tr>`).join("")
+          : `<tr><td colspan="5" style="text-align:center;color:var(--muted);">No chipset entries match your filter.</td></tr>`;
+      }
+
+      function renderSources() {
+        const headerEl = document.getElementById("sourcesHeaderText");
+        if (headerEl) {
+          const refreshed = state.lastSync
+            ? `Data last refreshed <strong>${esc(timeAgo(state.lastSync) || "recently")}</strong>.`
+            : "Waiting for first auto-sync run.";
+          headerEl.innerHTML = `${refreshed} Every source is re-checked about every 30 minutes. Click any tool card to filter its supported models.`;
+        }
+
+        const grid = document.getElementById("sourcesGrid");
+        if (!state.sources.length) {
+          grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No sources loaded yet. Ensure <code>sources.json</code> is present in your repository.</div>`;
+          return;
+        }
+
+        const enriched = state.sources.map(s => {
+          const localCount = state.models.filter(m =>
+            Object.keys(m.tools || {}).some(t => t.toLowerCase() === String(s.name || "").toLowerCase())
+          ).length;
+          return { ...s, displayCount: Math.max(Number(s.count) || 0, localCount) };
+        }).sort((a, b) => b.displayCount - a.displayCount);
+
+        grid.innerHTML = enriched.map(s => {
+          const st = String(s.status || "Working");
+          const isOk = /^(working|online|ready)$/i.test(st);
+          const isPending = /pending/i.test(st);
+          const cls = isOk ? "status-online" : (isPending ? "status-pending" : "status-error");
+
+          const metaParts = [`<strong>${s.displayCount.toLocaleString()} models</strong>`];
+          const checkedAgo = timeAgo(s.last_checked);
+          const newAgo = timeAgo(s.last_new_data);
+          if (checkedAgo) metaParts.push(`checked ${esc(checkedAgo)}`);
+          if (newAgo) metaParts.push(`last new data ${esc(newAgo)}`);
+          if (s.source_label) metaParts.push(esc(s.source_label));
+
+          const link = safeUrl(s.url);
+          const cleanUrl = link ? link.replace(/^https?:\/\//i, "") : "";
+
+          return `
+            <div class="card" data-tool="${esc(s.name)}">
+              <div class="card-head">
+                <div class="model-title" style="font-size:15px;">${esc(s.name)}</div>
+                <span style="font-size:12px;font-weight:700;white-space:nowrap;" class="${cls}">● ${esc(isOk ? "Working" : st)}</span>
+              </div>
+              <div style="font-size:12px;color:var(--muted);">${metaParts.join(" · ")}</div>
+              ${link ? `<a href="${esc(link)}" target="_blank" rel="noopener noreferrer" data-ext="1" style="font-size:12px;color:var(--accent);word-break:break-all;text-decoration:none;">${esc(cleanUrl)}</a>` : ""}
+            </div>`;
+        }).join("");
+      }
+
+      function renderUpdates() {
+        const el = document.getElementById("updatesList");
+        if (!state.changelog.length) {
+          el.innerHTML = `<div class="empty">No auto-sync logs yet. Run <b>Auto-Sync NextGen GSM Models</b> in GitHub Actions to populate live updates.</div>`;
+          return;
+        }
+
+        el.innerHTML = state.changelog.slice(0, 100).map(c => {
+          const proofUrl = safeUrl(c.post_url);
+          return `
+            <div class="tool-row">
+              <div class="tool-row-top">
+                <div>
+                  <span class="code-badge">${esc(c.model)}</span>
+                  <strong style="margin-left:8px;">🛠 ${esc(c.tool)}</strong>
+                </div>
+                <div>
+                  ${c.date ? `<span style="font-size:12px;color:var(--muted);margin-right:8px;">${esc(c.date)}</span>` : ""}
+                  ${proofUrl ? `<a href="${esc(proofUrl)}" target="_blank" rel="noopener noreferrer">View Post ↗</a>` : ""}
+                </div>
+              </div>
+              <div class="meta-row" style="margin-bottom:6px;">
+                ${c.bit ? `<span class="ver-chip">🔒 ${esc(c.bit)}</span>` : ""}
+                ${c.os_version ? `<span class="ver-chip">🤖 ${esc(c.os_version)}</span>` : ""}
+                ${c.mode ? `<span class="mode-chip">🔌 ${esc(c.mode)}</span>` : ""}
+              </div>
+              <div class="tool-chips">
+                ${(c.ops || []).map(o => `<span class="op-chip">${esc(o)}</span>`).join("")}
+              </div>
+            </div>`;
+        }).join("");
+      }
+
+      function switchTab(tabName) {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tabName));
+        document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === "view-" + tabName));
+      }
+
+      /* ---------- CSV Parser (Handles Quoted Values) ---------- */
+
+      function parseCsvLine(line) {
+        const result = [];
+        let cur = "";
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (ch === '"') {
+            if (inQuotes && line[i + 1] === '"') {
+              cur += '"';
+              i++;
+            } else {
+              inQuotes = !inQuotes;
+            }
+          } else if (ch === "," && !inQuotes) {
+            result.push(cur.trim());
+            cur = "";
+          } else {
+            cur += ch;
+          }
+        }
+        result.push(cur.trim());
+        return result;
+      }
+
+      function importCsvText(text) {
+        const lines = String(text || "").split(/\r?\n/).filter(l => l.trim().length > 0);
+        if (lines.length < 2) {
+          showToast("CSV must have a header row and at least one data row.");
+          return;
+        }
+        const added = [];
+        const today = new Date().toISOString().slice(0, 10);
+        for (let i = 1; i < lines.length; i++) {
+          const cols = parseCsvLine(lines[i]);
+          if (cols.length < 3) continue;
+          const brand = cols[0] || "Other";
+          const model_name = cols[1] || cols[2];
+          const model_code = (cols[2] || "").toUpperCase();
+          if (!model_code) continue;
+
+          // Supports both 6-column and 8-column templates
+          const isEightCol = cols.length >= 7;
+          const bit = cols[3] || "";
+          const os_version = isEightCol ? (cols[4] || "") : "";
+          const mode = isEightCol ? (cols[5] || "") : "";
+          const tool = (isEightCol ? cols[6] : cols[4]) || "Custom Tool";
+          const rawOps = (isEightCol ? cols[7] : cols[5]) || "FRP";
+          const ops = rawOps.split(/[|,]/).map(s => s.trim()).filter(Boolean);
+
+          added.push({
+            brand, model_name, model_code, bit, os_version, mode,
+            tools: {
+              [tool]: {
+                operations: ops.length ? ops : ["FRP"],
+                bit, os_version, mode, updated_at: today
+              }
+            }
+          });
+        }
+        if (!added.length) {
+          showToast("No valid model rows found in CSV.");
+          return;
+        }
+        saveLocalEdits([...loadLocalEdits(), ...added]);
+        state.models = mergeModelArrays(state.models, added);
+        renderAll();
+        showToast(`Imported ${added.length} model rows!`);
+      }
+
+      /* ---------- Event Delegation & Listeners ---------- */
+
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+      });
+
+      document.getElementById("opPills").addEventListener("click", e => {
+        const btn = e.target.closest(".pill");
+        if (!btn) return;
+        state.selectedOp = btn.dataset.op;
+        state.visibleCount = PAGE_SIZE;
+        renderPills();
+        renderModels();
+      });
+
+      document.getElementById("brandPills").addEventListener("click", e => {
+        const btn = e.target.closest(".pill");
+        if (!btn) return;
+        state.selectedBrand = btn.dataset.brand;
+        state.visibleCount = PAGE_SIZE;
+        renderPills();
+        renderModels();
+      });
+
+      document.getElementById("modelsGrid").addEventListener("click", e => {
+        const card = e.target.closest(".card[data-code]");
+        if (card) openModal(card.dataset.code);
+      });
+
+      document.getElementById("sourcesGrid").addEventListener("click", e => {
+        if (e.target.closest("a[data-ext]")) return;
+        const card = e.target.closest(".card[data-tool]");
+        if (!card) return;
+        state.selectedTool = card.dataset.tool;
+        state.visibleCount = PAGE_SIZE;
+        switchTab("models");
+        renderPills();
+        renderModels();
+      });
+
+      document.getElementById("searchInput").addEventListener("input", e => {
+        state.search = e.target.value;
+        state.visibleCount = PAGE_SIZE;
+        renderModels();
+      });
+
+      document.getElementById("cpuSearch").addEventListener("input", renderCpuFinder);
+
+      document.getElementById("clearFiltersBtn").addEventListener("click", () => {
+        state.search = "";
+        state.selectedOp = "All";
+        state.selectedBrand = "All";
+        state.selectedTool = "";
+        state.visibleCount = PAGE_SIZE;
+        document.getElementById("searchInput").value = "";
+        renderPills();
+        renderModels();
+      });
+
+      document.getElementById("clearToolOnlyBtn").addEventListener("click", () => {
+        state.selectedTool = "";
+        state.visibleCount = PAGE_SIZE;
+        renderPills();
+        renderModels();
+      });
+
+      document.getElementById("loadMoreBtn").addEventListener("click", () => {
+        state.visibleCount += PAGE_SIZE;
+        renderModels();
+      });
+
+      document.getElementById("closeModal").addEventListener("click", closeModal);
+      document.getElementById("detailModal").addEventListener("click", e => {
+        if (e.target.id === "detailModal") closeModal();
+      });
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      document.getElementById("addModelBtn").addEventListener("click", () => {
+        const brand = document.getElementById("mBrand").value.trim();
+        const model_name = document.getElementById("mName").value.trim();
+        const model_code = document.getElementById("mCode").value.trim().toUpperCase();
+        const bit = document.getElementById("mBit").value.trim();
+        const os_version = document.getElementById("mOs").value.trim();
+        const cpu = document.getElementById("mCpu").value.trim();
+        const mode = document.getElementById("mMode").value.trim();
+        const tool = document.getElementById("mTool").value.trim() || "Custom Tool";
+        const ops = document.getElementById("mOps").value.split(/[,|]/).map(s => s.trim()).filter(Boolean);
+
+        if (!brand || !model_code) {
+          showToast("Please enter at least Brand and Model Code.");
+          return;
+        }
+
+        const today = new Date().toISOString().slice(0, 10);
+        const entry = {
+          brand,
+          model_name: model_name || model_code,
+          model_code,
+          bit,
+          os_version,
+          cpu,
+          mode,
+          tools: {
+            [tool]: {
+              operations: ops.length ? ops : ["FRP"],
+              bit,
+              os_version,
+              mode,
+              updated_at: today
+            }
+          }
+        };
+
+        saveLocalEdits([...loadLocalEdits(), entry]);
+        state.models = mergeModelArrays(state.models, [entry]);
+        state.changelog.unshift({
+          date: today,
+          type: "manual",
+          tool,
+          model: model_code,
+          bit,
+          os_version,
+          mode,
+          ops: entry.tools[tool].operations
+        });
+        ["mBrand", "mName", "mCode", "mBit", "mOs", "mCpu", "mMode", "mTool", "mOps"].forEach(id => {
+          document.getElementById(id).value = "";
+        });
+        renderAll();
+        showToast("Saved " + model_code + " (" + tool + ")");
+      });
+
+      document.getElementById("downloadTemplateBtn").addEventListener("click", () => {
+        const csv =
+          "brand,model_name,model_code,bit,os_version,mode,tool,operations\n" +
+          "Samsung,Galaxy A15,SM-A155F,BIT 4,Android 15,Preloader,UnlockTool,FRP|Factory Reset|Flash\n" +
+          "Xiaomi,Redmi Note 13 4G,23129RAA4G,,HyperOS 2,EDL 9008,AMT,FRP|Flash\n";
+        const url = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "nextgen_gsm_template.csv";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+
+      document.getElementById("exportJsonBtn").addEventListener("click", () => {
+        const url = URL.createObjectURL(new Blob([JSON.stringify(state.models, null, 2)], { type: "application/json" }));
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "nextgen_gsm_models.json";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+
+      document.getElementById("resetLocalBtn").addEventListener("click", () => {
+        try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+        initApp();
+        showToast("Local edits cleared.");
+      });
+
+      document.getElementById("loadSheetBtn").addEventListener("click", async () => {
+        const url = document.getElementById("sheetUrlInput").value.trim();
+        if (!safeUrl(url)) {
+          showToast("Paste a valid https:// Google Sheet CSV link.");
+          return;
+        }
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          importCsvText(await res.text());
+        } catch (e) {
+          showToast("Could not load CSV. Publish the Sheet to web as CSV first.");
+        }
+      });
+
+      document.getElementById("csvFileInput").addEventListener("change", e => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => importCsvText(ev.target.result);
+        reader.readAsText(file);
+        e.target.value = "";
+      });
+
+      initApp();
+    })();
   </script>
 </body>
 </html>
