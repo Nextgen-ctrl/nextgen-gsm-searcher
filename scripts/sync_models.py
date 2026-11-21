@@ -70,35 +70,52 @@ CPU_KEYWORDS = {
     "Tensor": ["tensor"]
 }
 
+
 def infer_brand(code: str, context: str) -> str:
     c = code.upper()
-    if c.startswith("SM-"): return "Samsung"
-    if c.startswith("CPH"): return "Oppo"
-    if c.startswith("RMX"): return "Realme"
-    if c.startswith(("V", "PD")): return "Vivo"
-    if c.startswith("XT"): return "Motorola"
-    if c.startswith("X"): return "Infinix"
-    if re.match(r"^(K[EFGJL]|BG|CK|CL)\d", c): return "Tecno"
-    if re.match(r"^(2[1-7]\d{4}|M\d{4})", c): return "Xiaomi"
-    for b in ["Samsung", "Xiaomi", "Redmi", "Poco", "Vivo", "Oppo", "Realme", "Tecno", "Infinix", "Motorola", "Honor", "Huawei", "OnePlus", "Nokia", "Google", "Itel", "Lenovo", "Nothing"]:
-        if b.lower() in context.lower():
+    if c.startswith("SM-"):
+        return "Samsung"
+    if c.startswith("CPH"):
+        return "Oppo"
+    if c.startswith("RMX"):
+        return "Realme"
+    if c.startswith(("V", "PD")):
+        return "Vivo"
+    if c.startswith("XT"):
+        return "Motorola"
+    if c.startswith("X"):
+        return "Infinix"
+    if re.match(r"^(K[EFGJL]|BG|CK|CL)\d", c):
+        return "Tecno"
+    if re.match(r"^(2[1-7]\d{4}|M\d{4})", c):
+        return "Xiaomi"
+    low_ctx = context.lower()
+    for b in [
+        "Samsung", "Xiaomi", "Redmi", "Poco", "Vivo", "Oppo", "Realme",
+        "Tecno", "Infinix", "Motorola", "Honor", "Huawei", "OnePlus",
+        "Nokia", "Google", "Itel", "Lenovo", "Nothing"
+    ]:
+        if b.lower() in low_ctx:
             return "Xiaomi" if b in ("Redmi", "Poco") else b
     return "Other"
+
 
 def extract_bits(text: str) -> str:
     found = []
     for m in BIT_REGEX.finditer(text):
         val = (m.group(1) or m.group(2) or "").upper().replace(" ", "")
         if val:
-            label = val if val.startswith("U") else f"BIT {val}"
+            label = val if val.startswith("U") else "BIT " + val
             if label not in found:
                 found.append(label)
     return ", ".join(found[:4])
 
+
 def extract_os_versions(text: str) -> str:
     found = []
     for m in ANDROID_REGEX.findall(text):
-        val = f"Android {re.sub(r'\\s+', '', m)}"
+        cleaned = re.sub(r"\s+", "", m)
+        val = "Android " + cleaned
         if val not in found:
             found.append(val)
     for skin in OS_SKIN_REGEX.findall(text):
@@ -106,6 +123,7 @@ def extract_os_versions(text: str) -> str:
         if clean not in found:
             found.append(clean)
     return ", ".join(found[:3])
+
 
 def extract_patch(text: str) -> str:
     m = PATCH_REGEX.search(text)
@@ -116,15 +134,18 @@ def extract_patch(text: str) -> str:
         return iso.group(1)
     return ""
 
+
 def extract_matches(text: str, mapping: dict, default=None) -> list:
     lower = text.lower()
     found = [label for label, kws in mapping.items() if any(kw in lower for kw in kws)]
     return found if found else (default or [])
 
+
 def extract_cpu(text: str) -> str:
     cpus = extract_matches(text, CPU_KEYWORDS)
     chips = sorted(set(c.upper() for c in CHIP_ID_REGEX.findall(text)))
     return ", ".join((cpus + chips)[:2])
+
 
 def parse_entries(entries: list, source: dict, feed_url: str) -> list:
     extracted = []
@@ -141,7 +162,7 @@ def parse_entries(entries: list, source: dict, feed_url: str) -> list:
         modes = ", ".join(extract_matches(text, MODE_KEYWORDS)[:3])
         cpu = extract_cpu(text)
         tver = TOOL_VER_REGEX.search(text)
-        tool_ver = f"v{tver.group(1)}" if tver else ""
+        tool_ver = "v" + tver.group(1) if tver else ""
         for code in codes:
             extracted.append({
                 "brand": infer_brand(code, text),
@@ -156,19 +177,20 @@ def parse_entries(entries: list, source: dict, feed_url: str) -> list:
                 "tool_id": source["id"],
                 "tool_version": tool_ver,
                 "operations": ops,
-                "source_url": source.get("display_url") or feed_url,
+                "source_url": source.get("display_url") or source.get("url") or feed_url,
                 "post_url": item.get("post_url") or feed_url,
                 "updated_at": item.get("date") or today
             })
     return extracted
 
+
 def scrape_feed(feed: dict, source: dict):
-    url = feed.get("url", "")
+    url = str(feed.get("url", "")).strip()
     ftype = feed.get("type", "changelog_html")
-    if not url:
-        return [], False, "no_url"
+    if not url or ftype == "tg_or_url_needed":
+        return [], False, "Pending"
     try:
-        resp = requests.get(url, headers=HEADERS, timeout=20)
+        resp = requests.get(url, headers=HEADERS, timeout=15)
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
         entries = []
@@ -181,7 +203,11 @@ def scrape_feed(feed: dict, source: dict):
                 post_url = date_link["href"] if date_link and date_link.has_attr("href") else url
                 time_el = date_link.select_one("time") if date_link else None
                 post_date = time_el["datetime"][:10] if time_el and time_el.has_attr("datetime") else ""
-                entries.append({"text": text_el.get_text(" ", strip=True), "post_url": post_url, "date": post_date})
+                entries.append({
+                    "text": text_el.get_text(" ", strip=True),
+                    "post_url": post_url,
+                    "date": post_date
+                })
         elif ftype == "html_table":
             for row in soup.select("tr, li, .model-item, .device-card"):
                 txt = row.get_text(" ", strip=True)
@@ -194,10 +220,17 @@ def scrape_feed(feed: dict, source: dict):
                     entries.append({"text": txt, "post_url": url, "date": ""})
         return parse_entries(entries, source, url), True, "Working"
     except Exception as exc:
-        return [], False, f"Error ({type(exc).__name__})"
+        print(f"  [WARN] {source['name']} ({url}): {type(exc).__name__}")
+        return [], False, "Error (" + type(exc).__name__ + ")"
+
 
 def scrape_source(source: dict):
-    feeds = source.get("feeds") or ([{"type": source.get("type", "changelog_html"), "url": source.get("url", "")}] if source.get("url") else [])
+    feeds = source.get("feeds")
+    if not feeds:
+        if source.get("url"):
+            feeds = [{"type": source.get("type", "changelog_html"), "url": source.get("url", "")}]
+        else:
+            feeds = []
     all_recs = []
     any_ok = False
     last_err = "Pending"
@@ -210,6 +243,7 @@ def scrape_source(source: dict):
             last_err = status
     return all_recs, ("Working" if any_ok else last_err)
 
+
 def merge_field(old_val: str, new_val: str) -> str:
     parts = []
     for raw in (old_val, new_val):
@@ -218,6 +252,7 @@ def merge_field(old_val: str, new_val: str) -> str:
             if p and p not in parts:
                 parts.append(p)
     return ", ".join(parts[:4])
+
 
 def merge_into_db(existing_db: dict, new_records: list):
     changelog = []
@@ -280,17 +315,18 @@ def merge_into_db(existing_db: dict, new_records: list):
 
     return existing_db, changelog, tools_with_new_data
 
+
 def post_updates_to_channel(new_changes: list):
-    bot_token = os.environ.get("TG_BOT_TOKEN")
-    channel_id = os.environ.get("TG_CHANNEL_ID")
-    web_url = os.environ.get("WEB_APP_URL", "")
+    bot_token = (os.environ.get("TG_BOT_TOKEN") or "").strip()
+    channel_id = (os.environ.get("TG_CHANNEL_ID") or "").strip()
+    web_url = (os.environ.get("WEB_APP_URL") or "").strip()
     if not bot_token or not channel_id or not new_changes:
         return
     lines = ["🔥 <b>NextGen GSM Auto-Update</b>\n"]
     for item in new_changes[:15]:
         ops = ", ".join(item.get("ops", []))
         details = " | ".join(x for x in [item.get("bit"), item.get("os_version"), item.get("mode")] if x)
-        extra = f" [{details}]" if details else ""
+        extra = " [" + details + "]" if details else ""
         lines.append(f"• <code>{item['model']}</code> — <b>{item['tool']}</b> ({ops}){extra}")
     if len(new_changes) > 15:
         lines.append(f"\n<i>+ {len(new_changes) - 15} more models synced to the web database.</i>")
@@ -298,21 +334,39 @@ def post_updates_to_channel(new_changes: list):
     if web_url:
         payload["reply_markup"] = {"inline_keyboard": [[{"text": "🔎 Search All Models", "url": web_url}]]}
     try:
-        requests.post(f"https://api.telegram.org/bot{bot_token}/sendMessage", json=payload, timeout=15)
+        requests.post(
+            "https://api.telegram.org/bot" + bot_token + "/sendMessage",
+            json=payload,
+            timeout=15
+        )
     except Exception as exc:
-        print(f"Telegram channel post failed: {exc}")
+        print("Telegram channel post failed:", exc)
+
+
+def safe_load_json(path: str, default):
+    if not os.path.exists(path):
+        return default
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return default
+
 
 def main():
     os.makedirs("data", exist_ok=True)
     now_iso = datetime.now(timezone.utc).isoformat()
 
-    with open("sources.json", "r", encoding="utf-8") as f:
-        sources = json.load(f)["sources"]
+    sources_payload = safe_load_json("sources.json", {"sources": []})
+    sources = sources_payload.get("sources", []) if isinstance(sources_payload, dict) else []
 
     db_path = "data/models.json"
-    existing_payload = json.load(open(db_path, "r", encoding="utf-8")) if os.path.exists(db_path) else {}
-    existing_db = existing_payload.get("models", {})
-    prev_sources = {s["id"]: s for s in existing_payload.get("sources", []) if "id" in s}
+    existing_payload = safe_load_json(db_path, {})
+    existing_db = existing_payload.get("models", {}) if isinstance(existing_payload, dict) else {}
+    prev_sources = {
+        s["id"]: s for s in existing_payload.get("sources", [])
+        if isinstance(s, dict) and "id" in s
+    }
 
     all_records = []
     status_map = {}
@@ -320,10 +374,10 @@ def main():
         recs, status = scrape_source(src)
         all_records.extend(recs)
         status_map[src["id"]] = status
+        print(f"[SYNC] {src['name']}: {status} ({len(recs)} records)")
 
     merged_db, new_changes, tools_with_new_data = merge_into_db(existing_db, all_records)
 
-    # Count cumulative models per tool across the full merged database
     tool_counts = {}
     for model in merged_db.values():
         for tname in model.get("tools", {}).keys():
@@ -333,13 +387,14 @@ def main():
     for src in sources:
         prev = prev_sources.get(src["id"], {})
         has_new = src["name"] in tools_with_new_data
+        first_feed = (src.get("feeds") or [{}])[0].get("url", "")
         source_statuses.append({
             "id": src["id"],
             "name": src["name"],
             "status": status_map.get(src["id"], "Working"),
             "count": tool_counts.get(src["name"], 0),
             "source_label": src.get("source_label", "from its website"),
-            "url": src.get("display_url") or src.get("url", ""),
+            "url": src.get("display_url") or src.get("url") or first_feed,
             "last_checked": now_iso,
             "last_new_data": now_iso if has_new else prev.get("last_new_data", "")
         })
@@ -354,12 +409,15 @@ def main():
         }, f, indent=2)
 
     cl_path = "data/changelog.json"
-    old_cl = json.load(open(cl_path, "r", encoding="utf-8")) if os.path.exists(cl_path) else []
+    old_cl = safe_load_json(cl_path, [])
+    if not isinstance(old_cl, list):
+        old_cl = []
     with open(cl_path, "w", encoding="utf-8") as f:
         json.dump((new_changes + old_cl)[:150], f, indent=2)
 
     post_updates_to_channel(new_changes)
     print(f"Sync complete: {len(merged_db)} total models, {len(new_changes)} new entries.")
+
 
 if __name__ == "__main__":
     main()
