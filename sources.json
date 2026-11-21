@@ -78,12 +78,15 @@
     {
       "id": "hydra",
       "name": "Hydra Tool",
-      "source_label": "from its website",
-      "display_url": "https://www.hydradongle.com/download/software",
+      "source_label": "from its supported-devices list",
+      "display_url": "https://www.hydradongle.com/devices",
       "feeds": [
+        { "type": "hydra_devices", "url": "https://www.hydradongle.com/devices" },
+        { "type": "hydra_brand", "url": "https://www.hydradongle.com/devices/brand/178" },
+        { "type": "hydra_brand", "url": "https://www.hydradongle.com/devices/brand/118" },
         { "type": "changelog_html", "url": "https://www.hydradongle.com/download/software" }
       ]
-    },
+    },,
     {
       "id": "sigmakey",
       "name": "SigmaKey",
