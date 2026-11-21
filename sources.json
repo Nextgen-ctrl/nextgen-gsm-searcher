@@ -1,244 +1,379 @@
 {
   "sources": [
     {
-      "id": "galaxyunlock",
-      "name": "GalaxyUnlock",
-      "type": "html_table",
-      "url": "https://galaxyunlock.in/supported-models"
-    },
-    {
       "id": "amt",
-      "name": "Android Multi Tool (AMT)",
-      "type": "html_table",
-      "url": "https://androidmultitool.com/supported_models/"
+      "name": "AMT",
+      "source_label": "from its supported-models list",
+      "display_url": "https://androidmultitool.com/supported_models/",
+      "feeds": [
+        { "type": "html_table", "url": "https://androidmultitool.com/supported_models/" }
+      ]
     },
     {
-      "id": "hwkey",
-      "name": "HWKey",
-      "type": "html_table",
-      "url": "https://www.hwkey.com/supported-models"
-    },
-    {
-      "id": "celltool",
-      "name": "CellTool (Qualcomm)",
-      "type": "html_table",
-      "url": "https://celltool.io/qcsupportmodel"
-    },
-    {
-      "id": "griffin",
-      "name": "Griffin-Unlocker Pro",
-      "type": "html_table",
-      "url": "https://griffin-unlocker.com/models.html"
-    },
-    {
-      "id": "pandora",
-      "name": "Pandora Box (Z3X)",
-      "type": "html_table",
-      "url": "https://gsmserver.com/en/pandora-box/"
+      "id": "galaxyunlock",
+      "name": "Galaxy Unlock",
+      "source_label": "from its supported-models list",
+      "display_url": "https://galaxyunlock.in/supported-models",
+      "feeds": [
+        { "type": "html_table", "url": "https://galaxyunlock.in/supported-models" }
+      ]
     },
     {
       "id": "tsm",
       "name": "TSM Tool",
-      "type": "changelog_html",
-      "url": "https://tsm-tool.com/"
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/TSMPRO",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/TSMPRO" }
+      ]
     },
     {
       "id": "unlocktool",
       "name": "UnlockTool",
-      "type": "changelog_html",
-      "url": "https://unlocktool.net/download/"
-    },
-    {
-      "id": "eftpro",
-      "name": "EFT Pro Dongle",
-      "type": "changelog_html",
-      "url": "https://eftprodongle.com/updates"
-    },
-    {
-      "id": "chimera",
-      "name": "Chimera Tool",
-      "type": "changelog_html",
-      "url": "https://chimeratool.com/en/download"
-    },
-    {
-      "id": "hydra",
-      "name": "Hydra Tool",
-      "type": "changelog_html",
-      "url": "https://www.hydradongle.com/download/software"
-    },
-    {
-      "id": "octoplus",
-      "name": "Octoplus Box",
-      "type": "changelog_html",
-      "url": "https://octoplusbox.com/en/news/"
-    },
-    {
-      "id": "infinity",
-      "name": "Infinity-Box / CM2",
-      "type": "changelog_html",
-      "url": "https://infinity-box.com/news/"
-    },
-    {
-      "id": "umt",
-      "name": "Ultimate Multi Tool (UMT)",
-      "type": "changelog_html",
-      "url": "https://www.ultimatemultitool.com/downloads"
-    },
-    {
-      "id": "phoenix",
-      "name": "Phoenix Service Tool",
-      "type": "changelog_html",
-      "url": "https://phoenixservicetool.com/"
-    },
-    {
-      "id": "uatpro",
-      "name": "Uni-Android Tool (UAT Pro)",
-      "type": "changelog_html",
-      "url": "https://uni-android.com/"
-    },
-    {
-      "id": "cerberus",
-      "name": "Cerberus Tool Pro",
-      "type": "changelog_html",
-      "url": "https://cerberustoolpro.com/"
-    },
-    {
-      "id": "nexapro",
-      "name": "Nexa Pro Tool",
-      "type": "changelog_html",
-      "url": "https://nexapro.co.in/"
-    },
-    {
-      "id": "opluspro",
-      "name": "Oplus Pro",
-      "type": "changelog_html",
-      "url": "https://opluspro.net/"
-    },
-    {
-      "id": "fastunlocker",
-      "name": "Fast Unlocker Pro",
-      "type": "changelog_html",
-      "url": "https://fast-unlocker-pro.com/download"
-    },
-    {
-      "id": "samsungtool",
-      "name": "SamsungTool.us",
-      "type": "changelog_html",
-      "url": "https://samsungtool.us"
-    },
-    {
-      "id": "vivotool",
-      "name": "Vivo.tool",
-      "type": "changelog_html",
-      "url": "https://vivo.tool"
+      "source_label": "from its official Telegram channel and its website",
+      "display_url": "https://t.me/unlocktool_channel",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/unlocktool_channel" },
+        { "type": "changelog_html", "url": "https://unlocktool.net/download/" }
+      ]
     },
     {
       "id": "cheetah",
       "name": "Cheetah Tool",
-      "type": "telegram_web",
-      "url": "https://t.me/s/cheetahtool"
+      "source_label": "from its official Telegram channel and its website",
+      "display_url": "https://t.me/cheetahtool",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/cheetahtool" },
+        { "type": "changelog_html", "url": "https://cheetahtool.com/" }
+      ]
     },
     {
       "id": "z3x",
-      "name": "Z3X News",
-      "type": "telegram_web",
-      "url": "https://t.me/s/z3x_news"
+      "name": "Z3X",
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/z3x_news",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/z3x_news" }
+      ]
+    },
+    {
+      "id": "eftpro",
+      "name": "EFT Pro",
+      "source_label": "from its website",
+      "display_url": "https://eftprodongle.com/updates",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://eftprodongle.com/updates" }
+      ]
+    },
+    {
+      "id": "chimera",
+      "name": "Chimera Tool",
+      "source_label": "from its website and its official Telegram channel",
+      "display_url": "https://chimeratool.com/en/download",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://chimeratool.com/en/download" },
+        { "type": "telegram_web", "url": "https://t.me/s/chimeratool" }
+      ]
+    },
+    {
+      "id": "hydra",
+      "name": "Hydra Tool",
+      "source_label": "from its website",
+      "display_url": "https://www.hydradongle.com/download/software",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://www.hydradongle.com/download/software" }
+      ]
+    },
+    {
+      "id": "sigmakey",
+      "name": "SigmaKey",
+      "source_label": "from its website",
+      "display_url": "https://sigmakey.com/en/sigma-news/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://sigmakey.com/en/sigma-news/" }
+      ]
+    },
+    {
+      "id": "hwkey",
+      "name": "HW-Key",
+      "source_label": "from its supported-models list",
+      "display_url": "https://www.hwkey.com/supported-models",
+      "feeds": [
+        { "type": "html_table", "url": "https://www.hwkey.com/supported-models" }
+      ]
+    },
+    {
+      "id": "lazyloader",
+      "name": "LazyLoader",
+      "source_label": "from its website and official Telegram channel",
+      "display_url": "https://home.lazyloader.in/supported",
+      "feeds": [
+        { "type": "html_table", "url": "https://home.lazyloader.in/supported" },
+        { "type": "telegram_web", "url": "https://t.me/s/lazyloaderlogin" }
+      ]
+    },
+    {
+      "id": "celltool",
+      "name": "CellTool",
+      "source_label": "from its website",
+      "display_url": "https://celltool.io/qcsupportmodel",
+      "feeds": [
+        { "type": "html_table", "url": "https://celltool.io/qcsupportmodel" }
+      ]
     },
     {
       "id": "tfm",
-      "name": "TFM Tool Pro",
-      "type": "telegram_web",
-      "url": "https://t.me/s/tfmtoolpro"
+      "name": "TFM Tool",
+      "source_label": "from its official Telegram channel and its website",
+      "display_url": "https://t.me/tfmtoolpro",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/tfmtoolpro" },
+        { "type": "changelog_html", "url": "https://tfmtool.com/" }
+      ]
+    },
+    {
+      "id": "octoplus",
+      "name": "Octoplus",
+      "source_label": "from its website",
+      "display_url": "https://octoplusbox.com/en/news/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://octoplusbox.com/en/news/" }
+      ]
+    },
+    {
+      "id": "infinity",
+      "name": "Infinity CM2",
+      "source_label": "from its website and its official Telegram channel",
+      "display_url": "https://infinity-box.com/news/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://infinity-box.com/news/" },
+        { "type": "telegram_web", "url": "https://t.me/s/InfinityBoxOfficial" }
+      ]
+    },
+    {
+      "id": "umt",
+      "name": "UMT",
+      "source_label": "from its website",
+      "display_url": "https://www.ultimatemultitool.com/downloads",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://www.ultimatemultitool.com/downloads" }
+      ]
     },
     {
       "id": "fenix",
-      "name": "Fenix Tool Pro",
-      "type": "telegram_web",
-      "url": "https://t.me/s/fenixtoolpro"
+      "name": "Fenix Tool",
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/fenixtoolpro",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/fenixtoolpro" }
+      ]
     },
     {
-      "id": "mrauth",
-      "name": "Mr Auth Tool",
-      "type": "telegram_web",
-      "url": "https://t.me/s/mrauthtool"
+      "id": "griffin",
+      "name": "Griffin-Unlocker Pro",
+      "source_label": "from its supported-models list",
+      "display_url": "https://griffin-unlocker.com/models.html",
+      "feeds": [
+        { "type": "html_table", "url": "https://griffin-unlocker.com/models.html" }
+      ]
     },
     {
-      "id": "xiaomibd",
-      "name": "Xiaomi BD Tool",
-      "type": "telegram_web",
-      "url": "https://t.me/s/bdauthtool"
-    },
-    {
-      "id": "falcon",
-      "name": "Falcon Multi Tool",
-      "type": "telegram_web",
-      "url": "https://t.me/s/FalconMultiTool1"
-    },
-    {
-      "id": "tmtpro",
-      "name": "TMTPro Tool",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "id": "pandora",
+      "name": "Pandora Box",
+      "source_label": "from its website",
+      "display_url": "https://gsmserver.com/en/pandora-box/",
+      "feeds": [
+        { "type": "html_table", "url": "https://gsmserver.com/en/pandora-box/" }
+      ]
     },
     {
       "id": "trpro",
       "name": "TR Pro Tool",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "source_label": "from its supported-models list",
+      "display_url": "https://www.trtools.pro/en/models",
+      "feeds": [
+        { "type": "html_table", "url": "https://www.trtools.pro/en/models" }
+      ]
     },
     {
-      "id": "lazyunlocker",
-      "name": "Lazy Unlocker",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "id": "phoenix",
+      "name": "Phoenix Service Tool",
+      "source_label": "from its website",
+      "display_url": "https://phoenixservicetool.com/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://phoenixservicetool.com/" }
+      ]
     },
     {
-      "id": "ahxiaomi",
-      "name": "AH-Xiaomi Auth Tool",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "id": "uatpro",
+      "name": "UAT Pro",
+      "source_label": "from its website",
+      "display_url": "https://uni-android.com/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://uni-android.com/" }
+      ]
     },
     {
-      "id": "samkey",
-      "name": "SamKey CodeReader",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "id": "cerberus",
+      "name": "Cerberus Tool Pro",
+      "source_label": "from its website",
+      "display_url": "https://cerberustoolpro.com/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://cerberustoolpro.com/" }
+      ]
     },
     {
-      "id": "fcktool",
-      "name": "FCK Tool",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "id": "nexapro",
+      "name": "Nexa Pro Tool",
+      "source_label": "from its website",
+      "display_url": "https://nexapro.co.in/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://nexapro.co.in/" }
+      ]
+    },
+    {
+      "id": "opluspro",
+      "name": "Oplus Pro",
+      "source_label": "from its website",
+      "display_url": "https://opluspro.net/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://opluspro.net/" }
+      ]
+    },
+    {
+      "id": "fastunlocker",
+      "name": "Fast Unlocker Pro",
+      "source_label": "from its website",
+      "display_url": "https://fast-unlocker-pro.com/download",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://fast-unlocker-pro.com/download" }
+      ]
+    },
+    {
+      "id": "samsungtool",
+      "name": "SamsungTool.us",
+      "source_label": "from its website",
+      "display_url": "https://samsungtool.us",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://samsungtool.us" }
+      ]
+    },
+    {
+      "id": "vivotool",
+      "name": "Vivo.tool",
+      "source_label": "from its website",
+      "display_url": "https://vivo.tool",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://vivo.tool" }
+      ]
+    },
+    {
+      "id": "tmtpro",
+      "name": "TMTPro Tool",
+      "source_label": "from its website",
+      "display_url": "https://tmtprotool.com/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://tmtprotool.com/" }
+      ]
     },
     {
       "id": "eaglefrp",
       "name": "Eagle FRP",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "source_label": "from its website",
+      "display_url": "https://eaglefrp.com/",
+      "feeds": [
+        { "type": "changelog_html", "url": "https://eaglefrp.com/" }
+      ]
+    },
+    {
+      "id": "mrauth",
+      "name": "Mr Auth Tool",
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/mrauthtool",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/mrauthtool" }
+      ]
+    },
+    {
+      "id": "xiaomibd",
+      "name": "Xiaomi BD Tool",
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/bdauthtool",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/bdauthtool" }
+      ]
+    },
+    {
+      "id": "falcon",
+      "name": "Falcon Multi Tool",
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/FalconMultiTool1",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/FalconMultiTool1" }
+      ]
+    },
+    {
+      "id": "ahxiaomi",
+      "name": "AH-Xiaomi Auth Tool",
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/ahtooll",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/ahtooll" }
+      ]
+    },
+    {
+      "id": "samkey",
+      "name": "SamKey CodeReader",
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/samkeyofficial",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/samkeyofficial" }
+      ]
+    },
+    {
+      "id": "fcktool",
+      "name": "FCK Tool",
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/FCKTool",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/FCKTool" }
+      ]
     },
     {
       "id": "soulauth",
       "name": "Soul Auth Tool",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/soulauth",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/soulauth" }
+      ]
     },
     {
       "id": "cftools",
       "name": "CF-Tools",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/cftools_channel",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/cftools_channel" }
+      ]
     },
     {
       "id": "hxru",
       "name": "HXRU Tool",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/hxrumultitool",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/hxrumultitool" }
+      ]
     },
     {
       "id": "gft",
       "name": "GFT Global FRP Tool",
-      "type": "tg_or_url_needed",
-      "url": ""
+      "source_label": "from its official Telegram channel",
+      "display_url": "https://t.me/globalfrptool",
+      "feeds": [
+        { "type": "telegram_web", "url": "https://t.me/s/globalfrptool" }
+      ]
     }
   ]
 }
