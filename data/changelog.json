@@ -1,1002 +1,2145 @@
 [
   {
-    "date": "2026-11-21",
+    "date": "2026-11-18",
+    "type": "tool_update",
+    "tool": "TSM Tool",
+    "model": "SM-A075F",
+    "bit": "BIT 3",
+    "os_version": "",
+    "mode": "",
+    "post_url": "https://t.me/TSMPRO/5503",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-18",
+    "type": "tool_update",
+    "tool": "TSM Tool",
+    "model": "RMX5120",
+    "bit": "",
+    "os_version": "",
+    "mode": "Preloader",
+    "post_url": "https://t.me/TSMPRO/5504",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-19",
+    "type": "tool_update",
+    "tool": "TSM Tool",
+    "model": "SM-A165F",
+    "bit": "BIT 5",
+    "os_version": "",
+    "mode": "",
+    "post_url": "https://t.me/TSMPRO/5507",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-19",
     "type": "new_model",
-    "tool": "HWKey",
+    "tool": "TSM Tool",
+    "model": "SM-A376E",
+    "bit": "BIT 5",
+    "os_version": "OneUi 8.5",
+    "mode": "",
+    "post_url": "https://t.me/TSMPRO/5508",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-19",
+    "type": "tool_update",
+    "tool": "TSM Tool",
+    "model": "SM-X620",
+    "bit": "",
+    "os_version": "OneUi 9",
+    "mode": "",
+    "post_url": "https://t.me/TSMPRO/5509",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "type": "tool_update",
+    "tool": "TSM Tool",
+    "model": "SM-A075M",
+    "bit": "BIT 5",
+    "os_version": "",
+    "mode": "Preloader",
+    "post_url": "https://t.me/TSMPRO/5510",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "type": "tool_update",
+    "tool": "TSM Tool",
+    "model": "SM-A556E",
+    "bit": "BIT 1",
+    "os_version": "OneUi 9.0",
+    "mode": "",
+    "post_url": "https://t.me/TSMPRO/5512",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "type": "tool_update",
+    "tool": "TSM Tool",
+    "model": "SM-A307G",
+    "bit": "BIT 6",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/TSMPRO/5515",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-21",
+    "type": "tool_update",
+    "tool": "TSM Tool",
+    "model": "SM-F956B",
+    "bit": "BIT 4",
+    "os_version": "",
+    "mode": "EDL 9008",
+    "post_url": "https://t.me/TSMPRO/5517",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-21",
+    "type": "tool_update",
+    "tool": "TSM Tool",
+    "model": "SM-P615",
+    "bit": "BIT A",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/TSMPRO/5521",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A235N",
+    "bit": "BIT C, BIT 4, BIT 6, BIT 1",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/199",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-F741U",
+    "bit": "BIT C, BIT 4, BIT 6, BIT 1",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/199",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-M145F",
+    "bit": "BIT C, BIT 4, BIT 6, BIT 1",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/199",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-S711U",
+    "bit": "BIT C, BIT 4, BIT 6, BIT 1",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/199",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-S908N",
+    "bit": "BIT C, BIT 4, BIT 6, BIT 1",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/199",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-S911N",
+    "bit": "BIT C, BIT 4, BIT 6, BIT 1",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/199",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-S916N",
+    "bit": "BIT C, BIT 4, BIT 6, BIT 1",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/199",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-S928N",
+    "bit": "BIT C, BIT 4, BIT 6, BIT 1",
+    "os_version": "",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/199",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A236B",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A236E",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A236M",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-E145F",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-F721N",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-F926N",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-F956N",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-G990B2",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-X216C",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-X216N",
+    "bit": "BIT D, BIT 8, BIT E, BIT 4",
+    "os_version": "Android 14,15,16, One UI, One UI 8.5",
+    "mode": "ADB, Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/210",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2357",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2411",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2481",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2607",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2639",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2665",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2667",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2681",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2689",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "new_model",
+    "tool": "UnlockTool",
+    "model": "CPH2695",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2697",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2701",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "CPH2717",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "CPH2719",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
+    "date": "2026-10-31",
     "type": "new_model",
-    "tool": "HWKey",
-    "model": "CPH2343",
+    "tool": "UnlockTool",
+    "model": "CPH2727",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX2002",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2733",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX2020",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2735",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX2027",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2737",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX2040",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2753",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX2072",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2763",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX2075",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2781",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX2193",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2799",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX2202",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2821",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3031",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2831",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3041",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2859",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3042",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "CPH2871",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3121",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX3560",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3122",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX3561",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3125",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX3562",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3141",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX3563",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3171",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3191",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3195",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3241",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3242",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3300",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3301",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3310",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3311",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3312",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3357",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3366",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3370",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3371",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3372",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3381",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3388",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3392",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3393",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3394",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3395",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3396",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3430",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3471",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3472",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3474",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3475",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3532",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3551",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3571",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3574",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3611",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3612",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3617",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3619",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX3630",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX3636",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3660",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3661",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3663",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3686",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3701",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3710",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3740",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3741",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3750",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3770",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3771",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3780",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3782",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3785",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3800",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3842",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3844",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3867",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3869",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3870",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3888",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3910",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3940",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3941",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX3943",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3944",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX3945",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3950",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3951",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX3953",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3963",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3992",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3997",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3998",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX3999",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX5000",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX5002",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX5003",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX5004",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX5020",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX5030",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX5031",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX5033",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
     "ops": [
       "FRP",
-      "Factory Reset"
+      "Factory Reset",
+      "Flash"
     ]
   },
   {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
-    "model": "RMX5051",
-    "ops": [
-      "FRP",
-      "Factory Reset"
-    ]
-  },
-  {
-    "date": "2026-11-21",
-    "type": "new_model",
-    "tool": "HWKey",
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
     "model": "RMX5056",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5078",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5105",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5106",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5107",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5110",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5120",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5250",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5253",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5256",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5258",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5261",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "new_model",
+    "tool": "UnlockTool",
+    "model": "RMX5266",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "RMX5270",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "type": "new_model",
+    "tool": "UnlockTool",
+    "model": "RMX5378",
+    "bit": "",
+    "os_version": "Android 15,16",
+    "mode": "ADB",
+    "post_url": "https://t.me/unlocktool_channel/212",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A066E",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A066M",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A075F",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A075M",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A076B",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A076E",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A076M",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A085F",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A155F",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A1560",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A156E",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A156L",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A156U",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A165F",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-A175F",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-E075F",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-M075F",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-X130",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "type": "tool_update",
+    "tool": "UnlockTool",
+    "model": "SM-X230",
+    "bit": "",
+    "os_version": "",
+    "mode": "Download Mode",
+    "post_url": "https://t.me/unlocktool_channel/215",
+    "ops": [
+      "FRP"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2333",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2363",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2373",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2375",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2461",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2473",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2565",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2631",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2687",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2815",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2817",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2819",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "CPH2849",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A057F",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A235F",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A235M",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A236B",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-E145F",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-E236B",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-M145F",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-11",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-M236B",
+    "bit": "BIT C, BIT E, BIT D, BIT A",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/140",
+    "ops": [
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-03-23",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "RMX5313",
+    "bit": "",
+    "os_version": "",
+    "mode": "EDL 9008, BROM, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/141",
+    "ops": [
+      "FRP",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A057F",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A235F",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A235M",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A236B",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-E145F",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-E236B",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-F931U",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
     "ops": [
       "FRP",
       "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-F956U",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-G996U",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-G998U",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-M145F",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-M236B",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-S921U",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-S926U",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-X216B",
+    "bit": "BIT C, BIT E, BIT D, BIT 7",
+    "os_version": "",
+    "mode": "EDL 9008, EUB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/142",
+    "ops": [
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-02",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-F931U",
+    "bit": "BIT 7, BIT 3, BIT 5",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/143",
+    "ops": [
+      "Bootloader",
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-02",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-F956U",
+    "bit": "BIT 7, BIT 3, BIT 5",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/143",
+    "ops": [
+      "Bootloader",
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-02",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-G996U",
+    "bit": "BIT 7, BIT 3, BIT 5",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/143",
+    "ops": [
+      "Bootloader",
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-02",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-G998U",
+    "bit": "BIT 7, BIT 3, BIT 5",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/143",
+    "ops": [
+      "Bootloader",
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-02",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-S921U",
+    "bit": "BIT 7, BIT 3, BIT 5",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/143",
+    "ops": [
+      "Bootloader",
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-04-02",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-S926U",
+    "bit": "BIT 7, BIT 3, BIT 5",
+    "os_version": "",
+    "mode": "EDL 9008, Unisoc Diag",
+    "post_url": "https://t.me/z3x_news/143",
+    "ops": [
+      "Bootloader",
+      "FRP",
+      "Factory Reset"
+    ]
+  },
+  {
+    "date": "2026-05-29",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A236B",
+    "bit": "BIT E, BIT B, BIT 7, BIT 5",
+    "os_version": "",
+    "mode": "EDL 9008, ADB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/146",
+    "ops": [
+      "Bootloader",
+      "FRP",
+      "Factory Reset",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-05-29",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-A736B",
+    "bit": "BIT E, BIT B, BIT 7, BIT 5",
+    "os_version": "",
+    "mode": "EDL 9008, ADB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/146",
+    "ops": [
+      "Bootloader",
+      "Flash"
+    ]
+  },
+  {
+    "date": "2026-05-29",
+    "type": "tool_update",
+    "tool": "Z3X",
+    "model": "SM-E236B",
+    "bit": "BIT E, BIT B, BIT 7, BIT 5",
+    "os_version": "",
+    "mode": "EDL 9008, ADB, Server / Auth",
+    "post_url": "https://t.me/z3x_news/146",
+    "ops": [
+      "Bootloader",
+      "FRP",
+      "Factory Reset",
+      "Flash"
     ]
   }
 ]
