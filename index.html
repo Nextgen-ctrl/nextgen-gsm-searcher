@@ -13,107 +13,29 @@
   </script>
   <style>
     :root {
-      --bg: #0b1120;
-      --panel: #111827;
-      --panel-2: #1e293b;
-      --border: #263449;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-2: #22c55e;
-      --warn: #f59e0b;
-      --danger: #ef4444;
-      --purple: #a78bfa;
-      --radius: 12px;
+      --bg: #0b1120; --panel: #111827; --panel-2: #1e293b; --border: #263449;
+      --text: #f1f5f9; --muted: #94a3b8; --accent: #38bdf8; --accent-2: #22c55e;
+      --warn: #f59e0b; --purple: #a78bfa; --radius: 12px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      min-height: 100vh;
-    }
-    header {
-      background: linear-gradient(135deg, #0f172a 0%, #172554 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+    header { background: linear-gradient(135deg, #0f172a 0%, #172554 100%); border-bottom: 1px solid var(--border); padding: 16px 20px; position: sticky; top: 0; z-index: 50; }
+    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
     .brand { display: flex; align-items: center; gap: 10px; }
-    .brand-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 16px;
-      color: #0b1120;
-    }
-    .brand h1 { font-size: 18px; font-weight: 700; letter-spacing: 0.2px; }
+    .brand-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, #38bdf8, #6366f1); display: grid; place-items: center; font-weight: 800; font-size: 16px; color: #0b1120; }
+    .brand h1 { font-size: 18px; font-weight: 700; }
     .brand small { color: var(--muted); font-size: 12px; display: block; }
-    .sync-badge {
-      font-size: 12px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.14);
-      border: 1px solid rgba(34, 197, 94, 0.35);
-      color: #86efac;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .sync-badge { font-size: 12px; padding: 6px 12px; border-radius: 999px; background: rgba(34, 197, 94, 0.14); border: 1px solid rgba(34, 197, 94, 0.35); color: #86efac; display: flex; align-items: center; gap: 6px; }
     .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); display: inline-block; }
-    nav.tabs {
-      max-width: 1200px;
-      margin: 14px auto 0;
-      padding: 0 20px;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-    }
-    .tab-btn {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 9px 15px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      white-space: nowrap;
-      transition: 0.15s;
-    }
+    nav.tabs { max-width: 1200px; margin: 14px auto 0; padding: 0 20px; display: flex; gap: 8px; overflow-x: auto; }
+    .tab-btn { background: var(--panel); border: 1px solid var(--border); color: var(--muted); padding: 9px 15px; border-radius: 10px; cursor: pointer; font-size: 13px; font-weight: 600; white-space: nowrap; }
     .tab-btn.active, .tab-btn:hover { background: var(--panel-2); color: var(--text); border-color: var(--accent); }
     main { max-width: 1200px; margin: 16px auto 48px; padding: 0 20px; }
     .view { display: none; }
     .view.active { display: block; }
     .search-box { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 16px; }
     .search-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .search-input {
-      flex: 1;
-      min-width: 220px;
-      background: #0b1120;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 12px 14px;
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
-    }
+    .search-input { flex: 1; min-width: 220px; background: #0b1120; border: 1px solid var(--border); color: var(--text); padding: 12px 14px; border-radius: 10px; font-size: 15px; outline: none; }
     .search-input:focus { border-color: var(--accent); }
     .btn { background: var(--accent); color: #0b1120; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 13px; }
     .btn-ghost { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
@@ -124,7 +46,7 @@
     .stat-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
     .stat-card .num { font-size: 22px; font-weight: 800; color: var(--accent); }
     .stat-card .lbl { font-size: 12px; color: var(--muted); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
     .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; cursor: pointer; transition: transform 0.12s, border-color 0.15s; }
     .card:hover { transform: translateY(-2px); border-color: var(--accent); }
     .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
@@ -132,17 +54,19 @@
     .model-title { font-size: 16px; font-weight: 700; margin-top: 2px; }
     .code-badge { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: #0b1120; border: 1px solid var(--border); padding: 3px 8px; border-radius: 6px; color: #cbd5e1; white-space: nowrap; }
     .meta-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; font-size: 11px; color: var(--muted); }
+    .ver-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(245, 158, 11, 0.14); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .mode-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(56, 189, 248, 0.14); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
     .tool-chips { display: flex; flex-wrap: wrap; gap: 6px; }
     .tool-chip { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: rgba(167, 139, 250, 0.15); border: 1px solid rgba(167, 139, 250, 0.35); color: #ddd6fe; }
     .op-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(34, 197, 94, 0.12); color: #86efac; border: 1px solid rgba(34, 197, 94, 0.25); }
     .modal-backdrop { position: fixed; inset: 0; background: rgba(2, 6, 23, 0.78); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 100; }
     .modal-backdrop.open { display: flex; }
-    .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 20px; }
+    .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; max-width: 660px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 20px; }
     .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 14px; }
     .close-btn { background: var(--panel-2); border: 1px solid var(--border); color: var(--text); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 16px; }
     .tool-row { background: #0b1120; border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
-    .tool-row-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .tool-row a { color: var(--accent); font-size: 12px; text-decoration: none; }
+    .tool-row-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+    .tool-row a { color: var(--accent); font-size: 12px; text-decoration: none; font-weight: 600; }
     table { width: 100%; border-collapse: collapse; background: var(--panel); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
     th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
     th { background: var(--panel-2); color: var(--muted); font-weight: 700; }
@@ -161,13 +85,10 @@
         <div class="brand-icon">NG</div>
         <div>
           <h1>NextGen GSM Searcher</h1>
-          <small>Automated Multi-Tool Model &amp; Chipset Compatibility</small>
+          <small>Auto-Synced Model, Tool, BIT &amp; OS Compatibility</small>
         </div>
       </div>
-      <div class="sync-badge" id="syncBadge">
-        <span class="dot"></span>
-        <span id="syncText">Loading database...</span>
-      </div>
+      <div class="sync-badge"><span class="dot"></span><span id="syncText">Loading database...</span></div>
     </div>
   </header>
 
@@ -188,7 +109,7 @@
       </div>
       <div class="search-box">
         <div class="search-row">
-          <input id="searchInput" class="search-input" type="text" placeholder="Search model name, code (SM-A155F, CPH2495, RMX3951), or tool..." />
+          <input id="searchInput" class="search-input" type="text" placeholder="Search model (SM-A155F), tool (Cheetah, AMT), BIT (BIT 4), Android 15, or EDL..." />
           <button class="btn btn-ghost" id="clearFiltersBtn">Reset</button>
         </div>
         <div class="pill-row" id="opPills"></div>
@@ -212,7 +133,7 @@
 
     <section class="view" id="view-sources">
       <div class="search-box">
-        <p style="font-size:13px; color:var(--muted);">Click any GSM tool card below to filter supported models for that tool. Status refreshes automatically every 6 hours via GitHub Actions.</p>
+        <p style="font-size:13px; color:var(--muted);">Click any GSM tool card to see every model supported by that tool, including BIT and Android/OS versions detected from its official Telegram channel or website.</p>
       </div>
       <div class="grid" id="sourcesGrid"></div>
     </section>
@@ -220,7 +141,7 @@
     <section class="view" id="view-updates">
       <div class="search-box">
         <h3 style="margin-bottom:6px;">Latest Auto-Synced Updates</h3>
-        <p style="font-size:13px; color:var(--muted);">Automatically populated from official GSM tool portals &amp; Telegram update channels.</p>
+        <p style="font-size:13px; color:var(--muted);">Models automatically pulled from official GSM Telegram handles &amp; websites with BIT, version, and proof link.</p>
       </div>
       <div id="updatesList"></div>
     </section>
@@ -232,23 +153,16 @@
           <input id="mBrand" placeholder="Brand (e.g. Samsung)" />
           <input id="mName" placeholder="Model Name (e.g. Galaxy A15)" />
           <input id="mCode" placeholder="Model Code (e.g. SM-A155F)" />
-          <input id="mBit" placeholder="BIT / Security (e.g. BIT 4)" />
+          <input id="mBit" placeholder="BIT / Binary (e.g. BIT 4)" />
+          <input id="mOs" placeholder="Android / OS (e.g. Android 15)" />
+          <input id="mMode" placeholder="Mode (e.g. Preloader / EDL)" />
           <input id="mTool" placeholder="GSM Tool (e.g. UnlockTool)" />
-          <input id="mOps" placeholder="Operations (FRP, Factory Reset, Flash)" />
+          <input id="mOps" placeholder="Operations (FRP, Factory Reset)" />
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
           <button class="btn" id="addModelBtn">+ Save Model</button>
           <button class="btn btn-ghost" id="exportJsonBtn">Export JSON</button>
           <button class="btn btn-ghost" id="resetLocalBtn">Clear Local Edits</button>
-        </div>
-      </div>
-
-      <div class="search-box">
-        <h3 style="margin-bottom:8px;">Load From Google Sheets (Published CSV Link)</h3>
-        <p style="font-size:12px; color:var(--muted); margin-bottom:10px;">Columns required: <code>brand,model_name,model_code,bit,tool,operations</code></p>
-        <div class="search-row">
-          <input id="sheetUrlInput" class="search-input" placeholder="Paste published Google Sheet CSV URL..." />
-          <button class="btn" id="loadSheetBtn">Sync Sheet</button>
         </div>
       </div>
     </section>
@@ -280,25 +194,15 @@
     ];
 
     const SEED_MODELS = [
-      { brand: "Samsung", model_name: "Galaxy A15", model_code: "SM-A155F", bit: "BIT 1-4", cpu: "MediaTek Helio G99", mode: "Preloader / MTP", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "MDM/KG"], updated_at: "2026-11-20" }, "Chimera Tool": { operations: ["FRP", "IMEI", "Flash"], updated_at: "2026-11-20" }, "Android Multi Tool (AMT)": { operations: ["FRP", "Factory Reset"], updated_at: "2026-11-18" } } },
-      { brand: "Samsung", model_name: "Galaxy A05s", model_code: "SM-A057F", bit: "BIT 1-6", cpu: "Qualcomm Snapdragon 680", mode: "EDL 9008", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash"], updated_at: "2026-11-19" }, "TSM Tool": { operations: ["FRP", "MDM/KG"], updated_at: "2026-11-18" }, "Griffin-Unlocker Pro": { operations: ["FRP", "Factory Reset"], updated_at: "2026-11-17" } } },
-      { brand: "Samsung", model_name: "Galaxy S24 Ultra", model_code: "SM-S928B", bit: "BIT 1-4", cpu: "Qualcomm Snapdragon 8 Gen 3", mode: "EDL / Server", tools: { "Chimera Tool": { operations: ["FRP", "Flash"], updated_at: "2026-11-19" }, "SamKey CodeReader": { operations: ["IMEI", "FRP"], updated_at: "2026-11-15" } } },
-      { brand: "Xiaomi", model_name: "Redmi Note 13 4G", model_code: "23129RAA4G", bit: "HyperOS", cpu: "Qualcomm Snapdragon 685", mode: "EDL 9008 / Auth", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "Screen Lock"], updated_at: "2026-11-20" }, "Android Multi Tool (AMT)": { operations: ["FRP", "Flash"], updated_at: "2026-11-19" }, "Phoenix Service Tool": { operations: ["Flash", "FRP"], updated_at: "2026-11-18" } } },
-      { brand: "Xiaomi", model_name: "Redmi 13C", model_code: "23100RN82L", bit: "All", cpu: "MediaTek Helio G85", mode: "BROM / Preloader", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Bootloader", "IMEI"], updated_at: "2026-11-19" }, "Hydra Tool": { operations: ["FRP", "Factory Reset", "Flash"], updated_at: "2026-11-18" }, "Pandora Box (Z3X)": { operations: ["IMEI", "FRP", "Flash"], updated_at: "2026-11-16" } } },
-      { brand: "Oppo", model_name: "Oppo A38", model_code: "CPH2579", bit: "All", cpu: "MediaTek Helio G85", mode: "Preloader", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Screen Lock"], updated_at: "2026-11-19" }, "Android Multi Tool (AMT)": { operations: ["FRP", "Factory Reset"], updated_at: "2026-11-18" }, "Oplus Pro": { operations: ["Flash", "FRP"], updated_at: "2026-11-17" } } },
-      { brand: "Realme", model_name: "Realme C67", model_code: "RMX3890", bit: "All", cpu: "Qualcomm Snapdragon 685", mode: "EDL 9008", tools: { "Android Multi Tool (AMT)": { operations: ["FRP", "Factory Reset"], updated_at: "2026-11-18" }, "TSM Tool": { operations: ["FRP", "Flash"], updated_at: "2026-11-18" } } },
-      { brand: "Vivo", model_name: "Vivo Y28", model_code: "V2352", bit: "All", cpu: "MediaTek Helio G85", mode: "Preloader", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Screen Lock"], updated_at: "2026-11-20" }, "Vivo.tool": { operations: ["FRP", "Flash"], updated_at: "2026-11-19" }, "TFM Tool Pro": { operations: ["FRP", "Factory Reset"], updated_at: "2026-11-17" } } },
-      { brand: "Tecno", model_name: "Spark 20", model_code: "KJ5", bit: "All", cpu: "MediaTek Helio G85", mode: "Preloader", tools: { "Android Multi Tool (AMT)": { operations: ["FRP", "MDM/KG", "Factory Reset"], updated_at: "2026-11-19" }, "TSM Tool": { operations: ["FRP", "MDM/KG"], updated_at: "2026-11-18" }, "Cheetah Tool": { operations: ["FRP", "IMEI", "MDM/KG"], updated_at: "2026-11-18" } } },
-      { brand: "Infinix", model_name: "Hot 40i", model_code: "X6528", bit: "All", cpu: "Unisoc T606", mode: "Unisoc Diag", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "MDM/KG"], updated_at: "2026-11-19" }, "Infinity-Box / CM2": { operations: ["Flash", "FRP", "Factory Reset"], updated_at: "2026-11-17" } } },
-      { brand: "Motorola", model_name: "Moto G24", model_code: "XT2423-1", bit: "All", cpu: "MediaTek Helio G85", mode: "Preloader", tools: { "TSM Tool": { operations: ["FRP", "MDM/KG"], updated_at: "2026-11-19" }, "Ultimate Multi Tool (UMT)": { operations: ["FRP", "Factory Reset"], updated_at: "2026-11-18" } } },
-      { brand: "Honor", model_name: "Honor X7b", model_code: "CLK-LX1", bit: "All", cpu: "Qualcomm Snapdragon 680", mode: "EDL 9008", tools: { "Chimera Tool": { operations: ["FRP", "Factory Reset", "Flash"], updated_at: "2026-11-19" }, "EFT Pro Dongle": { operations: ["FRP", "Flash"], updated_at: "2026-11-18" } } }
+      { brand: "Samsung", model_name: "Galaxy A15", model_code: "SM-A155F", bit: "BIT 1-4", os_version: "Android 14, Android 15", cpu: "MediaTek Helio G99", mode: "Preloader / MTP", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "MDM/KG"], bit: "BIT 1-4", os_version: "Android 15", mode: "Preloader", updated_at: "2026-11-20" }, "Chimera Tool": { operations: ["FRP", "IMEI", "Flash"], bit: "BIT 1-4", os_version: "Android 15", mode: "EUB / MTP", updated_at: "2026-11-20" } } },
+      { brand: "Samsung", model_name: "Galaxy A05s", model_code: "SM-A057F", bit: "BIT 1-6", os_version: "Android 15", cpu: "Qualcomm Snapdragon 680", mode: "EDL 9008", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-19" }, "TSM Tool": { operations: ["FRP", "MDM/KG"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-18" } } },
+      { brand: "Xiaomi", model_name: "Redmi Note 13 4G", model_code: "23129RAA4G", bit: "", os_version: "Android 15, HyperOS 2", cpu: "Qualcomm Snapdragon 685", mode: "EDL 9008 / Mi Assistant", tools: { "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash"], os_version: "HyperOS 2", mode: "EDL 9008", updated_at: "2026-11-20" }, "Android Multi Tool (AMT)": { operations: ["FRP", "Flash"], os_version: "HyperOS 2", mode: "Server / Auth", updated_at: "2026-11-19" } } }
     ];
 
     let state = { models: [], sources: [], changelog: [], lastSync: null, search: "", selectedOp: "All", selectedBrand: "All", selectedTool: "" };
 
     function loadLocalEdits() {
-      try { return JSON.parse(localStorage.getItem("nextgen_gsm_local") || "[]"); }
-      catch { return []; }
+      try { return JSON.parse(localStorage.getItem("nextgen_gsm_local") || "[]"); } catch { return []; }
     }
 
     function mergeModelArrays(baseList, extraList) {
@@ -308,9 +212,12 @@
         if (!map.has(key)) {
           map.set(key, { ...item, tools: { ...(item.tools || {}) } });
         } else {
-          const existing = map.get(key);
-          existing.tools = { ...existing.tools, ...(item.tools || {}) };
-          if (item.bit && !existing.bit) existing.bit = item.bit;
+          const ex = map.get(key);
+          ex.tools = { ...ex.tools, ...(item.tools || {}) };
+          if (item.bit && !ex.bit) ex.bit = item.bit;
+          if (item.os_version && !ex.os_version) ex.os_version = item.os_version;
+          if (item.cpu && !ex.cpu) ex.cpu = item.cpu;
+          if (item.mode && !ex.mode) ex.mode = item.mode;
         }
       });
       return Array.from(map.values());
@@ -331,10 +238,7 @@
       if (liveSources.length === 0) {
         try {
           const sRes = await fetch("./sources.json?t=" + Date.now());
-          if (sRes.ok) {
-            const sJson = await sRes.json();
-            liveSources = (sJson.sources || []).map(s => ({ ...s, status: s.url ? "ready" : "pending_url", count: 0 }));
-          }
+          if (sRes.ok) liveSources = ((await sRes.json()).sources || []).map(s => ({ ...s, status: s.url ? "ready" : "pending_url", count: 0 }));
         } catch (e) {}
       }
 
@@ -347,10 +251,9 @@
       state.sources = liveSources;
       state.changelog = liveChangelog;
 
-      const syncEl = document.getElementById("syncText");
-      syncEl.textContent = state.lastSync
+      document.getElementById("syncText").textContent = state.lastSync
         ? "Auto-Synced: " + state.lastSync.slice(0, 16).replace("T", " ") + " UTC"
-        : "Ready (" + state.models.length + " seed models — run Action to auto-sync)";
+        : "Ready (" + state.models.length + " seed models — run Action to sync)";
 
       renderAll();
     }
@@ -385,13 +288,17 @@
         const toolEntries = Object.entries(m.tools || {});
         if (state.selectedTool && !toolEntries.some(([t]) => t.toLowerCase() === state.selectedTool.toLowerCase())) return false;
         if (state.selectedOp !== "All" && !toolEntries.some(([, meta]) => (meta.operations || []).includes(state.selectedOp))) return false;
-        if (q && !`${m.brand} ${m.model_name} ${m.model_code} ${m.cpu || ""} ${toolEntries.map(([t]) => t).join(" ")}`.toLowerCase().includes(q)) return false;
+        if (q) {
+          const toolBlob = toolEntries.map(([t, meta]) => `${t} ${meta.bit || ""} ${meta.os_version || ""} ${meta.security_patch || ""} ${meta.mode || ""}`).join(" ");
+          const hay = `${m.brand} ${m.model_name} ${m.model_code} ${m.bit || ""} ${m.os_version || ""} ${m.cpu || ""} ${m.mode || ""} ${toolBlob}`.toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
         return true;
       });
 
       const grid = document.getElementById("modelsGrid");
       if (filtered.length === 0) {
-        grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No matching models found. Try another model code or click <b>Reset</b>.</div>`;
+        grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No matching models found. Try another model code, BIT, Android version, or click <b>Reset</b>.</div>`;
         return;
       }
 
@@ -404,8 +311,13 @@
               <div><div class="brand-tag">${m.brand}</div><div class="model-title">${m.model_name}</div></div>
               <span class="code-badge">${m.model_code}</span>
             </div>
-            <div class="meta-row">${m.bit ? `<span>🔒 ${m.bit}</span>` : ""}${m.cpu ? `<span>🧠 ${m.cpu}</span>` : ""}</div>
-            <div class="tool-chips" style="margin-bottom:8px;">${tools.map(t => `<span class="tool-chip">${t}</span>`).join("")}</div>
+            <div class="meta-row">
+              ${m.bit ? `<span class="ver-chip">🔒 ${m.bit}</span>` : ""}
+              ${m.os_version ? `<span class="ver-chip">🤖 ${m.os_version}</span>` : ""}
+              ${m.mode ? `<span class="mode-chip">🔌 ${m.mode}</span>` : ""}
+              ${m.cpu ? `<span>🧠 ${m.cpu}</span>` : ""}
+            </div>
+            <div class="tool-chips" style="margin-bottom:8px;">${tools.map(t => `<span class="tool-chip">🛠 ${t}</span>`).join("")}</div>
             <div class="tool-chips">${ops.slice(0, 5).map(o => `<span class="op-chip">${o}</span>`).join("")}</div>
           </div>`;
       }).join("");
@@ -417,12 +329,30 @@
       if (!m) return;
       document.getElementById("modalBrand").textContent = m.brand;
       document.getElementById("modalTitle").textContent = `${m.model_name} (${m.model_code})`;
-      document.getElementById("modalMeta").innerHTML = `<span class="code-badge">${m.model_code}</span>${m.bit ? `<span class="code-badge">${m.bit}</span>` : ""}${m.cpu ? `<span class="code-badge">${m.cpu}</span>` : ""}${m.mode ? `<span class="code-badge">${m.mode}</span>` : ""}`;
+      document.getElementById("modalMeta").innerHTML = `
+        <span class="code-badge">${m.model_code}</span>
+        ${m.bit ? `<span class="ver-chip">🔒 ${m.bit}</span>` : ""}
+        ${m.os_version ? `<span class="ver-chip">🤖 ${m.os_version}</span>` : ""}
+        ${m.cpu ? `<span class="code-badge">🧠 ${m.cpu}</span>` : ""}
+        ${m.mode ? `<span class="mode-chip">🔌 ${m.mode}</span>` : ""}
+      `;
       document.getElementById("modalTools").innerHTML = Object.entries(m.tools || {}).map(([tool, meta]) => `
         <div class="tool-row">
           <div class="tool-row-top">
-            <strong>${tool}</strong>
-            <div>${meta.updated_at ? `<span style="font-size:11px;color:var(--muted);margin-right:8px;">${meta.updated_at}</span>` : ""}${meta.source_url ? `<a href="${meta.source_url}" target="_blank" rel="noopener">Official Source ↗</a>` : ""}</div>
+            <div>
+              <strong>🛠 ${tool}</strong>
+              ${meta.tool_version ? `<span class="code-badge" style="margin-left:6px;">${meta.tool_version}</span>` : ""}
+            </div>
+            <div>
+              ${meta.updated_at ? `<span style="font-size:11px;color:var(--muted);margin-right:8px;">${meta.updated_at}</span>` : ""}
+              ${(meta.post_url || meta.source_url) ? `<a href="${meta.post_url || meta.source_url}" target="_blank" rel="noopener">View Official Post ↗</a>` : ""}
+            </div>
+          </div>
+          <div class="meta-row" style="margin-bottom:8px;">
+            ${meta.bit ? `<span class="ver-chip">🔒 ${meta.bit}</span>` : ""}
+            ${meta.os_version ? `<span class="ver-chip">🤖 ${meta.os_version}</span>` : ""}
+            ${meta.security_patch ? `<span class="ver-chip">🛡 Patch: ${meta.security_patch}</span>` : ""}
+            ${meta.mode ? `<span class="mode-chip">🔌 ${meta.mode}</span>` : ""}
           </div>
           <div class="tool-chips">${(meta.operations || []).map(o => `<span class="op-chip">${o}</span>`).join("")}</div>
         </div>`).join("");
@@ -447,7 +377,7 @@
               <div><div class="model-title" style="font-size:15px;">${s.name}</div><div style="font-size:12px;" class="${cls}">● ${s.status}</div></div>
               <span class="code-badge">${Math.max(s.count || 0, modelCount)} models</span>
             </div>
-            ${s.url ? `<a href="${s.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="font-size:11px;color:var(--accent);word-break:break-all;">${s.url}</a>` : `<span style="font-size:11px;color:var(--muted);">Add official URL or t.me/s/ handle in sources.json</span>`}
+            ${s.url ? `<a href="${s.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="font-size:11px;color:var(--accent);word-break:break-all;">${s.url}</a>` : ""}
           </div>`;
       }).join("");
       grid.querySelectorAll(".card").forEach(card => {
@@ -458,12 +388,23 @@
     function renderUpdates() {
       const el = document.getElementById("updatesList");
       if (!state.changelog.length) {
-        el.innerHTML = `<div class="empty">No auto-sync logs yet. Run the <b>Auto-Sync NextGen GSM Models</b> workflow once in GitHub Actions to populate live updates.</div>`;
+        el.innerHTML = `<div class="empty">No auto-sync logs yet. Run <b>Auto-Sync NextGen GSM Models</b> in GitHub Actions to pull live updates.</div>`;
         return;
       }
       el.innerHTML = state.changelog.map(c => `
         <div class="tool-row">
-          <div class="tool-row-top"><div><span class="code-badge">${c.model}</span> <strong style="margin-left:8px;">${c.tool}</strong></div><span style="font-size:12px;color:var(--muted);">${c.date || ""}</span></div>
+          <div class="tool-row-top">
+            <div><span class="code-badge">${c.model}</span> <strong style="margin-left:8px;">🛠 ${c.tool}</strong></div>
+            <div>
+              <span style="font-size:12px;color:var(--muted);margin-right:8px;">${c.date || ""}</span>
+              ${c.post_url ? `<a href="${c.post_url}" target="_blank" rel="noopener">View Post ↗</a>` : ""}
+            </div>
+          </div>
+          <div class="meta-row" style="margin-bottom:6px;">
+            ${c.bit ? `<span class="ver-chip">🔒 ${c.bit}</span>` : ""}
+            ${c.os_version ? `<span class="ver-chip">🤖 ${c.os_version}</span>` : ""}
+            ${c.mode ? `<span class="mode-chip">🔌 ${c.mode}</span>` : ""}
+          </div>
           <div class="tool-chips">${(c.ops || []).map(o => `<span class="op-chip">${o}</span>`).join("")}</div>
         </div>`).join("");
     }
@@ -481,9 +422,9 @@
     document.getElementById("detailModal").onclick = e => { if (e.target.id === "detailModal") e.target.classList.remove("open"); };
 
     document.getElementById("addModelBtn").onclick = () => {
-      const brand = document.getElementById("mBrand").value.trim(), model_name = document.getElementById("mName").value.trim(), model_code = document.getElementById("mCode").value.trim().toUpperCase(), bit = document.getElementById("mBit").value.trim(), tool = document.getElementById("mTool").value.trim() || "Custom Tool", ops = document.getElementById("mOps").value.split(",").map(s => s.trim()).filter(Boolean);
+      const brand = document.getElementById("mBrand").value.trim(), model_name = document.getElementById("mName").value.trim(), model_code = document.getElementById("mCode").value.trim().toUpperCase(), bit = document.getElementById("mBit").value.trim(), os_version = document.getElementById("mOs").value.trim(), mode = document.getElementById("mMode").value.trim(), tool = document.getElementById("mTool").value.trim() || "Custom Tool", ops = document.getElementById("mOps").value.split(",").map(s => s.trim()).filter(Boolean);
       if (!brand || !model_code) return alert("Please enter at least Brand and Model Code.");
-      const entry = { brand, model_name: model_name || model_code, model_code, bit, tools: { [tool]: { operations: ops.length ? ops : ["FRP"], updated_at: new Date().toISOString().slice(0, 10) } } };
+      const entry = { brand, model_name: model_name || model_code, model_code, bit, os_version, mode, tools: { [tool]: { operations: ops.length ? ops : ["FRP"], bit, os_version, mode, updated_at: new Date().toISOString().slice(0, 10) } } };
       const local = loadLocalEdits(); local.push(entry); localStorage.setItem("nextgen_gsm_local", JSON.stringify(local));
       state.models = mergeModelArrays(state.models, [entry]); renderAll(); alert("Saved " + model_code + "!");
     };
@@ -494,21 +435,6 @@
       a.download = "nextgen_gsm_models.json"; a.click();
     };
     document.getElementById("resetLocalBtn").onclick = () => { localStorage.removeItem("nextgen_gsm_local"); initApp(); };
-    document.getElementById("loadSheetBtn").onclick = async () => {
-      const url = document.getElementById("sheetUrlInput").value.trim();
-      if (!url) return alert("Paste a published Google Sheet CSV URL first.");
-      try {
-        const lines = (await (await fetch(url)).text()).split(/\r?\n/).filter(Boolean);
-        const added = [];
-        for (let i = 1; i < lines.length; i++) {
-          const cols = lines[i].split(",").map(c => c.replace(/^"|"$/g, "").trim());
-          if (cols.length < 5) continue;
-          added.push({ brand: cols[0], model_name: cols[1] || cols[2], model_code: cols[2].toUpperCase(), bit: cols[3] || "", tools: { [cols[4]]: { operations: (cols[5] || "FRP").split("|").map(s => s.trim()), updated_at: new Date().toISOString().slice(0, 10) } } });
-        }
-        localStorage.setItem("nextgen_gsm_local", JSON.stringify([...loadLocalEdits(), ...added]));
-        state.models = mergeModelArrays(state.models, added); renderAll(); alert("Imported " + added.length + " rows from Google Sheets!");
-      } catch (e) { alert("Could not load CSV URL. Make sure the Google Sheet is published to the web as CSV."); }
-    };
 
     initApp();
   </script>
