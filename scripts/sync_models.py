@@ -1,7 +1,11 @@
+import csv
+import html
+import io
 import json
 import os
 import re
 from datetime import datetime, timezone
+from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
@@ -9,16 +13,18 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
 }
 
+PLAY_DEVICES_CSV_URL = "https://storage.googleapis.com/play_public/supported_devices.csv"
+
 MODEL_CODE_REGEX = re.compile(
     r"\b("
     r"SM-[A-Z]\d{3,4}[A-Z0-9]{0,3}|"
-    r"CPH\d{4}|"
+    r"CPH\d{4}|OPD\d{4}|P[A-Z]{2,3}[A-Z0-9]\d{2,3}|"
     r"RMX\d{4}|"
     r"V\d{4}[A-Z]?|PD\d{4}[A-Z]?|"
     r"2[1-7]\d{4}[A-Z0-9]{2,4}|M\d{4}[A-Z]\d{1,2}[A-Z]|"
-    r"X\d{4}[A-Z]?|K[EFGJL]\d[a-z]?|BG\d[a-z]?|CK\d[a-z]?|CL\d[a-z]?|"
+    r"X\d{4}[A-Z]?|K[EFGJL]\d[a-z]?|BG\d[a-z]?|CK\d[a-z]?|CL\d[a-z]?|CM\d[a-z]?|"
     r"XT\d{4}(?:-\d|[A-Z])?|"
-    r"[A-Z]{3}-(?:LX|NX|AL|AN|TL|BD)[0-9A-Z]{1,2}"
+    r"[A-Z]{3}-(?:LX|NX|AL|AN|TL|BD|L\d)[0-9A-Z]{0,2}"
     r")\b"
 )
 
@@ -29,20 +35,25 @@ BIT_REGEX = re.compile(
 ANDROID_REGEX = re.compile(r"\bAndroid\s*(?:ver(?:sion)?\s*[:\-]?\s*)?(\d{2}(?:\s*[/\-&,]\s*\d{2})*)\b", re.IGNORECASE)
 OS_SKIN_REGEX = re.compile(r"\b((?:HyperOS|One\s?UI|MIUI|ColorOS|Funtouch\s?OS|MagicOS|HiOS|XOS)\s*\d*(?:\.\d+)?(?:\s*[/\-]\s*\d+)*)\b", re.IGNORECASE)
 PATCH_REGEX = re.compile(
-    r"(?:patch|security(?:\s*patch)?)\s*[:\-]?\s*"
+    r"(?:patch|security(?:\s*(?:patch|update))?)\s*[:\-]?\s*"
     r"(202[3-7][-/]\d{1,2}(?:[-/]\d{1,2})?|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s*202[3-7]?)",
     re.IGNORECASE
 )
+MONTH_PATCH_REGEX = re.compile(
+    r"((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+202[3-7])\s+security",
+    re.IGNORECASE
+)
+SW_VER_REGEX = re.compile(r"software\s+version\s+([\d\.]+)", re.IGNORECASE)
 TOOL_VER_REGEX = re.compile(r"\bv\.?\s*(\d+\.\d+(?:\.\d+){0,2})\b", re.IGNORECASE)
 CHIP_ID_REGEX = re.compile(r"\b(MT\d{4}[A-Z]?|SM\d{4}|SDM\d{3}|MSM\d{4}|T\d{3,4})\b", re.IGNORECASE)
 
 OP_KEYWORDS = {
     "FRP": ["frp", "google account", "remove frp", "reset frp", "frp bypass"],
     "Factory Reset": ["factory reset", "format", "wipe data", "safe format"],
-    "Flash": ["flash", "firmware", "write flash", "unbrick"],
-    "MDM/KG": ["mdm", "kg lock", "knox", "payjoy", "it admin", "demo", "carrier relock"],
+    "Flash": ["flash", "firmware", "write flash", "unbrick", "read flash", "write dump"],
+    "MDM/KG": ["mdm", "kg lock", "knox", "payjoy", "it admin", "demo", "carrier relock", "anti-crack"],
     "Bootloader": ["bootloader", "ubl", "unlock bl", "relock"],
-    "IMEI": ["imei", "repair network", "patch cert", "nvram", "efs"],
+    "IMEI": ["imei", "repair network", "patch cert", "nvram", "efs", "repair security"],
     "Screen Lock": ["screen lock", "pin", "pattern", "passcode", "mi account", "heytap", "huawei id"]
 }
 
@@ -70,12 +81,137 @@ CPU_KEYWORDS = {
     "Tensor": ["tensor"]
 }
 
+BRAND_NORMALIZE = {
+    "samsung": "Samsung",
+    "xiaomi": "Xiaomi",
+    "redmi": "Xiaomi",
+    "poco": "Xiaomi",
+    "oppo": "Oppo",
+    "realme": "Realme",
+    "vivo": "Vivo",
+    "iqoo": "Vivo",
+    "tecno": "Tecno",
+    "infinix": "Infinix",
+    "itel": "Itel",
+    "motorola": "Motorola",
+    "moto": "Motorola",
+    "honor": "Honor",
+    "huawei": "Huawei",
+    "oneplus": "OnePlus",
+    "nokia": "Nokia",
+    "google": "Google",
+    "lenovo": "Lenovo",
+    "nothing": "Nothing",
+    "sony": "Sony",
+    "asus": "Asus",
+    "zte": "ZTE",
+    "nubia": "ZTE",
+    "tcl": "TCL",
+    "alcatel": "Alcatel",
+    "lg": "LG",
+    "htc": "HTC",
+    "meizu": "Meizu",
+    "sharp": "Sharp",
+    "cubot": "Cubot",
+    "umidigi": "Umidigi",
+    "doogee": "Doogee",
+    "blackview": "Blackview",
+    "ulefone": "Ulefone",
+    "oukitel": "Oukitel"
+}
+
+HYDRA_BRAND_HINTS = {
+    "178": "Xiaomi",
+    "118": "Oppo",
+    "136": "Samsung",
+    "257": "Realme",
+    "66": "Huawei",
+    "154": "Tecno"
+}
+
+
+def normalize_brand(raw_brand: str) -> str:
+    cleaned = " ".join(str(raw_brand or "").split()).strip()
+    if not cleaned:
+        return "Other"
+    low = cleaned.lower()
+    if low in BRAND_NORMALIZE:
+        return BRAND_NORMALIZE[low]
+    for key, val in BRAND_NORMALIZE.items():
+        if key in low:
+            return val
+    return cleaned
+
+
+def decode_play_csv(raw_bytes: bytes) -> str:
+    if raw_bytes.startswith((b"\xff\xfe", b"\xfe\xff")):
+        return raw_bytes.decode("utf-16", errors="replace")
+    try:
+        return raw_bytes.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return raw_bytes.decode("latin-1", errors="replace")
+
+
+def parse_play_devices_csv(csv_text: str) -> dict:
+    """Builds lookup dict by both Model code and Device codename (e.g. SM-A155F, ruby, fleur)."""
+    lookup = {}
+    reader = csv.DictReader(io.StringIO(csv_text))
+    for row in reader:
+        if not row:
+            continue
+        raw_brand = (row.get("Retail Branding") or "").strip()
+        marketing = " ".join((row.get("Marketing Name") or "").split()).strip()
+        raw_device = " ".join((row.get("Device") or "").split()).strip()
+        raw_model = " ".join((row.get("Model") or "").split()).strip()
+        if not raw_model and not raw_device:
+            continue
+
+        brand = normalize_brand(raw_brand)
+        marketing = marketing.replace("\\'", "'").strip()
+        entry_name = marketing if marketing else raw_model
+
+        keys = set()
+        if raw_model:
+            upper_model = raw_model.upper()
+            keys.add(upper_model)
+            if "/" in upper_model:
+                keys.add(upper_model.split("/", 1)[0].strip())
+            for m in MODEL_CODE_REGEX.findall(upper_model):
+                keys.add(m.upper())
+        if raw_device and len(raw_device) >= 3:
+            keys.add("CODENAME:" + raw_device.upper())
+
+        for key in keys:
+            if not key:
+                continue
+            existing = lookup.get(key)
+            if not existing or (existing["marketing_name"].upper() == key and entry_name.upper() != key):
+                lookup[key] = {
+                    "brand": brand,
+                    "marketing_name": entry_name,
+                    "model_code": raw_model.upper() if raw_model else ""
+                }
+    return lookup
+
+
+def load_play_device_catalog() -> dict:
+    try:
+        resp = requests.get(PLAY_DEVICES_CSV_URL, headers=HEADERS, timeout=30)
+        resp.raise_for_status()
+        text = decode_play_csv(resp.content)
+        catalog = parse_play_devices_csv(text)
+        print(f"[CATALOG] Loaded {len(catalog)} model mappings from Google Play supported_devices.csv")
+        return catalog
+    except Exception as exc:
+        print(f"[WARN] Could not load Google Play supported_devices.csv: {type(exc).__name__}")
+        return {}
+
 
 def infer_brand(code: str, context: str) -> str:
     c = code.upper()
     if c.startswith("SM-"):
         return "Samsung"
-    if c.startswith("CPH"):
+    if c.startswith(("CPH", "OPD", "PEQ", "PGF", "PGE", "PFF", "PHY", "PKJ", "PKH", "PHN", "PLE", "PCH", "PEM")):
         return "Oppo"
     if c.startswith("RMX"):
         return "Realme"
@@ -85,7 +221,7 @@ def infer_brand(code: str, context: str) -> str:
         return "Motorola"
     if c.startswith("X"):
         return "Infinix"
-    if re.match(r"^(K[EFGJL]|BG|CK|CL)\d", c):
+    if re.match(r"^(K[EFGJL]|BG|CK|CL|CM)\d", c):
         return "Tecno"
     if re.match(r"^(2[1-7]\d{4}|M\d{4})", c):
         return "Xiaomi"
@@ -98,6 +234,20 @@ def infer_brand(code: str, context: str) -> str:
         if b.lower() in low_ctx:
             return "Xiaomi" if b in ("Redmi", "Poco") else b
     return "Other"
+
+
+def lookup_device_info(code: str, context: str, catalog: dict) -> tuple:
+    key = code.upper().strip()
+    info = catalog.get(key)
+    if not info and "/" in key:
+        info = catalog.get(key.split("/", 1)[0].strip())
+    if not info:
+        info = catalog.get("CODENAME:" + key)
+    if info:
+        brand = info["brand"] if info["brand"] != "Other" else infer_brand(key, context)
+        marketing_name = info["marketing_name"] or key
+        return brand, marketing_name
+    return infer_brand(key, context), key
 
 
 def extract_bits(text: str) -> str:
@@ -122,10 +272,18 @@ def extract_os_versions(text: str) -> str:
         clean = " ".join(skin.split())
         if clean not in found:
             found.append(clean)
+    sw = SW_VER_REGEX.search(text)
+    if sw:
+        ver_str = "Ver " + sw.group(1)
+        if ver_str not in found:
+            found.append(ver_str)
     return ", ".join(found[:3])
 
 
 def extract_patch(text: str) -> str:
+    mp = MONTH_PATCH_REGEX.search(text)
+    if mp:
+        return mp.group(1).strip()
     m = PATCH_REGEX.search(text)
     if m:
         return m.group(1).strip()
@@ -147,7 +305,167 @@ def extract_cpu(text: str) -> str:
     return ", ".join((cpus + chips)[:2])
 
 
-def parse_entries(entries: list, source: dict, feed_url: str) -> list:
+def parse_hydra_device_item(title: str, note: str, brand_hint: str, post_url: str, source: dict, catalog: dict) -> list:
+    title = " ".join(title.split()).strip()
+    note = " ".join(note.split()).strip()
+    if not title or len(title) < 3:
+        return []
+    low_title = title.lower()
+    if low_title in ("load more", "supported devices", "supported models", "supported root models", "brand", "login"):
+        return []
+
+    paren_match = re.search(r"\(([^()]{2,55})\)\s*$", title)
+    base_name = title
+    codes = []
+
+    if paren_match:
+        inside = paren_match.group(1).strip()
+        left = title[:paren_match.start()].strip()
+        left_codes = MODEL_CODE_REGEX.findall(left)
+        if left_codes and not MODEL_CODE_REGEX.findall(inside):
+            codes = [c.upper() for c in left_codes]
+            base_name = inside
+        else:
+            base_name = left or title
+            parts = [p.strip() for p in re.split(r"[/,|]", inside) if p.strip()]
+            filtered = [p for p in parts if p.lower() not in ("china", "global", "india", "4g", "5g", "nfc", "lte", "wifi")]
+            if filtered:
+                codes = [p.upper() for p in filtered]
+
+    if not codes:
+        found = MODEL_CODE_REGEX.findall(title)
+        if found:
+            codes = sorted(set(c.upper() for c in found))
+        else:
+            slug = re.sub(r"[^A-Z0-9]+", "-", base_name.upper()).strip("-")
+            if len(slug) >= 4:
+                codes = [slug[:32]]
+
+    combined_text = title + " " + note
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    ops = extract_matches(combined_text, OP_KEYWORDS, default=["FRP", "Factory Reset", "Flash"])
+    bit = extract_bits(combined_text)
+    os_ver = extract_os_versions(combined_text)
+    patch = extract_patch(combined_text)
+    modes = ", ".join(extract_matches(combined_text, MODE_KEYWORDS)[:3])
+    cpu = extract_cpu(combined_text)
+
+    results = []
+    for code in codes:
+        cat_brand, cat_name = lookup_device_info(code, combined_text, catalog)
+        brand = normalize_brand(brand_hint) if brand_hint and brand_hint != "Other" else cat_brand
+        if brand == "Other":
+            brand = infer_brand(code, combined_text)
+        model_name = base_name if base_name and base_name.upper() != code else cat_name
+        results.append({
+            "brand": brand,
+            "model_name": model_name,
+            "model_code": code,
+            "bit": bit,
+            "os_version": os_ver,
+            "security_patch": patch,
+            "mode": modes,
+            "cpu": cpu,
+            "tool": source["name"],
+            "tool_id": source["id"],
+            "tool_version": "",
+            "operations": ops,
+            "source_url": source.get("display_url") or "https://www.hydradongle.com/devices",
+            "post_url": post_url,
+            "updated_at": today
+        })
+    return results
+
+
+def scrape_hydra_brand_page(brand_url: str, source: dict, catalog: dict, max_pages: int = 3):
+    """Scrapes a Hydra Dongle /devices/brand/<id> page (and ?page=2..N if paginated)."""
+    m_id = re.search(r"/devices/brand/(\d+)", brand_url)
+    brand_hint = HYDRA_BRAND_HINTS.get(m_id.group(1), "") if m_id else ""
+    all_records = []
+    seen_model_urls = set()
+    any_ok = False
+
+    for page_num in range(1, max_pages + 1):
+        page_url = brand_url if page_num == 1 else f"{brand_url}?page={page_num}"
+        try:
+            resp = requests.get(page_url, headers=HEADERS, timeout=15)
+            resp.raise_for_status()
+            any_ok = True
+        except Exception as exc:
+            if page_num == 1:
+                print(f"  [WARN] Hydra brand {brand_url}: {type(exc).__name__}")
+            break
+
+        soup = BeautifulSoup(resp.text, "html.parser")
+        if not brand_hint:
+            h = soup.select_one("h1, h2, .breadcrumb .active")
+            if h:
+                htxt = h.get_text(" ", strip=True)
+                if "supported" not in htxt.lower() and "brand" not in htxt.lower():
+                    brand_hint = normalize_brand(htxt)
+
+        links = soup.select('a[href*="/devices/brand/model/"]')
+        page_new = 0
+        for a in links:
+            href = urljoin(brand_url, a.get("href", ""))
+            if href in seen_model_urls:
+                continue
+            seen_model_urls.add(href)
+            page_new += 1
+
+            title = a.get_text(" ", strip=True)
+            note = ""
+            parent = a.parent
+            if parent:
+                full_parent = parent.get_text(" ", strip=True)
+                if len(full_parent) > len(title) + 5:
+                    note = full_parent.replace(title, "", 1).strip()
+
+            all_records.extend(parse_hydra_device_item(title, note, brand_hint, href, source, catalog))
+
+        if page_new == 0:
+            break
+
+    return all_records, any_ok
+
+
+def scrape_hydra_devices_hub(hub_url: str, source: dict, catalog: dict):
+    """Discovers /devices/brand/<id> links from https://www.hydradongle.com/devices and scrapes them."""
+    brand_urls = []
+    seen = set()
+    try:
+        resp = requests.get(hub_url, headers=HEADERS, timeout=15)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+        for a in soup.select('a[href*="/devices/brand/"]'):
+            href = urljoin(hub_url, a.get("href", "")).split("?")[0].rstrip("/")
+            if "/model/" in href:
+                continue
+            if re.search(r"/devices/brand/\d+$", href) and href not in seen:
+                seen.add(href)
+                brand_urls.append(href)
+    except Exception as exc:
+        print(f"  [WARN] Hydra hub ({hub_url}): {type(exc).__name__}")
+
+    # Always ensure major brands are included even if the hub paginates via JS
+    for bid in ("178", "118", "136", "257", "66", "154"):
+        u = f"https://www.hydradongle.com/devices/brand/{bid}"
+        if u not in seen:
+            seen.add(u)
+            brand_urls.append(u)
+
+    all_records = []
+    any_ok = False
+    for burl in brand_urls[:20]:
+        recs, ok = scrape_hydra_brand_page(burl, source, catalog, max_pages=2)
+        all_records.extend(recs)
+        if ok:
+            any_ok = True
+
+    return all_records, any_ok, ("Working" if any_ok else "Error (HydraFetch)")
+
+
+def parse_entries(entries: list, source: dict, feed_url: str, catalog: dict) -> list:
     extracted = []
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     for item in entries:
@@ -164,10 +482,11 @@ def parse_entries(entries: list, source: dict, feed_url: str) -> list:
         tver = TOOL_VER_REGEX.search(text)
         tool_ver = "v" + tver.group(1) if tver else ""
         for code in codes:
+            brand, marketing_name = lookup_device_info(code, text, catalog)
             extracted.append({
-                "brand": infer_brand(code, text),
-                "model_name": code,
-                "model_code": code,
+                "brand": brand,
+                "model_name": marketing_name,
+                "model_code": code.upper(),
                 "bit": bit,
                 "os_version": os_ver,
                 "security_patch": patch,
@@ -184,11 +503,18 @@ def parse_entries(entries: list, source: dict, feed_url: str) -> list:
     return extracted
 
 
-def scrape_feed(feed: dict, source: dict):
+def scrape_feed(feed: dict, source: dict, catalog: dict):
     url = str(feed.get("url", "")).strip()
     ftype = feed.get("type", "changelog_html")
     if not url or ftype == "tg_or_url_needed":
         return [], False, "Pending"
+
+    if ftype == "hydra_devices":
+        return scrape_hydra_devices_hub(url, source, catalog)
+    if ftype == "hydra_brand":
+        recs, ok = scrape_hydra_brand_page(url, source, catalog, max_pages=3)
+        return recs, ok, ("Working" if ok else "Error (HydraBrand)")
+
     try:
         resp = requests.get(url, headers=HEADERS, timeout=15)
         resp.raise_for_status()
@@ -218,13 +544,13 @@ def scrape_feed(feed: dict, source: dict):
                 txt = post.get_text(" ", strip=True)
                 if len(txt) > 10:
                     entries.append({"text": txt, "post_url": url, "date": ""})
-        return parse_entries(entries, source, url), True, "Working"
+        return parse_entries(entries, source, url, catalog), True, "Working"
     except Exception as exc:
         print(f"  [WARN] {source['name']} ({url}): {type(exc).__name__}")
         return [], False, "Error (" + type(exc).__name__ + ")"
 
 
-def scrape_source(source: dict):
+def scrape_source(source: dict, catalog: dict):
     feeds = source.get("feeds")
     if not feeds:
         if source.get("url"):
@@ -235,7 +561,7 @@ def scrape_source(source: dict):
     any_ok = False
     last_err = "Pending"
     for feed in feeds:
-        recs, ok, status = scrape_feed(feed, source)
+        recs, ok, status = scrape_feed(feed, source, catalog)
         all_recs.extend(recs)
         if ok:
             any_ok = True
@@ -252,6 +578,26 @@ def merge_field(old_val: str, new_val: str) -> str:
             if p and p not in parts:
                 parts.append(p)
     return ", ".join(parts[:4])
+
+
+def backfill_marketing_names(existing_db: dict, catalog: dict) -> int:
+    if not catalog:
+        return 0
+    upgraded = 0
+    for code, entry in existing_db.items():
+        if not isinstance(entry, dict):
+            continue
+        cur_name = str(entry.get("model_name") or "").strip()
+        cur_brand = str(entry.get("brand") or "Other").strip()
+        info = catalog.get(code.upper()) or catalog.get("CODENAME:" + code.upper())
+        if not info:
+            continue
+        if (not cur_name or cur_name.upper() == code.upper()) and info["marketing_name"].upper() != code.upper():
+            entry["model_name"] = info["marketing_name"]
+            upgraded += 1
+        if cur_brand == "Other" and info["brand"] != "Other":
+            entry["brand"] = info["brand"]
+    return upgraded
 
 
 def merge_into_db(existing_db: dict, new_records: list):
@@ -274,6 +620,11 @@ def merge_into_db(existing_db: dict, new_records: list):
             }
 
         entry = existing_db[key]
+        if (not entry.get("model_name") or entry["model_name"].upper() == key) and rec["model_name"].upper() != key:
+            entry["model_name"] = rec["model_name"]
+        if entry.get("brand") == "Other" and rec["brand"] != "Other":
+            entry["brand"] = rec["brand"]
+
         entry["bit"] = merge_field(entry.get("bit", ""), rec["bit"])
         entry["os_version"] = merge_field(entry.get("os_version", ""), rec["os_version"])
         entry["cpu"] = merge_field(entry.get("cpu", ""), rec["cpu"])
@@ -289,11 +640,17 @@ def merge_into_db(existing_db: dict, new_records: list):
 
         if is_new_model or is_new_tool_link or ops_changed:
             tools_with_new_data.add(tool_name)
+            display_label = (
+                f"{entry['model_name']} ({key})"
+                if entry["model_name"].upper() != key
+                else key
+            )
             changelog.append({
                 "date": rec["updated_at"],
                 "type": "new_model" if is_new_model else "tool_update",
                 "tool": tool_name,
-                "model": key,
+                "model": display_label,
+                "model_code": key,
                 "bit": rec["bit"],
                 "os_version": rec["os_version"],
                 "mode": rec["mode"],
@@ -324,10 +681,14 @@ def post_updates_to_channel(new_changes: list):
         return
     lines = ["🔥 <b>NextGen GSM Auto-Update</b>\n"]
     for item in new_changes[:15]:
-        ops = ", ".join(item.get("ops", []))
-        details = " | ".join(x for x in [item.get("bit"), item.get("os_version"), item.get("mode")] if x)
+        ops = html.escape(", ".join(item.get("ops", [])))
+        model_label = html.escape(str(item.get("model", "")))
+        tool_label = html.escape(str(item.get("tool", "")))
+        details = " | ".join(
+            html.escape(x) for x in [item.get("bit"), item.get("os_version"), item.get("mode")] if x
+        )
         extra = " [" + details + "]" if details else ""
-        lines.append(f"• <code>{item['model']}</code> — <b>{item['tool']}</b> ({ops}){extra}")
+        lines.append(f"• <code>{model_label}</code> — <b>{tool_label}</b> ({ops}){extra}")
     if len(new_changes) > 15:
         lines.append(f"\n<i>+ {len(new_changes) - 15} more models synced to the web database.</i>")
     payload = {"chat_id": channel_id, "text": "\n".join(lines), "parse_mode": "HTML"}
@@ -357,6 +718,8 @@ def main():
     os.makedirs("data", exist_ok=True)
     now_iso = datetime.now(timezone.utc).isoformat()
 
+    catalog = load_play_device_catalog()
+
     sources_payload = safe_load_json("sources.json", {"sources": []})
     sources = sources_payload.get("sources", []) if isinstance(sources_payload, dict) else []
 
@@ -368,10 +731,14 @@ def main():
         if isinstance(s, dict) and "id" in s
     }
 
+    upgraded_count = backfill_marketing_names(existing_db, catalog)
+    if upgraded_count:
+        print(f"[CATALOG] Backfilled marketing names for {upgraded_count} existing models.")
+
     all_records = []
     status_map = {}
     for src in sources:
-        recs, status = scrape_source(src)
+        recs, status = scrape_source(src, catalog)
         all_records.extend(recs)
         status_map[src["id"]] = status
         print(f"[SYNC] {src['name']}: {status} ({len(recs)} records)")
