@@ -1,0 +1,39 @@
+name: Auto-Sync NextGen GSM Models
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Scrape official GSM sites & Telegram channels
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHANNEL_ID: ${{ secrets.TG_CHANNEL_ID }}
+          WEB_APP_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: python scripts/sync_models.py
+
+      - name: Commit updated database
+        run: |
+          git config user.name "NextGen GSM Bot"
+          git config user.email "bot@nextgengsm.local"
+          git add data/models.json data/changelog.json
+          git diff --staged --quiet || git commit -m "Auto-sync GSM models $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push

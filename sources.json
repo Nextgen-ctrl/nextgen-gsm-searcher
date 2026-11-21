@@ -1,0 +1,244 @@
+{
+  "sources": [
+    {
+      "id": "galaxyunlock",
+      "name": "GalaxyUnlock",
+      "type": "html_table",
+      "url": "https://galaxyunlock.in/supported-models"
+    },
+    {
+      "id": "amt",
+      "name": "Android Multi Tool (AMT)",
+      "type": "html_table",
+      "url": "https://androidmultitool.com/supported_models/"
+    },
+    {
+      "id": "hwkey",
+      "name": "HWKey",
+      "type": "html_table",
+      "url": "https://www.hwkey.com/supported-models"
+    },
+    {
+      "id": "celltool",
+      "name": "CellTool (Qualcomm)",
+      "type": "html_table",
+      "url": "https://celltool.io/qcsupportmodel"
+    },
+    {
+      "id": "griffin",
+      "name": "Griffin-Unlocker Pro",
+      "type": "html_table",
+      "url": "https://griffin-unlocker.com/models.html"
+    },
+    {
+      "id": "pandora",
+      "name": "Pandora Box (Z3X)",
+      "type": "html_table",
+      "url": "https://gsmserver.com/en/pandora-box/"
+    },
+    {
+      "id": "tsm",
+      "name": "TSM Tool",
+      "type": "changelog_html",
+      "url": "https://tsm-tool.com/"
+    },
+    {
+      "id": "unlocktool",
+      "name": "UnlockTool",
+      "type": "changelog_html",
+      "url": "https://unlocktool.net/download/"
+    },
+    {
+      "id": "eftpro",
+      "name": "EFT Pro Dongle",
+      "type": "changelog_html",
+      "url": "https://eftprodongle.com/updates"
+    },
+    {
+      "id": "chimera",
+      "name": "Chimera Tool",
+      "type": "changelog_html",
+      "url": "https://chimeratool.com/en/download"
+    },
+    {
+      "id": "hydra",
+      "name": "Hydra Tool",
+      "type": "changelog_html",
+      "url": "https://www.hydradongle.com/download/software"
+    },
+    {
+      "id": "octoplus",
+      "name": "Octoplus Box",
+      "type": "changelog_html",
+      "url": "https://octoplusbox.com/en/news/"
+    },
+    {
+      "id": "infinity",
+      "name": "Infinity-Box / CM2",
+      "type": "changelog_html",
+      "url": "https://infinity-box.com/news/"
+    },
+    {
+      "id": "umt",
+      "name": "Ultimate Multi Tool (UMT)",
+      "type": "changelog_html",
+      "url": "https://www.ultimatemultitool.com/downloads"
+    },
+    {
+      "id": "phoenix",
+      "name": "Phoenix Service Tool",
+      "type": "changelog_html",
+      "url": "https://phoenixservicetool.com/"
+    },
+    {
+      "id": "uatpro",
+      "name": "Uni-Android Tool (UAT Pro)",
+      "type": "changelog_html",
+      "url": "https://uni-android.com/"
+    },
+    {
+      "id": "cerberus",
+      "name": "Cerberus Tool Pro",
+      "type": "changelog_html",
+      "url": "https://cerberustoolpro.com/"
+    },
+    {
+      "id": "nexapro",
+      "name": "Nexa Pro Tool",
+      "type": "changelog_html",
+      "url": "https://nexapro.co.in/"
+    },
+    {
+      "id": "opluspro",
+      "name": "Oplus Pro",
+      "type": "changelog_html",
+      "url": "https://opluspro.net/"
+    },
+    {
+      "id": "fastunlocker",
+      "name": "Fast Unlocker Pro",
+      "type": "changelog_html",
+      "url": "https://fast-unlocker-pro.com/download"
+    },
+    {
+      "id": "samsungtool",
+      "name": "SamsungTool.us",
+      "type": "changelog_html",
+      "url": "https://samsungtool.us"
+    },
+    {
+      "id": "vivotool",
+      "name": "Vivo.tool",
+      "type": "changelog_html",
+      "url": "https://vivo.tool"
+    },
+    {
+      "id": "cheetah",
+      "name": "Cheetah Tool",
+      "type": "telegram_web",
+      "url": "https://t.me/s/cheetahtool"
+    },
+    {
+      "id": "z3x",
+      "name": "Z3X News",
+      "type": "telegram_web",
+      "url": "https://t.me/s/z3x_news"
+    },
+    {
+      "id": "tfm",
+      "name": "TFM Tool Pro",
+      "type": "telegram_web",
+      "url": "https://t.me/s/tfmtoolpro"
+    },
+    {
+      "id": "fenix",
+      "name": "Fenix Tool Pro",
+      "type": "telegram_web",
+      "url": "https://t.me/s/fenixtoolpro"
+    },
+    {
+      "id": "mrauth",
+      "name": "Mr Auth Tool",
+      "type": "telegram_web",
+      "url": "https://t.me/s/mrauthtool"
+    },
+    {
+      "id": "xiaomibd",
+      "name": "Xiaomi BD Tool",
+      "type": "telegram_web",
+      "url": "https://t.me/s/bdauthtool"
+    },
+    {
+      "id": "falcon",
+      "name": "Falcon Multi Tool",
+      "type": "telegram_web",
+      "url": "https://t.me/s/FalconMultiTool1"
+    },
+    {
+      "id": "tmtpro",
+      "name": "TMTPro Tool",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "trpro",
+      "name": "TR Pro Tool",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "lazyunlocker",
+      "name": "Lazy Unlocker",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "ahxiaomi",
+      "name": "AH-Xiaomi Auth Tool",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "samkey",
+      "name": "SamKey CodeReader",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "fcktool",
+      "name": "FCK Tool",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "eaglefrp",
+      "name": "Eagle FRP",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "soulauth",
+      "name": "Soul Auth Tool",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "cftools",
+      "name": "CF-Tools",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "hxru",
+      "name": "HXRU Tool",
+      "type": "tg_or_url_needed",
+      "url": ""
+    },
+    {
+      "id": "gft",
+      "name": "GFT Global FRP Tool",
+      "type": "tg_or_url_needed",
+      "url": ""
+    }
+  ]
+}
