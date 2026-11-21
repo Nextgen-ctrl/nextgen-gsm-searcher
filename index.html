@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>NextGen GSM Searcher — Automated GSM Tool Compatibility</title>
+  <title>NextGen GSM Searcher — World Mobile &amp; GSM Tool Database</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script>
     (function () {
@@ -41,7 +41,7 @@
       color: var(--text);
       line-height: 1.5;
       min-height: 100vh;
-      padding-bottom: 72px;
+      padding-bottom: 76px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -82,12 +82,7 @@
     .brand h1 { font-size: 18px; font-weight: 700; letter-spacing: 0.2px; }
     .brand small { color: var(--muted); font-size: 12px; display: block; }
 
-    .header-actions {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .header-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
 
     .sync-badge {
       font-size: 12px;
@@ -99,7 +94,6 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      max-width: 100%;
     }
 
     .wa-header-btn {
@@ -109,24 +103,14 @@
       border-radius: 999px;
       background: var(--wa);
       color: #052e16;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       border: none;
       cursor: pointer;
-      transition: opacity 0.15s;
     }
 
-    .wa-header-btn:hover { opacity: 0.9; }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent-2);
-      flex-shrink: 0;
-    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); flex-shrink: 0; }
 
     nav.tabs {
       max-width: 1200px;
@@ -135,7 +119,6 @@
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      scrollbar-width: thin;
     }
 
     .tab-btn {
@@ -148,50 +131,26 @@
       font-size: 13px;
       font-weight: 600;
       white-space: nowrap;
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
     }
 
-    .tab-btn.active,
-    .tab-btn:hover {
-      background: var(--panel-2);
-      color: var(--text);
-      border-color: var(--accent);
-    }
+    .tab-btn.active, .tab-btn:hover { background: var(--panel-2); color: var(--text); border-color: var(--accent); }
 
-    main {
-      max-width: 1200px;
-      margin: 14px auto 24px;
-      padding: 0 18px;
-    }
-
+    main { max-width: 1200px; margin: 14px auto 24px; padding: 0 18px; }
     .view { display: none; }
     .view.active { display: block; }
 
     .stats-bar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 10px;
       margin-bottom: 14px;
     }
 
-    .stat-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 12px 14px;
-    }
-
+    .stat-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
     .stat-card .num { font-size: 22px; font-weight: 800; color: var(--accent); }
     .stat-card .lbl { font-size: 12px; color: var(--muted); }
 
-    .search-box {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 15px;
-      margin-bottom: 14px;
-    }
-
+    .search-box { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 15px; margin-bottom: 14px; }
     .search-row { display: flex; gap: 8px; flex-wrap: wrap; }
 
     .search-input {
@@ -208,32 +167,9 @@
 
     .search-input:focus { border-color: var(--accent); }
 
-    .btn {
-      background: var(--accent);
-      color: #0b1120;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 13px;
-      transition: opacity 0.15s;
-    }
-
-    .btn:hover { opacity: 0.92; }
-
-    .btn-ghost {
-      background: var(--panel-2);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-danger {
-      background: rgba(239, 68, 68, 0.16);
-      color: #fca5a5;
-      border: 1px solid rgba(239, 68, 68, 0.35);
-    }
-
+    .btn { background: var(--accent); color: #0b1120; border: none; padding: 10px 15px; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 13px; }
+    .btn-ghost { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
+    .btn-danger { background: rgba(239, 68, 68, 0.16); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.35); }
     .btn-wa {
       background: var(--wa);
       color: #052e16;
@@ -248,19 +184,23 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      text-decoration: none;
       margin-top: 8px;
     }
 
-    .btn-wa:hover { opacity: 0.92; }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 11px;
+    .scope-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 11px; }
+    .scope-btn {
+      padding: 6px 13px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #0b1120;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
     }
+    .scope-btn.active { background: rgba(34, 197, 94, 0.16); border-color: var(--accent-2); color: #86efac; }
 
+    .pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
     .pill {
       padding: 5px 11px;
       border-radius: 999px;
@@ -270,16 +210,8 @@
       border: 1px solid var(--border);
       color: var(--muted);
       cursor: pointer;
-      transition: border-color 0.15s, color 0.15s;
     }
-
-    .pill:hover { color: var(--text); border-color: #475569; }
-
-    .pill.active {
-      background: rgba(56, 189, 248, 0.16);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .pill.active { background: rgba(56, 189, 248, 0.16); border-color: var(--accent); color: var(--accent); }
 
     .active-filter-bar {
       display: none;
@@ -287,30 +219,17 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 12px;
+      margin-top: 10px;
       padding: 8px 12px;
       border-radius: 9px;
       background: rgba(167, 139, 250, 0.12);
       border: 1px solid rgba(167, 139, 250, 0.35);
       font-size: 13px;
     }
-
     .active-filter-bar.show { display: flex; }
 
-    .results-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 12px;
-    }
+    .results-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 6px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
 
     .card {
       background: var(--panel);
@@ -323,28 +242,13 @@
       flex-direction: column;
       gap: 8px;
     }
-
     .card:hover { transform: translateY(-2px); border-color: var(--accent); }
     .card.static-card { cursor: default; }
     .card.static-card:hover { transform: none; border-color: var(--border); }
 
-    .card-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .brand-tag {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--accent);
-      letter-spacing: 0.5px;
-    }
-
-    .model-title { font-size: 16px; font-weight: 700; word-break: break-word; }
-
+    .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .brand-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent); letter-spacing: 0.5px; }
+    .model-title { font-size: 15px; font-weight: 700; word-break: break-word; }
     .code-badge {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 12px;
@@ -357,179 +261,39 @@
       flex-shrink: 0;
     }
 
-    .meta-row {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .ver-chip {
-      font-size: 11px;
-      padding: 2px 7px;
-      border-radius: 5px;
-      background: rgba(245, 158, 11, 0.14);
-      color: #fcd34d;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-
-    .mode-chip {
-      font-size: 11px;
-      padding: 2px 7px;
-      border-radius: 5px;
-      background: rgba(56, 189, 248, 0.14);
-      color: #7dd3fc;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-    }
-
+    .meta-row { display: flex; gap: 6px; flex-wrap: wrap; font-size: 11px; color: var(--muted); }
+    .ver-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(245, 158, 11, 0.14); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .mode-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(56, 189, 248, 0.14); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .world-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(148, 163, 184, 0.14); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }
     .tool-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tool-chip { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: rgba(167, 139, 250, 0.15); border: 1px solid rgba(167, 139, 250, 0.35); color: #ddd6fe; }
+    .op-chip { font-size: 11px; padding: 2px 7px; border-radius: 5px; background: rgba(34, 197, 94, 0.12); color: #86efac; border: 1px solid rgba(34, 197, 94, 0.25); }
 
-    .tool-chip {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: rgba(167, 139, 250, 0.15);
-      border: 1px solid rgba(167, 139, 250, 0.35);
-      color: #ddd6fe;
-    }
-
-    .op-chip {
-      font-size: 11px;
-      padding: 2px 7px;
-      border-radius: 5px;
-      background: rgba(34, 197, 94, 0.12);
-      color: #86efac;
-      border: 1px solid rgba(34, 197, 94, 0.25);
-    }
-
-    .load-more-wrap {
-      text-align: center;
-      margin-top: 18px;
-      display: none;
-    }
-
+    .load-more-wrap { text-align: center; margin-top: 18px; display: none; }
     .load-more-wrap.show { display: block; }
 
-    /* Modal */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(2, 6, 23, 0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      z-index: 100;
-    }
-
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(2, 6, 23, 0.8); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 100; }
     .modal-backdrop.open { display: flex; }
+    .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; max-width: 680px; width: 100%; max-height: 86vh; overflow-y: auto; padding: 20px; }
+    .modal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 14px; }
+    .close-btn { background: var(--panel-2); border: 1px solid var(--border); color: var(--text); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; font-size: 18px; flex-shrink: 0; }
+    .tool-row { background: #0b1120; border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+    .tool-row-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+    .tool-row a { color: var(--accent); font-size: 12px; text-decoration: none; font-weight: 600; }
 
-    .modal {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      max-width: 680px;
-      width: 100%;
-      max-height: 86vh;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 12px;
-      margin-bottom: 14px;
-    }
-
-    .close-btn {
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .tool-row {
-      background: #0b1120;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 10px;
-    }
-
-    .tool-row-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-
-    .tool-row a {
-      color: var(--accent);
-      font-size: 12px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .tool-row a:hover { text-decoration: underline; }
-
-    /* Table */
     .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--panel);
-    }
-
-    th, td {
-      text-align: left;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
-      font-size: 13px;
-    }
-
+    table { width: 100%; border-collapse: collapse; background: var(--panel); }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
     th { background: var(--panel-2); color: var(--muted); font-weight: 700; white-space: nowrap; }
-    tr:last-child td { border-bottom: none; }
 
     .status-online { color: #86efac; }
     .status-pending { color: #fcd34d; }
     .status-error { color: #fca5a5; }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .form-grid input {
-      background: #0b1120;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      outline: none;
-    }
-
-    .form-grid input:focus { border-color: var(--accent); }
-
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 10px; margin-bottom: 12px; }
+    .form-grid input { background: #0b1120; border: 1px solid var(--border); color: var(--text); padding: 10px 12px; border-radius: 8px; font-size: 13px; outline: none; }
     .btn-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 
-    /* Floating WhatsApp Button */
     .wa-float {
       position: fixed;
       right: 18px;
@@ -546,14 +310,7 @@
       align-items: center;
       gap: 8px;
       cursor: pointer;
-      text-decoration: none;
       box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-
-    .wa-float:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
     }
 
     .toast {
@@ -572,22 +329,10 @@
       pointer-events: none;
       transition: opacity 0.2s, transform 0.2s;
       z-index: 200;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
     }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .empty {
-      text-align: center;
-      padding: 36px 16px;
-      color: var(--muted);
-      background: var(--panel);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius);
-    }
+    .empty { text-align: center; padding: 36px 16px; color: var(--muted); background: var(--panel); border: 1px dashed var(--border); border-radius: var(--radius); }
 
     @media (max-width: 600px) {
       header { padding: 12px 14px; }
@@ -604,36 +349,32 @@
         <div class="brand-icon">NG</div>
         <div>
           <h1>NextGen GSM Searcher</h1>
-          <small>Auto-Synced GSM Tool, BIT &amp; OS Compatibility</small>
+          <small>Global All-Brand Mobile Directory &amp; Auto-Synced GSM Tools</small>
         </div>
       </div>
       <div class="header-actions">
-        <div class="sync-badge">
-          <span class="dot"></span>
-          <span id="syncText">Loading database...</span>
-        </div>
-        <button type="button" class="wa-header-btn" id="waHeaderBtn" title="Contact +9779815350752 on WhatsApp">
-          💬 WhatsApp
-        </button>
+        <div class="sync-badge"><span class="dot"></span><span id="syncText">Loading database...</span></div>
+        <button type="button" class="wa-header-btn" id="waHeaderBtn">💬 WhatsApp</button>
       </div>
     </div>
   </header>
 
   <nav class="tabs" aria-label="Main Navigation">
-    <button type="button" class="tab-btn active" data-tab="models">📱 Supported Models</button>
-    <button type="button" class="tab-btn" data-tab="cpu">🧠 CPU Finder</button>
+    <button type="button" class="tab-btn active" data-tab="models">🌍 All World Models</button>
+    <button type="button" class="tab-btn" data-tab="cpu">🧠 MTK / QCOM / SPD Finder</button>
     <button type="button" class="tab-btn" data-tab="sources">🔌 Sources &amp; Status</button>
     <button type="button" class="tab-btn" data-tab="updates">🔥 What's New</button>
     <button type="button" class="tab-btn" data-tab="manager">⚙️ No-Code Manager</button>
   </nav>
 
   <main>
-    <!-- SUPPORTED MODELS -->
+    <!-- SUPPORTED & WORLD MODELS -->
     <section class="view active" id="view-models">
       <div class="stats-bar">
-        <div class="stat-card"><div class="num" id="statModels">0</div><div class="lbl">Indexed Models</div></div>
+        <div class="stat-card"><div class="num" id="statWorld">0</div><div class="lbl">Global Models Listed</div></div>
+        <div class="stat-card"><div class="num" id="statVerified">0</div><div class="lbl">Tool-Verified Models</div></div>
         <div class="stat-card"><div class="num" id="statTools">0</div><div class="lbl">Tracked GSM Tools</div></div>
-        <div class="stat-card"><div class="num" id="statBrands">0</div><div class="lbl">Brands Covered</div></div>
+        <div class="stat-card"><div class="num" id="statBrands">0</div><div class="lbl">World Brands</div></div>
       </div>
 
       <div class="search-box">
@@ -643,9 +384,14 @@
             class="search-input"
             type="search"
             autocomplete="off"
-            placeholder="Search model (SM-A155F), tool (AMT, UnlockTool), BIT (BIT 4), Android 15, or EDL..."
+            placeholder="Search ANY phone in the world: Redmi, Vivo, Oppo, Samsung, iPhone, Realme, Itel, Infinix, MTK, QCOM, SPD..."
           />
           <button type="button" class="btn btn-ghost" id="clearFiltersBtn">Reset</button>
+        </div>
+
+        <div class="scope-row" id="scopeRow">
+          <button type="button" class="scope-btn active" data-scope="all">🌍 All World Models</button>
+          <button type="button" class="scope-btn" data-scope="verified">🛠 Verified Tool Support Only</button>
         </div>
 
         <div class="active-filter-bar" id="activeToolBar">
@@ -668,25 +414,11 @@
     <section class="view" id="view-cpu">
       <div class="grid" style="margin-bottom: 14px;" id="cpuCards"></div>
       <div class="search-box">
-        <input
-          id="cpuSearch"
-          class="search-input"
-          style="width:100%;"
-          type="search"
-          placeholder="Filter devices by model, code, or chipset (MediaTek, Qualcomm, Unisoc, Exynos, Kirin)..."
-        />
+        <input id="cpuSearch" class="search-input" style="width:100%;" type="search" placeholder="Filter by model, code, or chipset (MTK, Qualcomm, SPD/Unisoc, Exynos, Apple, Kirin)..." />
       </div>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Brand</th>
-              <th>Model</th>
-              <th>Code</th>
-              <th>Chipset</th>
-              <th>Boot Mode</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Brand</th><th>Model</th><th>Code</th><th>Chipset</th><th>Boot Mode</th></tr></thead>
           <tbody id="cpuTableBody"></tbody>
         </table>
       </div>
@@ -697,7 +429,7 @@
       <div class="search-box">
         <h3 style="font-size:16px;margin-bottom:4px;">Sources &amp; Status</h3>
         <p id="sourcesHeaderText" style="font-size:13px;color:var(--muted);">
-          Every source is re-checked about every 30 minutes. Click any tool card to view its supported models.
+          Every source is re-checked about every 30 minutes. Click any tool card to filter its supported models.
         </p>
       </div>
       <div class="grid" id="sourcesGrid"></div>
@@ -708,7 +440,7 @@
       <div class="search-box">
         <h3 style="font-size:16px;margin-bottom:4px;">Latest Auto-Synced Updates</h3>
         <p style="font-size:13px;color:var(--muted);">
-          Newly detected models pulled from official GSM websites and Telegram channels with BIT, OS version, mode, and proof link.
+          Newly detected Redmi, Vivo, Oppo, Samsung, Apple, Realme, Itel, and Infinix updates pulled from official tool portals and Telegram channels.
         </p>
       </div>
       <div id="updatesList"></div>
@@ -719,12 +451,12 @@
       <div class="search-box">
         <h3 style="font-size:16px;margin-bottom:10px;">Add or Merge Model Entry</h3>
         <div class="form-grid">
-          <input id="mBrand" placeholder="Brand (e.g. Samsung)" />
-          <input id="mName" placeholder="Model Name (e.g. Galaxy A15)" />
+          <input id="mBrand" placeholder="Brand (e.g. Samsung, Apple, Itel)" />
+          <input id="mName" placeholder="Model Name (e.g. Redmi Note 14 Pro)" />
           <input id="mCode" placeholder="Model Code (e.g. SM-A155F)" />
           <input id="mBit" placeholder="BIT / Binary (e.g. BIT 4)" />
-          <input id="mOs" placeholder="Android / OS (e.g. Android 15)" />
-          <input id="mCpu" placeholder="Chipset (e.g. Helio G99)" />
+          <input id="mOs" placeholder="Android / iOS (e.g. Android 15)" />
+          <input id="mCpu" placeholder="Chipset (e.g. MTK Helio G99)" />
           <input id="mMode" placeholder="Mode (e.g. Preloader / EDL 9008)" />
           <input id="mTool" placeholder="GSM Tool (e.g. UnlockTool)" />
           <input id="mOps" placeholder="Operations (FRP, Factory Reset, Flash)" />
@@ -740,7 +472,7 @@
       <div class="search-box">
         <h3 style="font-size:16px;margin-bottom:6px;">Import from Google Sheets or Local CSV</h3>
         <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">
-          Columns: <code>brand,model_name,model_code,bit,os_version,mode,tool,operations</code> (separate multiple operations with <code>|</code>).
+          Columns: <code>brand,model_name,model_code,bit,os_version,mode,tool,operations</code>
         </p>
         <div class="search-row" style="margin-bottom:10px;">
           <input id="sheetUrlInput" class="search-input" placeholder="Paste published Google Sheet CSV URL..." />
@@ -769,7 +501,6 @@
     </div>
   </div>
 
-  <!-- FLOATING WHATSAPP BUTTON -->
   <button type="button" class="wa-float" id="waFloatBtn" aria-label="Chat on WhatsApp +9779815350752">
     <span>💬</span>
     <span>WhatsApp +9779815350752</span>
@@ -786,99 +517,91 @@
       const PAGE_SIZE = 60;
       const STORAGE_KEY = "nextgen_gsm_local_v2";
       const OPERATIONS = ["All", "FRP", "Factory Reset", "Flash", "MDM/KG", "Bootloader", "IMEI", "Screen Lock"];
+      const TOP_BRANDS = [
+        "All", "Samsung", "Xiaomi / Redmi", "Vivo", "Oppo", "Apple", "Realme",
+        "Infinix", "Tecno", "Itel", "Motorola", "Honor", "Huawei", "OnePlus",
+        "Google", "Nokia", "Lenovo", "Universal Chipset"
+      ];
+
+      const BRAND_RECOMMENDED_TOOLS = {
+        "Samsung": { tools: ["Chimera Tool", "UnlockTool", "Z3X", "Octoplus", "SamKey CodeReader", "Galaxy Unlock"], modes: "MTP / Download / EUB / EDL 9008 / Server" },
+        "Xiaomi / Redmi": { tools: ["UnlockTool", "AMT", "Hydra Tool", "Phoenix Service Tool", "Xiaomi BD Tool", "AH-Xiaomi Auth Tool"], modes: "BROM / Preloader / EDL 9008 / Mi Assistant / Auth" },
+        "Vivo": { tools: ["UnlockTool", "AMT", "TFM Tool", "Vivo.tool", "Hydra Tool", "TSM Tool"], modes: "Preloader / BROM / EDL 9008 / Server" },
+        "Oppo": { tools: ["UnlockTool", "AMT", "Hydra Tool", "Oplus Pro", "TFM Tool", "TSM Tool"], modes: "Preloader / BROM / EDL 9008" },
+        "Realme": { tools: ["AMT", "UnlockTool", "TSM Tool", "Hydra Tool", "TFM Tool", "Oplus Pro"], modes: "Preloader / EDL 9008 / Unisoc Diag" },
+        "Apple": { tools: ["UnlockTool", "Griffin-Unlocker Pro", "EFT Pro"], modes: "DFU / Ramdisk / MDM / Server" },
+        "Infinix": { tools: ["TSM Tool", "AMT", "UnlockTool", "Cheetah Tool", "Infinity CM2", "Hydra Tool"], modes: "Preloader (MTK) / Unisoc Diag (SPD)" },
+        "Tecno": { tools: ["TSM Tool", "AMT", "UnlockTool", "Cheetah Tool", "Infinity CM2", "Hydra Tool"], modes: "Preloader (MTK) / Unisoc Diag (SPD)" },
+        "Itel": { tools: ["Infinity CM2", "UnlockTool", "TSM Tool", "AMT", "Pandora Box", "Hydra Tool"], modes: "Unisoc Diag (SPD) / Preloader (MTK)" },
+        "Motorola": { tools: ["TSM Tool", "UMT", "UnlockTool", "AMT", "Hydra Tool"], modes: "Preloader / EDL 9008 / Fastboot / Unisoc Diag" },
+        "Honor": { tools: ["Chimera Tool", "EFT Pro", "UnlockTool", "SigmaKey", "Hydra Tool"], modes: "EDL 9008 / Test Point COM 1.0 / Fastboot" },
+        "Huawei": { tools: ["Chimera Tool", "SigmaKey", "EFT Pro", "UnlockTool", "Hydra Tool"], modes: "Huawei USB COM 1.0 / EDL 9008 / Fastboot" },
+        "OnePlus": { tools: ["UnlockTool", "AMT", "Oplus Pro", "UMT", "Hydra Tool"], modes: "EDL 9008 / Preloader / Fastboot" },
+        "DEFAULT": { tools: ["UnlockTool", "AMT", "TSM Tool", "Hydra Tool", "UMT", "Infinity CM2", "Pandora Box"], modes: "MTK Preloader / Qualcomm EDL 9008 / Unisoc SPD Diag" }
+      };
 
       const CPU_PROFILES = [
-        { cpu: "MediaTek (MTK)", mode: "BROM / Preloader (Vol+ & Vol-)", note: "Use Preloader Auth or SLA/DAA bypass on Helio and Dimensity chips." },
-        { cpu: "Qualcomm Snapdragon", mode: "EDL 9008 (Test Point / EDL Cable)", note: "Requires matching firehose loader or server authentication." },
-        { cpu: "Unisoc / Spreadtrum (SPD)", mode: "Unisoc Diag / Boot Mode (Vol-)", note: "Uses FDL1/FDL2 custom loaders on Tecno, Itel, Infinix, and Realme." },
-        { cpu: "Samsung Exynos", mode: "EUB Mode / Download / MTP", note: "EUB test point or MTP/server methods depending on BIT level." },
-        { cpu: "Google Tensor", mode: "Fastboot / ADB / Recovery", note: "Fastboot and OEM unlock rules apply per carrier variant." },
-        { cpu: "HiSilicon Kirin", mode: "Huawei USB COM 1.0 (Test Point)", note: "Test point required for Kirin FRP, Huawei ID, and board repair." }
+        { cpu: "MediaTek (MTK)", mode: "BROM / Preloader (Vol+ & Vol-)", note: "Helio & Dimensity universal support (Redmi, Vivo, Oppo, Tecno, Infinix, Samsung A-series)." },
+        { cpu: "Qualcomm Snapdragon (QCOM)", mode: "EDL 9008 (Test Point / EDL Cable)", note: "Universal Firehose / Auth support across Samsung, Xiaomi, Vivo, Oppo, Realme, Motorola, Honor." },
+        { cpu: "Unisoc / Spreadtrum (SPD)", mode: "Unisoc Diag / Boot Mode (Vol-)", note: "FDL1/FDL2 custom loaders for Itel, Tecno, Infinix, Realme, Nokia, Motorola." },
+        { cpu: "Samsung Exynos", mode: "EUB Mode / Download / MTP", note: "EUB Test Point or MTP/Server FRP depending on BIT/Binary level." },
+        { cpu: "Apple Bionic (A7–A19)", mode: "DFU / Ramdisk / Recovery / Server", note: "iPhone & iPad Passcode, MDM, Hello Screen, and iOS restore workflows." },
+        { cpu: "HiSilicon Kirin & Google Tensor", mode: "USB COM 1.0 / Fastboot / ADB", note: "Kirin test point support for Huawei/Honor and Fastboot tools for Pixel." }
       ];
 
       const SEED_MODELS = [
         {
-          brand: "Samsung", model_name: "Galaxy A15", model_code: "SM-A155F",
-          bit: "BIT 1-4", os_version: "Android 14, Android 15", cpu: "MediaTek Helio G99", mode: "Preloader / MTP",
+          brand: "Universal Chipset", model_name: "MediaTek (MTK) Universal All Models", model_code: "MTK-UNIVERSAL",
+          bit: "All Security", os_version: "Android 9 - Android 16", cpu: "MediaTek Helio / Dimensity", mode: "BROM / Preloader",
           tools: {
-            "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "MDM/KG"], bit: "BIT 1-4", os_version: "Android 15", mode: "Preloader", updated_at: "2026-11-20", source_url: "https://t.me/unlocktool_channel" },
-            "Chimera Tool": { operations: ["FRP", "IMEI", "Flash"], bit: "BIT 1-4", os_version: "Android 15", mode: "EUB / MTP", updated_at: "2026-11-20", source_url: "https://chimeratool.com/en/download" },
-            "AMT": { operations: ["FRP", "Factory Reset"], bit: "BIT 1-4", os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-18", source_url: "https://androidmultitool.com/supported_models/" }
+            "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "MDM/KG", "Bootloader", "IMEI"], mode: "BROM / Preloader", source_url: "https://t.me/unlocktool_channel" },
+            "AMT": { operations: ["FRP", "Factory Reset", "Flash", "MDM/KG"], mode: "Preloader", source_url: "https://androidmultitool.com/supported_models/" },
+            "Hydra Tool": { operations: ["FRP", "Factory Reset", "Flash", "IMEI"], mode: "BROM / Preloader", source_url: "https://www.hydradongle.com/devices" }
           }
         },
         {
-          brand: "Samsung", model_name: "Galaxy A05s", model_code: "SM-A057F",
-          bit: "BIT 1-6", os_version: "Android 14, Android 15", cpu: "Qualcomm Snapdragon 680", mode: "EDL 9008",
+          brand: "Universal Chipset", model_name: "Qualcomm (QCOM) Universal All Models", model_code: "QCOM-UNIVERSAL",
+          bit: "All Security", os_version: "Android 9 - Android 16", cpu: "Qualcomm Snapdragon", mode: "EDL 9008",
           tools: {
-            "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-19", source_url: "https://t.me/unlocktool_channel" },
-            "TSM Tool": { operations: ["FRP", "MDM/KG"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-19", source_url: "https://t.me/TSMPRO" },
-            "Galaxy Unlock": { operations: ["FRP", "Factory Reset"], bit: "BIT 1-6", os_version: "Android 15", mode: "EDL 9008", updated_at: "2026-11-18", source_url: "https://galaxyunlock.in/supported-models" }
+            "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "Screen Lock"], mode: "EDL 9008", source_url: "https://t.me/unlocktool_channel" },
+            "UMT": { operations: ["FRP", "Factory Reset", "Flash", "IMEI"], mode: "EDL 9008", source_url: "https://www.ultimatemultitool.com/downloads" },
+            "CellTool": { operations: ["FRP", "Factory Reset", "Flash"], mode: "EDL 9008", source_url: "https://celltool.io/qcsupportmodel" }
           }
         },
         {
-          brand: "Xiaomi", model_name: "Redmi Note 13 4G", model_code: "23129RAA4G",
-          bit: "", os_version: "Android 15, HyperOS 2", cpu: "Qualcomm Snapdragon 685", mode: "EDL 9008 / Server",
+          brand: "Universal Chipset", model_name: "Unisoc / SPD Universal All Models (Itel, Tecno, Infinix, Realme)", model_code: "SPD-UNISOC-UNIVERSAL",
+          bit: "All Security", os_version: "Android 10 - Android 15", cpu: "Unisoc / Spreadtrum SPD", mode: "Unisoc Diag",
           tools: {
-            "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "Screen Lock"], os_version: "HyperOS 2", mode: "EDL 9008", updated_at: "2026-11-20", source_url: "https://t.me/unlocktool_channel" },
-            "AMT": { operations: ["FRP", "Flash"], os_version: "HyperOS 2", mode: "Server / Auth", updated_at: "2026-11-19", source_url: "https://androidmultitool.com/supported_models/" }
+            "UnlockTool": { operations: ["FRP", "Factory Reset", "Flash", "MDM/KG"], mode: "Unisoc Diag", source_url: "https://t.me/unlocktool_channel" },
+            "Infinity CM2": { operations: ["FRP", "Factory Reset", "Flash", "IMEI"], mode: "Unisoc Diag", source_url: "https://infinity-box.com/news/" },
+            "TSM Tool": { operations: ["FRP", "Factory Reset", "MDM/KG"], mode: "Unisoc Diag", source_url: "https://t.me/TSMPRO" }
           }
         },
         {
-          brand: "Oppo", model_name: "Oppo A38", model_code: "CPH2579",
-          bit: "", os_version: "Android 14, ColorOS 14", cpu: "MediaTek Helio G85", mode: "Preloader",
+          brand: "Apple", model_name: "Apple iPhone / iPad Universal (iOS 12 - iOS 18)", model_code: "APPLE-IOS-UNIVERSAL",
+          bit: "iOS 12 - iOS 18", os_version: "iOS 12 - iOS 18", cpu: "Apple Bionic", mode: "DFU / Ramdisk",
           tools: {
-            "UnlockTool": { operations: ["FRP", "Factory Reset", "Screen Lock"], os_version: "ColorOS 14", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/unlocktool_channel" },
-            "TFM Tool": { operations: ["FRP", "Factory Reset"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/tfmtoolpro" }
-          }
-        },
-        {
-          brand: "Vivo", model_name: "Vivo Y28", model_code: "V2352",
-          bit: "", os_version: "Android 14, Funtouch OS 14", cpu: "MediaTek Helio G85", mode: "Preloader",
-          tools: {
-            "AMT": { operations: ["FRP", "Factory Reset", "Screen Lock"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-20", source_url: "https://androidmultitool.com/supported_models/" },
-            "TFM Tool": { operations: ["FRP", "Factory Reset"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/tfmtoolpro" }
-          }
-        },
-        {
-          brand: "Tecno", model_name: "Spark 20", model_code: "KJ5",
-          bit: "", os_version: "Android 13, HiOS 13", cpu: "MediaTek Helio G85", mode: "Preloader",
-          tools: {
-            "TSM Tool": { operations: ["FRP", "MDM/KG", "Factory Reset"], os_version: "Android 13", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/TSMPRO" },
-            "Cheetah Tool": { operations: ["FRP", "IMEI", "MDM/KG"], os_version: "Android 13", mode: "Preloader", updated_at: "2026-11-18", source_url: "https://t.me/cheetahtool" }
-          }
-        },
-        {
-          brand: "Infinix", model_name: "Hot 40i", model_code: "X6528",
-          bit: "", os_version: "Android 13, XOS 13", cpu: "Unisoc T606", mode: "Unisoc Diag",
-          tools: {
-            "UnlockTool": { operations: ["FRP", "Factory Reset", "MDM/KG"], os_version: "Android 13", mode: "Unisoc Diag", updated_at: "2026-11-19", source_url: "https://t.me/unlocktool_channel" },
-            "Infinity CM2": { operations: ["Flash", "FRP", "Factory Reset"], os_version: "Android 13", mode: "Unisoc Diag", updated_at: "2026-11-17", source_url: "https://infinity-box.com/news/" }
-          }
-        },
-        {
-          brand: "Motorola", model_name: "Moto G24", model_code: "XT2423-1",
-          bit: "", os_version: "Android 14", cpu: "MediaTek Helio G85", mode: "Preloader",
-          tools: {
-            "TSM Tool": { operations: ["FRP", "MDM/KG"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-19", source_url: "https://t.me/TSMPRO" },
-            "UMT": { operations: ["FRP", "Factory Reset"], os_version: "Android 14", mode: "Preloader", updated_at: "2026-11-18", source_url: "https://www.ultimatemultitool.com/downloads" }
+            "UnlockTool": { operations: ["Screen Lock", "MDM/KG", "Factory Reset", "Flash"], mode: "DFU / Ramdisk", source_url: "https://t.me/unlocktool_channel" },
+            "Griffin-Unlocker Pro": { operations: ["Screen Lock", "MDM/KG", "Factory Reset"], mode: "DFU / Ramdisk", source_url: "https://griffin-unlocker.com/models.html" },
+            "EFT Pro": { operations: ["Screen Lock", "MDM/KG", "Factory Reset"], mode: "DFU / Ramdisk", source_url: "https://eftprodongle.com/updates" }
           }
         }
       ];
 
       const state = {
-        models: [],
+        allModels: [],
+        verifiedCount: 0,
         sources: [],
         changelog: [],
         lastSync: null,
         search: "",
+        scope: "all",
         selectedOp: "All",
         selectedBrand: "All",
         selectedTool: "",
         activeModalModel: null,
         visibleCount: PAGE_SIZE
       };
-
-      /* ---------- WhatsApp Helper (Browser + Telegram Mini App Safe) ---------- */
 
       function openWhatsApp(message) {
         const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
@@ -890,8 +613,6 @@
         } catch (e) {}
         window.open(url, "_blank", "noopener,noreferrer");
       }
-
-      /* ---------- Safe Utilities ---------- */
 
       function esc(str) {
         return String(str == null ? "" : str)
@@ -917,8 +638,7 @@
         if (min < 60) return min + " min ago";
         const hr = Math.floor(min / 60);
         if (hr < 24) return hr + " h ago";
-        const days = Math.floor(hr / 24);
-        return days + " d ago";
+        return Math.floor(hr / 24) + " d ago";
       }
 
       function mergeCommaText(a, b) {
@@ -944,47 +664,36 @@
 
       function loadLocalEdits() {
         try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          const parsed = JSON.parse(raw || "[]");
+          const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
           return Array.isArray(parsed) ? parsed : [];
-        } catch (e) {
-          return [];
-        }
+        } catch (e) { return []; }
       }
 
       function saveLocalEdits(list) {
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-          return true;
-        } catch (e) {
-          showToast("Storage unavailable in this browser.");
-          return false;
-        }
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch (e) {}
       }
 
-      function mergeModelArrays(baseList, extraList) {
+      function buildSearchIndex(m) {
+        const toolKeys = Object.keys(m.tools || {});
+        const toolDetails = Object.entries(m.tools || {})
+          .map(([t, meta]) => `${t} ${meta.bit || ""} ${meta.os_version || ""} ${meta.mode || ""} ${(meta.operations || []).join(" ")}`)
+          .join(" ");
+        m._verified = toolKeys.length > 0;
+        m._q = `${m.brand} ${m.model_name} ${m.model_code} ${m.bit || ""} ${m.os_version || ""} ${m.cpu || ""} ${m.mode || ""} ${toolDetails}`.toLowerCase();
+        return m;
+      }
+
+      function buildCombinedCatalog(verifiedList, worldPayload) {
         const map = new Map();
-        [...baseList, ...extraList].forEach(item => {
+
+        // 1. Add all verified tool-supported models first
+        verifiedList.forEach(item => {
           if (!item || typeof item !== "object") return;
           const code = String(item.model_code || item.model_name || "").trim().toUpperCase();
           if (!code) return;
+          const tools = item.tools && typeof item.tools === "object" ? item.tools : {};
 
-          const incomingTools = item.tools && typeof item.tools === "object" ? item.tools : {};
           if (!map.has(code)) {
-            const clonedTools = {};
-            Object.entries(incomingTools).forEach(([tName, meta]) => {
-              clonedTools[tName] = {
-                operations: Array.isArray(meta && meta.operations) ? [...meta.operations] : ["FRP"],
-                bit: (meta && meta.bit) || "",
-                os_version: (meta && meta.os_version) || "",
-                security_patch: (meta && meta.security_patch) || "",
-                mode: (meta && meta.mode) || "",
-                tool_version: (meta && meta.tool_version) || "",
-                source_url: (meta && meta.source_url) || "",
-                post_url: (meta && meta.post_url) || "",
-                updated_at: (meta && meta.updated_at) || ""
-              };
-            });
             map.set(code, {
               brand: String(item.brand || "Other").trim() || "Other",
               model_name: String(item.model_name || code).trim() || code,
@@ -993,76 +702,88 @@
               os_version: String(item.os_version || "").trim(),
               cpu: String(item.cpu || "").trim(),
               mode: String(item.mode || "").trim(),
-              tools: clonedTools
+              tools: { ...tools }
             });
           } else {
             const ex = map.get(code);
-            if (ex.model_name === ex.model_code && item.model_name && item.model_name !== code) {
-              ex.model_name = String(item.model_name).trim();
-            }
-            if (ex.brand === "Other" && item.brand && item.brand !== "Other") {
-              ex.brand = String(item.brand).trim();
-            }
+            if (ex.model_name === ex.model_code && item.model_name && item.model_name !== code) ex.model_name = item.model_name;
             ex.bit = mergeCommaText(ex.bit, item.bit);
             ex.os_version = mergeCommaText(ex.os_version, item.os_version);
             ex.cpu = mergeCommaText(ex.cpu, item.cpu);
             ex.mode = mergeCommaText(ex.mode, item.mode);
-
-            Object.entries(incomingTools).forEach(([tName, meta]) => {
-              if (!meta || typeof meta !== "object") return;
-              const prev = ex.tools[tName];
-              if (!prev) {
-                ex.tools[tName] = {
-                  operations: Array.isArray(meta.operations) ? [...meta.operations] : ["FRP"],
-                  bit: meta.bit || "",
-                  os_version: meta.os_version || "",
-                  security_patch: meta.security_patch || "",
-                  mode: meta.mode || "",
-                  tool_version: meta.tool_version || "",
-                  source_url: meta.source_url || "",
-                  post_url: meta.post_url || "",
-                  updated_at: meta.updated_at || ""
-                };
-              } else {
-                const ops = new Set([...(prev.operations || []), ...(Array.isArray(meta.operations) ? meta.operations : [])]);
-                ex.tools[tName] = {
-                  operations: Array.from(ops),
-                  bit: mergeCommaText(prev.bit, meta.bit),
-                  os_version: mergeCommaText(prev.os_version, meta.os_version),
-                  security_patch: meta.security_patch || prev.security_patch || "",
-                  mode: mergeCommaText(prev.mode, meta.mode),
-                  tool_version: meta.tool_version || prev.tool_version || "",
-                  source_url: meta.source_url || prev.source_url || "",
-                  post_url: meta.post_url || prev.post_url || "",
-                  updated_at: meta.updated_at || prev.updated_at || ""
-                };
-              }
-            });
+            ex.tools = { ...ex.tools, ...tools };
           }
         });
-        return Array.from(map.values());
-      }
 
-      /* ---------- Data Loading ---------- */
+        const verifiedCount = map.size;
+
+        // 2. Append all global world catalog models (without overwriting verified entries)
+        if (worldPayload && Array.isArray(worldPayload.brands) && Array.isArray(worldPayload.items)) {
+          const brands = worldPayload.brands;
+          const items = worldPayload.items;
+          for (let i = 0; i < items.length; i++) {
+            const row = items[i];
+            const brand = brands[row[0]] || "Other";
+            const code = String(row[2] || "").toUpperCase();
+            if (!code) continue;
+            const name = row[1] || code;
+
+            if (map.has(code)) {
+              const ex = map.get(code);
+              if (ex.model_name === ex.model_code && name !== code) ex.model_name = name;
+              if (ex.brand === "Other" && brand !== "Other") ex.brand = brand;
+            } else {
+              map.set(code, {
+                brand,
+                model_name: name,
+                model_code: code,
+                bit: "",
+                os_version: "",
+                cpu: "",
+                mode: "",
+                tools: {}
+              });
+            }
+          }
+        }
+
+        const list = Array.from(map.values()).map(buildSearchIndex);
+        // Keep tool-verified models at the top
+        list.sort((a, b) => (b._verified ? 1 : 0) - (a._verified ? 1 : 0));
+        return { list, verifiedCount };
+      }
 
       async function initApp() {
         let liveModels = [];
         let liveSources = [];
         let liveChangelog = [];
+        let worldPayload = null;
 
-        try {
-          const res = await fetch("./data/models.json?t=" + Date.now());
-          if (res.ok) {
-            const payload = await res.json();
-            if (Array.isArray(payload.models)) {
-              liveModels = payload.models;
-            } else if (payload.models && typeof payload.models === "object") {
-              liveModels = Object.values(payload.models);
-            }
+        const [modelsRes, worldRes, changelogRes] = await Promise.allSettled([
+          fetch("./data/models.json?t=" + Date.now()),
+          fetch("./data/world_catalog.json?t=" + Date.now()),
+          fetch("./data/changelog.json?t=" + Date.now())
+        ]);
+
+        if (modelsRes.status === "fulfilled" && modelsRes.value.ok) {
+          try {
+            const payload = await modelsRes.value.json();
+            liveModels = Array.isArray(payload.models) ? payload.models : Object.values(payload.models || {});
             if (Array.isArray(payload.sources)) liveSources = payload.sources;
             state.lastSync = payload.last_sync || null;
-          }
-        } catch (e) {}
+          } catch (e) {}
+        }
+
+        if (worldRes.status === "fulfilled" && worldRes.value.ok) {
+          try { worldPayload = await worldRes.value.json(); } catch (e) {}
+        }
+
+        if (changelogRes.status === "fulfilled" && changelogRes.value.ok) {
+          try {
+            const cJson = await changelogRes.value.json();
+            if (Array.isArray(cJson)) liveChangelog = cJson;
+          } catch (e) {}
+        }
 
         if (liveSources.length === 0) {
           try {
@@ -1087,15 +808,9 @@
           } catch (e) {}
         }
 
-        try {
-          const cRes = await fetch("./data/changelog.json?t=" + Date.now());
-          if (cRes.ok) {
-            const cJson = await cRes.json();
-            if (Array.isArray(cJson)) liveChangelog = cJson;
-          }
-        } catch (e) {}
-
-        state.models = mergeModelArrays(SEED_MODELS, [...liveModels, ...loadLocalEdits()]);
+        const built = buildCombinedCatalog([...SEED_MODELS, ...liveModels, ...loadLocalEdits()], worldPayload);
+        state.allModels = built.list;
+        state.verifiedCount = built.verifiedCount;
         state.sources = liveSources;
         state.changelog = liveChangelog;
 
@@ -1104,13 +819,11 @@
           const ago = timeAgo(state.lastSync);
           syncEl.textContent = ago ? "Refreshed " + ago : "Auto-Synced";
         } else {
-          syncEl.textContent = "Ready (" + state.models.length + " models)";
+          syncEl.textContent = "Ready (" + state.allModels.length.toLocaleString() + " models)";
         }
 
         renderAll();
       }
-
-      /* ---------- Rendering ---------- */
 
       function renderAll() {
         renderStats();
@@ -1122,32 +835,36 @@
       }
 
       function renderStats() {
-        document.getElementById("statModels").textContent = state.models.length.toLocaleString();
+        document.getElementById("statWorld").textContent = state.allModels.length.toLocaleString();
+        document.getElementById("statVerified").textContent = state.verifiedCount.toLocaleString();
         const toolSet = new Set(state.sources.map(s => s.name));
-        state.models.forEach(m => Object.keys(m.tools || {}).forEach(t => toolSet.add(t)));
+        state.allModels.forEach(m => { if (m._verified) Object.keys(m.tools).forEach(t => toolSet.add(t)); });
         document.getElementById("statTools").textContent = toolSet.size.toLocaleString();
-        document.getElementById("statBrands").textContent = new Set(state.models.map(m => m.brand)).size.toLocaleString();
+        document.getElementById("statBrands").textContent = new Set(state.allModels.map(m => m.brand)).size.toLocaleString();
       }
 
       function renderPills() {
-        const opContainer = document.getElementById("opPills");
-        opContainer.innerHTML = OPERATIONS.map(op =>
+        document.querySelectorAll(".scope-btn").forEach(b => b.classList.toggle("active", b.dataset.scope === state.scope));
+
+        document.getElementById("opPills").innerHTML = OPERATIONS.map(op =>
           `<button type="button" class="pill ${state.selectedOp === op ? "active" : ""}" data-op="${esc(op)}">${esc(op)}</button>`
         ).join("");
 
         const counts = {};
-        state.models.forEach(m => { counts[m.brand] = (counts[m.brand] || 0) + 1; });
-        const brands = ["All", ...Object.keys(counts).sort((a, b) => counts[b] - counts[a])];
+        for (let i = 0; i < state.allModels.length; i++) {
+          const m = state.allModels[i];
+          if (state.scope === "verified" && !m._verified) continue;
+          counts[m.brand] = (counts[m.brand] || 0) + 1;
+        }
 
-        const brandContainer = document.getElementById("brandPills");
-        brandContainer.innerHTML = brands.map(b =>
-          `<button type="button" class="pill ${state.selectedBrand === b ? "active" : ""}" data-brand="${esc(b)}">${esc(b)}${b !== "All" ? ` (${counts[b]})` : ""}</button>`
+        const pillBrands = TOP_BRANDS.filter(b => b === "All" || counts[b]);
+        document.getElementById("brandPills").innerHTML = pillBrands.map(b =>
+          `<button type="button" class="pill ${state.selectedBrand === b ? "active" : ""}" data-brand="${esc(b)}">${esc(b)}${b !== "All" ? ` (${(counts[b] || 0).toLocaleString()})` : ""}</button>`
         ).join("");
 
         const toolBar = document.getElementById("activeToolBar");
-        const toolNameEl = document.getElementById("activeToolName");
         if (state.selectedTool) {
-          toolNameEl.textContent = state.selectedTool;
+          document.getElementById("activeToolName").textContent = state.selectedTool;
           toolBar.classList.add("show");
         } else {
           toolBar.classList.remove("show");
@@ -1156,28 +873,36 @@
 
       function getFilteredModels() {
         const q = state.search.trim().toLowerCase();
+        const terms = q ? q.split(/\s+/).filter(Boolean) : [];
         const toolFilter = state.selectedTool.toLowerCase();
+        const needVerified = state.scope === "verified" || state.selectedOp !== "All" || Boolean(toolFilter);
 
-        return state.models.filter(m => {
-          if (state.selectedBrand !== "All" && m.brand !== state.selectedBrand) return false;
+        const out = [];
+        for (let i = 0; i < state.allModels.length; i++) {
+          const m = state.allModels[i];
+          if (needVerified && !m._verified) continue;
+          if (state.selectedBrand !== "All" && m.brand !== state.selectedBrand) continue;
 
-          const toolEntries = Object.entries(m.tools || {});
-          if (toolFilter && !toolEntries.some(([t]) => t.toLowerCase() === toolFilter)) return false;
+          if (toolFilter) {
+            const hasTool = Object.keys(m.tools).some(t => t.toLowerCase() === toolFilter);
+            if (!hasTool) continue;
+          }
 
           if (state.selectedOp !== "All") {
-            const hasOp = toolEntries.some(([, meta]) => Array.isArray(meta.operations) && meta.operations.includes(state.selectedOp));
-            if (!hasOp) return false;
+            const hasOp = Object.values(m.tools).some(meta => Array.isArray(meta.operations) && meta.operations.includes(state.selectedOp));
+            if (!hasOp) continue;
           }
 
-          if (q) {
-            const toolBlob = toolEntries
-              .map(([t, meta]) => `${t} ${meta.bit || ""} ${meta.os_version || ""} ${meta.security_patch || ""} ${meta.mode || ""} ${(meta.operations || []).join(" ")}`)
-              .join(" ");
-            const hay = `${m.brand} ${m.model_name} ${m.model_code} ${m.bit || ""} ${m.os_version || ""} ${m.cpu || ""} ${m.mode || ""} ${toolBlob}`.toLowerCase();
-            if (!hay.includes(q)) return false;
+          if (terms.length) {
+            let matchAll = true;
+            for (let t = 0; t < terms.length; t++) {
+              if (!m._q.includes(terms[t])) { matchAll = false; break; }
+            }
+            if (!matchAll) continue;
           }
-          return true;
-        });
+          out.push(m);
+        }
+        return out;
       }
 
       function renderModels() {
@@ -1189,16 +914,18 @@
         if (filtered.length === 0) {
           metaEl.textContent = "Showing 0 results";
           loadMoreWrap.classList.remove("show");
-          grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No matching models found. Try another model code, BIT, Android version, or click <b>Reset</b>.</div>`;
+          grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No matching models found. Try searching by brand, marketing name, model code, or click <b>Reset</b>.</div>`;
           return;
         }
 
         const slice = filtered.slice(0, state.visibleCount);
-        metaEl.textContent = `Showing ${slice.length.toLocaleString()} of ${filtered.length.toLocaleString()} matching models`;
+        metaEl.textContent = `Showing ${slice.length.toLocaleString()} of ${filtered.length.toLocaleString()} models`;
 
         grid.innerHTML = slice.map(m => {
           const tools = Object.keys(m.tools || {});
           const ops = Array.from(new Set(Object.values(m.tools || {}).flatMap(x => x.operations || [])));
+          const rec = BRAND_RECOMMENDED_TOOLS[m.brand] || BRAND_RECOMMENDED_TOOLS.DEFAULT;
+
           return `
             <div class="card" data-code="${esc(m.model_code)}">
               <div class="card-head">
@@ -1212,20 +939,19 @@
                 ${m.bit ? `<span class="ver-chip">🔒 ${esc(m.bit)}</span>` : ""}
                 ${m.os_version ? `<span class="ver-chip">🤖 ${esc(m.os_version)}</span>` : ""}
                 ${m.mode ? `<span class="mode-chip">🔌 ${esc(m.mode)}</span>` : ""}
-                ${m.cpu ? `<span>🧠 ${esc(m.cpu)}</span>` : ""}
+                ${!m._verified ? `<span class="world-chip">🌍 Global Directory</span>` : ""}
               </div>
               <div class="tool-chips">
-                ${tools.map(t => `<span class="tool-chip">🛠 ${esc(t)}</span>`).join("")}
+                ${tools.length
+                  ? tools.slice(0, 5).map(t => `<span class="tool-chip">🛠 ${esc(t)}</span>`).join("")
+                  : rec.tools.slice(0, 3).map(t => `<span class="world-chip">Recommended: ${esc(t)}</span>`).join("")}
               </div>
-              <div class="tool-chips">
-                ${ops.slice(0, 6).map(o => `<span class="op-chip">${esc(o)}</span>`).join("")}
-              </div>
+              ${ops.length ? `<div class="tool-chips">${ops.slice(0, 6).map(o => `<span class="op-chip">${esc(o)}</span>`).join("")}</div>` : ""}
             </div>`;
         }).join("");
 
         if (filtered.length > state.visibleCount) {
-          const remaining = filtered.length - state.visibleCount;
-          document.getElementById("loadMoreBtn").textContent = `Load More (${remaining.toLocaleString()} remaining)`;
+          document.getElementById("loadMoreBtn").textContent = `Load More (${(filtered.length - state.visibleCount).toLocaleString()} remaining)`;
           loadMoreWrap.classList.add("show");
         } else {
           loadMoreWrap.classList.remove("show");
@@ -1233,7 +959,7 @@
       }
 
       function openModal(code) {
-        const m = state.models.find(x => x.model_code === code);
+        const m = state.allModels.find(x => x.model_code === code);
         if (!m) return;
         state.activeModalModel = m;
 
@@ -1250,37 +976,44 @@
         ].filter(Boolean).join("");
 
         const toolEntries = Object.entries(m.tools || {});
-        document.getElementById("modalTools").innerHTML = toolEntries.length
-          ? toolEntries.map(([tool, meta]) => {
-              const proofUrl = safeUrl(meta.post_url || meta.source_url);
-              return `
-                <div class="tool-row">
-                  <div class="tool-row-top">
-                    <div>
-                      <strong>🛠 ${esc(tool)}</strong>
-                      ${meta.tool_version ? `<span class="code-badge" style="margin-left:6px;">${esc(meta.tool_version)}</span>` : ""}
-                    </div>
-                    <div>
-                      ${meta.updated_at ? `<span style="font-size:11px;color:var(--muted);margin-right:8px;">${esc(meta.updated_at)}</span>` : ""}
-                      ${proofUrl ? `<a href="${esc(proofUrl)}" target="_blank" rel="noopener noreferrer">Official Post ↗</a>` : ""}
-                    </div>
+        if (toolEntries.length) {
+          document.getElementById("modalTools").innerHTML = toolEntries.map(([tool, meta]) => {
+            const proofUrl = safeUrl(meta.post_url || meta.source_url);
+            return `
+              <div class="tool-row">
+                <div class="tool-row-top">
+                  <div>
+                    <strong>🛠 ${esc(tool)}</strong>
+                    ${meta.tool_version ? `<span class="code-badge" style="margin-left:6px;">${esc(meta.tool_version)}</span>` : ""}
                   </div>
-                  <div class="meta-row" style="margin-bottom:8px;">
-                    ${meta.bit ? `<span class="ver-chip">🔒 ${esc(meta.bit)}</span>` : ""}
-                    ${meta.os_version ? `<span class="ver-chip">🤖 ${esc(meta.os_version)}</span>` : ""}
-                    ${meta.security_patch ? `<span class="ver-chip">🛡 Patch: ${esc(meta.security_patch)}</span>` : ""}
-                    ${meta.mode ? `<span class="mode-chip">🔌 ${esc(meta.mode)}</span>` : ""}
+                  <div>
+                    ${meta.updated_at ? `<span style="font-size:11px;color:var(--muted);margin-right:8px;">${esc(meta.updated_at)}</span>` : ""}
+                    ${proofUrl ? `<a href="${esc(proofUrl)}" target="_blank" rel="noopener noreferrer">Official Post ↗</a>` : ""}
                   </div>
-                  <div class="tool-chips">
-                    ${(meta.operations || []).map(o => `<span class="op-chip">${esc(o)}</span>`).join("")}
-                  </div>
-                </div>`;
-            }).join("")
-          : `<div class="empty">No tool details recorded for this model yet.</div>`;
+                </div>
+                <div class="meta-row" style="margin-bottom:8px;">
+                  ${meta.bit ? `<span class="ver-chip">🔒 ${esc(meta.bit)}</span>` : ""}
+                  ${meta.os_version ? `<span class="ver-chip">🤖 ${esc(meta.os_version)}</span>` : ""}
+                  ${meta.security_patch ? `<span class="ver-chip">🛡 Patch: ${esc(meta.security_patch)}</span>` : ""}
+                  ${meta.mode ? `<span class="mode-chip">🔌 ${esc(meta.mode)}</span>` : ""}
+                </div>
+                <div class="tool-chips">${(meta.operations || []).map(o => `<span class="op-chip">${esc(o)}</span>`).join("")}</div>
+              </div>`;
+          }).join("");
+        } else {
+          const rec = BRAND_RECOMMENDED_TOOLS[m.brand] || BRAND_RECOMMENDED_TOOLS.DEFAULT;
+          document.getElementById("modalTools").innerHTML = `
+            <div class="tool-row">
+              <div class="tool-row-top"><strong>🌍 Global Directory Model — Recommended GSM Tools for ${esc(m.brand)}</strong></div>
+              <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">
+                Typical connection modes: <strong>${esc(rec.modes)}</strong>. Exact BIT/security support depends on your device firmware—check via Universal Chipset mode or message us on WhatsApp below.
+              </p>
+              <div class="tool-chips">${rec.tools.map(t => `<span class="tool-chip">🛠 ${esc(t)}</span>`).join("")}</div>
+            </div>`;
+        }
 
         document.getElementById("modalWaBtn").textContent =
           `💬 Ask / Order Service for ${m.model_code} on WhatsApp (${WHATSAPP_DISPLAY})`;
-
         document.getElementById("detailModal").classList.add("open");
       }
 
@@ -1298,7 +1031,7 @@
           </div>`).join("");
 
         const q = (document.getElementById("cpuSearch").value || "").trim().toLowerCase();
-        const rows = state.models.filter(m =>
+        const rows = state.allModels.filter(m =>
           m.cpu && `${m.brand} ${m.model_name} ${m.model_code} ${m.cpu} ${m.mode || ""}`.toLowerCase().includes(q)
         );
 
@@ -1325,14 +1058,17 @@
 
         const grid = document.getElementById("sourcesGrid");
         if (!state.sources.length) {
-          grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No sources loaded yet. Ensure <code>sources.json</code> is present in your repository.</div>`;
+          grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No sources loaded yet.</div>`;
           return;
         }
 
         const enriched = state.sources.map(s => {
-          const localCount = state.models.filter(m =>
-            Object.keys(m.tools || {}).some(t => t.toLowerCase() === String(s.name || "").toLowerCase())
-          ).length;
+          let localCount = 0;
+          const target = String(s.name || "").toLowerCase();
+          for (let i = 0; i < state.allModels.length; i++) {
+            const m = state.allModels[i];
+            if (m._verified && Object.keys(m.tools).some(t => t.toLowerCase() === target)) localCount++;
+          }
           return { ...s, displayCount: Math.max(Number(s.count) || 0, localCount) };
         }).sort((a, b) => b.displayCount - a.displayCount);
 
@@ -1341,14 +1077,12 @@
           const isOk = /^(working|online|ready)$/i.test(st);
           const isPending = /pending/i.test(st);
           const cls = isOk ? "status-online" : (isPending ? "status-pending" : "status-error");
-
-          const metaParts = [`<strong>${s.displayCount.toLocaleString()} models</strong>`];
+          const parts = [`<strong>${s.displayCount.toLocaleString()} models</strong>`];
           const checkedAgo = timeAgo(s.last_checked);
           const newAgo = timeAgo(s.last_new_data);
-          if (checkedAgo) metaParts.push(`checked ${esc(checkedAgo)}`);
-          if (newAgo) metaParts.push(`last new data ${esc(newAgo)}`);
-          if (s.source_label) metaParts.push(esc(s.source_label));
-
+          if (checkedAgo) parts.push(`checked ${esc(checkedAgo)}`);
+          if (newAgo) parts.push(`last new data ${esc(newAgo)}`);
+          if (s.source_label) parts.push(esc(s.source_label));
           const link = safeUrl(s.url);
           const cleanUrl = link ? link.replace(/^https?:\/\//i, "") : "";
 
@@ -1358,7 +1092,7 @@
                 <div class="model-title" style="font-size:15px;">${esc(s.name)}</div>
                 <span style="font-size:12px;font-weight:700;white-space:nowrap;" class="${cls}">● ${esc(isOk ? "Working" : st)}</span>
               </div>
-              <div style="font-size:12px;color:var(--muted);">${metaParts.join(" · ")}</div>
+              <div style="font-size:12px;color:var(--muted);">${parts.join(" · ")}</div>
               ${link ? `<a href="${esc(link)}" target="_blank" rel="noopener noreferrer" data-ext="1" style="font-size:12px;color:var(--accent);word-break:break-all;text-decoration:none;">${esc(cleanUrl)}</a>` : ""}
             </div>`;
         }).join("");
@@ -1367,19 +1101,15 @@
       function renderUpdates() {
         const el = document.getElementById("updatesList");
         if (!state.changelog.length) {
-          el.innerHTML = `<div class="empty">No auto-sync logs yet. Run <b>Auto-Sync NextGen GSM Models</b> in GitHub Actions to populate live updates.</div>`;
+          el.innerHTML = `<div class="empty">No auto-sync logs yet. Run <b>Auto-Sync NextGen GSM Models</b> in GitHub Actions.</div>`;
           return;
         }
-
         el.innerHTML = state.changelog.slice(0, 100).map(c => {
           const proofUrl = safeUrl(c.post_url);
           return `
             <div class="tool-row">
               <div class="tool-row-top">
-                <div>
-                  <span class="code-badge">${esc(c.model)}</span>
-                  <strong style="margin-left:8px;">🛠 ${esc(c.tool)}</strong>
-                </div>
+                <div><span class="code-badge">${esc(c.model)}</span><strong style="margin-left:8px;">🛠 ${esc(c.tool)}</strong></div>
                 <div>
                   ${c.date ? `<span style="font-size:12px;color:var(--muted);margin-right:8px;">${esc(c.date)}</span>` : ""}
                   ${proofUrl ? `<a href="${esc(proofUrl)}" target="_blank" rel="noopener noreferrer">View Post ↗</a>` : ""}
@@ -1390,9 +1120,7 @@
                 ${c.os_version ? `<span class="ver-chip">🤖 ${esc(c.os_version)}</span>` : ""}
                 ${c.mode ? `<span class="mode-chip">🔌 ${esc(c.mode)}</span>` : ""}
               </div>
-              <div class="tool-chips">
-                ${(c.ops || []).map(o => `<span class="op-chip">${esc(o)}</span>`).join("")}
-              </div>
+              <div class="tool-chips">${(c.ops || []).map(o => `<span class="op-chip">${esc(o)}</span>`).join("")}</div>
             </div>`;
         }).join("");
       }
@@ -1402,102 +1130,65 @@
         document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === "view-" + tabName));
       }
 
-      /* ---------- CSV Parser ---------- */
-
       function parseCsvLine(line) {
         const result = [];
-        let cur = "";
-        let inQuotes = false;
+        let cur = "", inQuotes = false;
         for (let i = 0; i < line.length; i++) {
           const ch = line[i];
           if (ch === '"') {
-            if (inQuotes && line[i + 1] === '"') {
-              cur += '"';
-              i++;
-            } else {
-              inQuotes = !inQuotes;
-            }
-          } else if (ch === "," && !inQuotes) {
-            result.push(cur.trim());
-            cur = "";
-          } else {
-            cur += ch;
-          }
+            if (inQuotes && line[i + 1] === '"') { cur += '"'; i++; }
+            else inQuotes = !inQuotes;
+          } else if (ch === "," && !inQuotes) { result.push(cur.trim()); cur = ""; }
+          else cur += ch;
         }
         result.push(cur.trim());
         return result;
       }
 
       function importCsvText(text) {
-        const lines = String(text || "").split(/\r?\n/).filter(l => l.trim().length > 0);
-        if (lines.length < 2) {
-          showToast("CSV must have a header row and at least one data row.");
-          return;
-        }
-        const added = [];
-        const today = new Date().toISOString().slice(0, 10);
+        const lines = String(text || "").split(/\r?\n/).filter(l => l.trim());
+        if (lines.length < 2) return showToast("CSV needs a header row and data rows.");
+        const added = [], today = new Date().toISOString().slice(0, 10);
         for (let i = 1; i < lines.length; i++) {
           const cols = parseCsvLine(lines[i]);
           if (cols.length < 3) continue;
-          const brand = cols[0] || "Other";
-          const model_name = cols[1] || cols[2];
-          const model_code = (cols[2] || "").toUpperCase();
-          if (!model_code) continue;
-
-          const isEightCol = cols.length >= 7;
-          const bit = cols[3] || "";
-          const os_version = isEightCol ? (cols[4] || "") : "";
-          const mode = isEightCol ? (cols[5] || "") : "";
-          const tool = (isEightCol ? cols[6] : cols[4]) || "Custom Tool";
-          const rawOps = (isEightCol ? cols[7] : cols[5]) || "FRP";
-          const ops = rawOps.split(/[|,]/).map(s => s.trim()).filter(Boolean);
-
+          const code = (cols[2] || "").toUpperCase();
+          if (!code) continue;
+          const isEight = cols.length >= 7;
+          const bit = cols[3] || "", os_version = isEight ? (cols[4] || "") : "", mode = isEight ? (cols[5] || "") : "";
+          const tool = (isEight ? cols[6] : cols[4]) || "Custom Tool";
+          const ops = ((isEight ? cols[7] : cols[5]) || "FRP").split(/[|,]/).map(s => s.trim()).filter(Boolean);
           added.push({
-            brand, model_name, model_code, bit, os_version, mode,
-            tools: {
-              [tool]: {
-                operations: ops.length ? ops : ["FRP"],
-                bit, os_version, mode, updated_at: today
-              }
-            }
+            brand: cols[0] || "Other", model_name: cols[1] || code, model_code: code, bit, os_version, mode,
+            tools: { [tool]: { operations: ops.length ? ops : ["FRP"], bit, os_version, mode, updated_at: today } }
           });
         }
-        if (!added.length) {
-          showToast("No valid model rows found in CSV.");
-          return;
-        }
+        if (!added.length) return showToast("No valid rows found.");
         saveLocalEdits([...loadLocalEdits(), ...added]);
-        state.models = mergeModelArrays(state.models, added);
-        renderAll();
+        initApp();
         showToast(`Imported ${added.length} model rows!`);
       }
 
-      /* ---------- Event Delegation & Listeners ---------- */
+      /* ---------- Event Listeners ---------- */
 
-      document.getElementById("waHeaderBtn").addEventListener("click", () => {
-        openWhatsApp("Hello NextGen GSM Searcher, I need GSM tool / unlock support.");
-      });
-
-      document.getElementById("waFloatBtn").addEventListener("click", () => {
-        openWhatsApp("Hello NextGen GSM Searcher, I need GSM tool / unlock support.");
-      });
-
+      document.getElementById("waHeaderBtn").addEventListener("click", () => openWhatsApp("Hello NextGen GSM Searcher, I need GSM tool / unlock support."));
+      document.getElementById("waFloatBtn").addEventListener("click", () => openWhatsApp("Hello NextGen GSM Searcher, I need GSM tool / unlock support."));
       document.getElementById("modalWaBtn").addEventListener("click", () => {
         const m = state.activeModalModel;
-        if (!m) {
-          openWhatsApp("Hello NextGen GSM Searcher, I need GSM tool / unlock support.");
-          return;
-        }
+        if (!m) return openWhatsApp("Hello NextGen GSM Searcher, I need GSM tool / unlock support.");
         const details = [m.bit, m.os_version, m.mode].filter(Boolean).join(" | ");
-        const msg =
-          `Hello NextGen GSM Searcher, I need service/support for:\n` +
-          `Device: ${m.brand} ${m.model_name} (${m.model_code})` +
-          (details ? `\nInfo: ${details}` : "");
-        openWhatsApp(msg);
+        openWhatsApp(`Hello NextGen GSM Searcher, I need service/support for:\nDevice: ${m.brand} ${m.model_name} (${m.model_code})` + (details ? `\nInfo: ${details}` : ""));
       });
 
-      document.querySelectorAll(".tab-btn").forEach(btn => {
-        btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.addEventListener("click", () => switchTab(btn.dataset.tab)));
+
+      document.getElementById("scopeRow").addEventListener("click", e => {
+        const btn = e.target.closest(".scope-btn");
+        if (!btn) return;
+        state.scope = btn.dataset.scope;
+        state.visibleCount = PAGE_SIZE;
+        renderPills();
+        renderModels();
       });
 
       document.getElementById("opPills").addEventListener("click", e => {
@@ -1528,147 +1219,81 @@
         const card = e.target.closest(".card[data-tool]");
         if (!card) return;
         state.selectedTool = card.dataset.tool;
+        state.scope = "verified";
         state.visibleCount = PAGE_SIZE;
         switchTab("models");
         renderPills();
         renderModels();
       });
 
+      let searchDebounce = null;
       document.getElementById("searchInput").addEventListener("input", e => {
-        state.search = e.target.value;
-        state.visibleCount = PAGE_SIZE;
-        renderModels();
+        clearTimeout(searchDebounce);
+        const val = e.target.value;
+        searchDebounce = setTimeout(() => {
+          state.search = val;
+          state.visibleCount = PAGE_SIZE;
+          renderModels();
+        }, 120);
       });
 
       document.getElementById("cpuSearch").addEventListener("input", renderCpuFinder);
 
       document.getElementById("clearFiltersBtn").addEventListener("click", () => {
-        state.search = "";
-        state.selectedOp = "All";
-        state.selectedBrand = "All";
-        state.selectedTool = "";
+        state.search = ""; state.scope = "all"; state.selectedOp = "All"; state.selectedBrand = "All"; state.selectedTool = "";
         state.visibleCount = PAGE_SIZE;
         document.getElementById("searchInput").value = "";
-        renderPills();
-        renderModels();
+        renderPills(); renderModels();
       });
 
       document.getElementById("clearToolOnlyBtn").addEventListener("click", () => {
-        state.selectedTool = "";
-        state.visibleCount = PAGE_SIZE;
-        renderPills();
-        renderModels();
+        state.selectedTool = ""; state.scope = "all"; state.visibleCount = PAGE_SIZE;
+        renderPills(); renderModels();
       });
 
-      document.getElementById("loadMoreBtn").addEventListener("click", () => {
-        state.visibleCount += PAGE_SIZE;
-        renderModels();
-      });
-
+      document.getElementById("loadMoreBtn").addEventListener("click", () => { state.visibleCount += PAGE_SIZE; renderModels(); });
       document.getElementById("closeModal").addEventListener("click", closeModal);
-      document.getElementById("detailModal").addEventListener("click", e => {
-        if (e.target.id === "detailModal") closeModal();
-      });
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape") closeModal();
-      });
+      document.getElementById("detailModal").addEventListener("click", e => { if (e.target.id === "detailModal") closeModal(); });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
       document.getElementById("addModelBtn").addEventListener("click", () => {
-        const brand = document.getElementById("mBrand").value.trim();
-        const model_name = document.getElementById("mName").value.trim();
-        const model_code = document.getElementById("mCode").value.trim().toUpperCase();
-        const bit = document.getElementById("mBit").value.trim();
-        const os_version = document.getElementById("mOs").value.trim();
-        const cpu = document.getElementById("mCpu").value.trim();
-        const mode = document.getElementById("mMode").value.trim();
-        const tool = document.getElementById("mTool").value.trim() || "Custom Tool";
-        const ops = document.getElementById("mOps").value.split(/[,|]/).map(s => s.trim()).filter(Boolean);
-
-        if (!brand || !model_code) {
-          showToast("Please enter at least Brand and Model Code.");
-          return;
-        }
-
+        const brand = document.getElementById("mBrand").value.trim(), model_name = document.getElementById("mName").value.trim(), model_code = document.getElementById("mCode").value.trim().toUpperCase(), bit = document.getElementById("mBit").value.trim(), os_version = document.getElementById("mOs").value.trim(), cpu = document.getElementById("mCpu").value.trim(), mode = document.getElementById("mMode").value.trim(), tool = document.getElementById("mTool").value.trim() || "Custom Tool", ops = document.getElementById("mOps").value.split(/[,|]/).map(s => s.trim()).filter(Boolean);
+        if (!brand || !model_code) return showToast("Please enter at least Brand and Model Code.");
         const today = new Date().toISOString().slice(0, 10);
-        const entry = {
-          brand,
-          model_name: model_name || model_code,
-          model_code,
-          bit,
-          os_version,
-          cpu,
-          mode,
-          tools: {
-            [tool]: {
-              operations: ops.length ? ops : ["FRP"],
-              bit,
-              os_version,
-              mode,
-              updated_at: today
-            }
-          }
-        };
-
+        const entry = { brand, model_name: model_name || model_code, model_code, bit, os_version, cpu, mode, tools: { [tool]: { operations: ops.length ? ops : ["FRP"], bit, os_version, mode, updated_at: today } } };
         saveLocalEdits([...loadLocalEdits(), entry]);
-        state.models = mergeModelArrays(state.models, [entry]);
-        state.changelog.unshift({
-          date: today,
-          type: "manual",
-          tool,
-          model: model_code,
-          bit,
-          os_version,
-          mode,
-          ops: entry.tools[tool].operations
-        });
-        ["mBrand", "mName", "mCode", "mBit", "mOs", "mCpu", "mMode", "mTool", "mOps"].forEach(id => {
-          document.getElementById(id).value = "";
-        });
-        renderAll();
-        showToast("Saved " + model_code + " (" + tool + ")");
+        ["mBrand", "mName", "mCode", "mBit", "mOs", "mCpu", "mMode", "mTool", "mOps"].forEach(id => { document.getElementById(id).value = ""; });
+        initApp();
+        showToast("Saved " + model_code);
       });
 
       document.getElementById("downloadTemplateBtn").addEventListener("click", () => {
-        const csv =
-          "brand,model_name,model_code,bit,os_version,mode,tool,operations\n" +
-          "Samsung,Galaxy A15,SM-A155F,BIT 4,Android 15,Preloader,UnlockTool,FRP|Factory Reset|Flash\n" +
-          "Xiaomi,Redmi Note 13 4G,23129RAA4G,,HyperOS 2,EDL 9008,AMT,FRP|Flash\n";
+        const csv = "brand,model_name,model_code,bit,os_version,mode,tool,operations\nSamsung,Galaxy A15,SM-A155F,BIT 4,Android 15,Preloader,UnlockTool,FRP|Factory Reset|Flash\nApple,iPhone 15 Pro,A3102,,iOS 18,DFU / Ramdisk,UnlockTool,Screen Lock|MDM/KG\n";
         const url = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "nextgen_gsm_template.csv";
-        a.click();
+        const a = document.createElement("a"); a.href = url; a.download = "nextgen_gsm_template.csv"; a.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
       });
 
       document.getElementById("exportJsonBtn").addEventListener("click", () => {
-        const url = URL.createObjectURL(new Blob([JSON.stringify(state.models, null, 2)], { type: "application/json" }));
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "nextgen_gsm_models.json";
-        a.click();
+        const verifiedOnly = state.allModels.filter(m => m._verified).map(({ _q, _verified, ...rest }) => rest);
+        const url = URL.createObjectURL(new Blob([JSON.stringify(verifiedOnly, null, 2)], { type: "application/json" }));
+        const a = document.createElement("a"); a.href = url; a.download = "nextgen_gsm_models.json"; a.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
       });
 
       document.getElementById("resetLocalBtn").addEventListener("click", () => {
         try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
-        initApp();
-        showToast("Local edits cleared.");
+        initApp(); showToast("Local edits cleared.");
       });
 
       document.getElementById("loadSheetBtn").addEventListener("click", async () => {
         const url = document.getElementById("sheetUrlInput").value.trim();
-        if (!safeUrl(url)) {
-          showToast("Paste a valid https:// Google Sheet CSV link.");
-          return;
-        }
+        if (!safeUrl(url)) return showToast("Paste a valid https:// Google Sheet CSV link.");
         try {
           const res = await fetch(url);
-          if (!res.ok) throw new Error("HTTP " + res.status);
+          if (!res.ok) throw new Error();
           importCsvText(await res.text());
-        } catch (e) {
-          showToast("Could not load CSV. Publish the Sheet to web as CSV first.");
-        }
+        } catch (e) { showToast("Could not load CSV. Publish the Sheet to web as CSV first."); }
       });
 
       document.getElementById("csvFileInput").addEventListener("change", e => {
