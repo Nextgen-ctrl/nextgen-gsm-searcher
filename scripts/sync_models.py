@@ -17,23 +17,31 @@ PLAY_DEVICES_CSV_URL = "https://storage.googleapis.com/play_public/supported_dev
 
 MODEL_CODE_REGEX = re.compile(
     r"\b("
-    r"SM-[A-Z]\d{3,4}[A-Z0-9]{0,3}|"
-    r"CPH\d{4}|OPD\d{4}|P[A-Z]{2,3}[A-Z0-9]\d{2,3}|"
-    r"RMX\d{4}|"
-    r"V\d{4}[A-Z]?|PD\d{4}[A-Z]?|"
-    r"2[1-7]\d{4}[A-Z0-9]{2,4}|M\d{4}[A-Z]\d{1,2}[A-Z]|"
-    r"X\d{4}[A-Z]?|K[EFGJL]\d[a-z]?|BG\d[a-z]?|CK\d[a-z]?|CL\d[a-z]?|CM\d[a-z]?|"
-    r"XT\d{4}(?:-\d|[A-Z])?|"
-    r"[A-Z]{3}-(?:LX|NX|AL|AN|TL|BD|L\d)[0-9A-Z]{0,2}"
+    r"SM-[A-Z]\d{3,4}[A-Z0-9]{0,3}|"                                                   # Samsung
+    r"CPH\d{4}|OPD\d{4}|P[A-Z]{2,3}[A-Z0-9]\d{2,3}|"                                   # Oppo / OnePlus
+    r"RMX\d{4}|"                                                                        # Realme
+    r"V\d{4}[A-Z]?|PD\d{4}[A-Z]?|I\d{4}|"                                              # Vivo / iQOO
+    r"2[1-7]\d{4}[A-Z0-9]{2,4}|M\d{4}[A-Z]\d{1,2}[A-Z]|"                               # Xiaomi / Redmi / Poco
+    r"X\d{4}[A-Z]?|"                                                                    # Infinix
+    r"K[EFGJL]\d[a-zA-Z0-9]?|BG\d[a-zA-Z0-9]?|CK\d[a-zA-Z0-9]?|CL\d[a-zA-Z0-9]?|CM\d[a-zA-Z0-9]?|"  # Tecno
+    r"A66\d[A-Z]{0,2}|P66\d[A-Z]{0,2}|S66\d[A-Z]{0,2}|L\d{4}[A-Z]?|W\d{4}|"            # Itel
+    r"XT\d{4}(?:-\d|[A-Z])?|"                                                           # Motorola
+    r"[A-Z]{3}-(?:LX|NX|AL|AN|TL|BD|L\d)[0-9A-Z]{0,2}"                                 # Honor / Huawei
     r")\b"
+)
+
+APPLE_MODEL_REGEX = re.compile(
+    r"\b(iPhone\s*(?:SE(?:\s*\d)?|(?:5s|6s?|7|8|X|XR|XS|1[1-7])(?:\s*(?:Pro\s*Max|Pro|Plus|Mini|Max|Air|e))?)|iPad\s*(?:Pro|Air|Mini)?(?:\s*\d{1,2})?)\b",
+    re.IGNORECASE
 )
 
 BIT_REGEX = re.compile(
     r"\b(?:BIT|BINARY|BIN|REV)\s*[:\-]?\s*([1-9A-F](?:\s*[-/]\s*[1-9A-F])?|1[0-6])\b|\b(U[1-9A-F])\b",
     re.IGNORECASE
 )
-ANDROID_REGEX = re.compile(r"\bAndroid\s*(?:ver(?:sion)?\s*[:\-]?\s*)?(\d{2}(?:\s*[/\-&,]\s*\d{2})*)\b", re.IGNORECASE)
-OS_SKIN_REGEX = re.compile(r"\b((?:HyperOS|One\s?UI|MIUI|ColorOS|Funtouch\s?OS|MagicOS|HiOS|XOS)\s*\d*(?:\.\d+)?(?:\s*[/\-]\s*\d+)*)\b", re.IGNORECASE)
+ANDROID_REGEX = re.compile(r"\bAndroid\s*(?:ver(?:sion)?\s*[:\-]?\s*)?(\d{2}(?:\.\d+)?(?:\s*[/\-&,]\s*\d{2}(?:\.\d+)?)*)\b", re.IGNORECASE)
+IOS_REGEX = re.compile(r"\b(iOS|iPadOS)\s*(?:ver(?:sion)?\s*[:\-]?\s*)?(\d{2}(?:\.\d+)?(?:\s*[/\-&,]\s*\d{2}(?:\.\d+)?)*)\b", re.IGNORECASE)
+OS_SKIN_REGEX = re.compile(r"\b((?:HyperOS|One\s?UI|MIUI|ColorOS|Funtouch\s?OS|OriginOS|MagicOS|HiOS|XOS)\s*\d*(?:\.\d+)?(?:\s*[/\-]\s*\d+)*)\b", re.IGNORECASE)
 PATCH_REGEX = re.compile(
     r"(?:patch|security(?:\s*(?:patch|update))?)\s*[:\-]?\s*"
     r"(202[3-7][-/]\d{1,2}(?:[-/]\d{1,2})?|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s*202[3-7]?)",
@@ -45,7 +53,7 @@ MONTH_PATCH_REGEX = re.compile(
 )
 SW_VER_REGEX = re.compile(r"software\s+version\s+([\d\.]+)", re.IGNORECASE)
 TOOL_VER_REGEX = re.compile(r"\bv\.?\s*(\d+\.\d+(?:\.\d+){0,2})\b", re.IGNORECASE)
-CHIP_ID_REGEX = re.compile(r"\b(MT\d{4}[A-Z]?|SM\d{4}|SDM\d{3}|MSM\d{4}|T\d{3,4})\b", re.IGNORECASE)
+CHIP_ID_REGEX = re.compile(r"\b(MT\d{4}[A-Z]?|SM\d{4}|SDM\d{3}|MSM\d{4}|SC\d{4}|UMS\d{4}|T\d{3,4})\b", re.IGNORECASE)
 
 OP_KEYWORDS = {
     "FRP": ["frp", "google account", "remove frp", "reset frp", "frp bypass"],
@@ -54,7 +62,7 @@ OP_KEYWORDS = {
     "MDM/KG": ["mdm", "kg lock", "knox", "payjoy", "it admin", "demo", "carrier relock", "anti-crack"],
     "Bootloader": ["bootloader", "ubl", "unlock bl", "relock"],
     "IMEI": ["imei", "repair network", "patch cert", "nvram", "efs", "repair security"],
-    "Screen Lock": ["screen lock", "pin", "pattern", "passcode", "mi account", "heytap", "huawei id"]
+    "Screen Lock": ["screen lock", "pin", "pattern", "passcode", "mi account", "heytap", "huawei id", "hello screen", "icloud", "activation lock", "ramdisk"]
 }
 
 MODE_KEYWORDS = {
@@ -65,6 +73,7 @@ MODE_KEYWORDS = {
     "MTP": ["mtp"],
     "ADB": ["adb"],
     "Fastboot": ["fastboot"],
+    "DFU / Ramdisk": ["dfu", "ramdisk", "pwndfu", "checkm8", "purple mode"],
     "Mi Assistant": ["mi assistant", "sideload", "recovery mode"],
     "Server / Auth": ["server", "credit", "auth", "online", "instant"],
     "Unisoc Diag": ["diag", "fdl", "spd", "unisoc"],
@@ -83,13 +92,16 @@ CPU_KEYWORDS = {
 
 BRAND_NORMALIZE = {
     "samsung": "Samsung",
-    "xiaomi": "Xiaomi",
-    "redmi": "Xiaomi",
-    "poco": "Xiaomi",
+    "xiaomi": "Xiaomi / Redmi",
+    "redmi": "Xiaomi / Redmi",
+    "poco": "Xiaomi / Redmi",
     "oppo": "Oppo",
     "realme": "Realme",
     "vivo": "Vivo",
     "iqoo": "Vivo",
+    "apple": "Apple",
+    "iphone": "Apple",
+    "ipad": "Apple",
     "tecno": "Tecno",
     "infinix": "Infinix",
     "itel": "Itel",
@@ -99,6 +111,7 @@ BRAND_NORMALIZE = {
     "huawei": "Huawei",
     "oneplus": "OnePlus",
     "nokia": "Nokia",
+    "hmd": "Nokia",
     "google": "Google",
     "lenovo": "Lenovo",
     "nothing": "Nothing",
@@ -117,17 +130,134 @@ BRAND_NORMALIZE = {
     "doogee": "Doogee",
     "blackview": "Blackview",
     "ulefone": "Ulefone",
-    "oukitel": "Oukitel"
+    "oukitel": "Oukitel",
+    "lava": "Lava",
+    "micromax": "Micromax",
+    "symphony": "Symphony",
+    "walton": "Walton",
+    "blu": "BLU",
+    "wiko": "Wiko"
 }
 
 HYDRA_BRAND_HINTS = {
-    "178": "Xiaomi",
+    "178": "Xiaomi / Redmi",
     "118": "Oppo",
     "136": "Samsung",
     "257": "Realme",
     "66": "Huawei",
     "154": "Tecno"
 }
+
+APPLE_CATALOG = [
+    ("Apple", "iPhone 6s", "A1688"), ("Apple", "iPhone 6s Plus", "A1687"),
+    ("Apple", "iPhone SE (1st Gen)", "A1723"), ("Apple", "iPhone 7", "A1778"),
+    ("Apple", "iPhone 7 Plus", "A1784"), ("Apple", "iPhone 8", "A1905"),
+    ("Apple", "iPhone 8 Plus", "A1897"), ("Apple", "iPhone X", "A1901"),
+    ("Apple", "iPhone XR", "A2105"), ("Apple", "iPhone XS", "A2097"),
+    ("Apple", "iPhone XS Max", "A2101"), ("Apple", "iPhone 11", "A2221"),
+    ("Apple", "iPhone 11 Pro", "A2215"), ("Apple", "iPhone 11 Pro Max", "A2218"),
+    ("Apple", "iPhone SE (2nd Gen)", "A2296"), ("Apple", "iPhone 12 mini", "A2399"),
+    ("Apple", "iPhone 12", "A2403"), ("Apple", "iPhone 12 Pro", "A2407"),
+    ("Apple", "iPhone 12 Pro Max", "A2411"), ("Apple", "iPhone 13 mini", "A2628"),
+    ("Apple", "iPhone 13", "A2633"), ("Apple", "iPhone 13 Pro", "A2638"),
+    ("Apple", "iPhone 13 Pro Max", "A2643"), ("Apple", "iPhone SE (3rd Gen)", "A2783"),
+    ("Apple", "iPhone 14", "A2882"), ("Apple", "iPhone 14 Plus", "A2886"),
+    ("Apple", "iPhone 14 Pro", "A2890"), ("Apple", "iPhone 14 Pro Max", "A2894"),
+    ("Apple", "iPhone 15", "A3090"), ("Apple", "iPhone 15 Plus", "A3094"),
+    ("Apple", "iPhone 15 Pro", "A3102"), ("Apple", "iPhone 15 Pro Max", "A3106"),
+    ("Apple", "iPhone 16", "A3287"), ("Apple", "iPhone 16 Plus", "A3290"),
+    ("Apple", "iPhone 16 Pro", "A3293"), ("Apple", "iPhone 16 Pro Max", "A3296"),
+    ("Apple", "iPhone 16e", "A3409"), ("Apple", "iPhone 17", "IPHONE-17"),
+    ("Apple", "iPhone 17 Air", "IPHONE-17-AIR"), ("Apple", "iPhone 17 Pro", "IPHONE-17-PRO"),
+    ("Apple", "iPhone 17 Pro Max", "IPHONE-17-PRO-MAX"),
+    ("Apple", "iPad (9th Gen)", "A2602"), ("Apple", "iPad (10th Gen)", "A2696"),
+    ("Apple", "iPad Air (M2)", "A2902"), ("Apple", "iPad Pro (M4)", "A2836")
+]
+
+UNIVERSAL_CHIPSET_MODELS = [
+    {
+        "brand": "Universal Chipset",
+        "model_name": "MediaTek (MTK) Universal All Models — Helio & Dimensity",
+        "model_code": "MTK-UNIVERSAL",
+        "bit": "All Security",
+        "os_version": "Android 9 - Android 16",
+        "cpu": "MediaTek (MT6761/MT6765/MT6768/MT6781/MT6789/MT6833/MT6877/MT6895)",
+        "mode": "BROM / Preloader",
+        "tools": {
+            "UnlockTool": {"operations": ["FRP", "Factory Reset", "Flash", "Bootloader", "MDM/KG", "IMEI"], "mode": "BROM / Preloader", "source_url": "https://t.me/unlocktool_channel"},
+            "AMT": {"operations": ["FRP", "Factory Reset", "Flash", "MDM/KG"], "mode": "Preloader / Auth", "source_url": "https://androidmultitool.com/supported_models/"},
+            "TSM Tool": {"operations": ["FRP", "Factory Reset", "MDM/KG", "Flash"], "mode": "BROM / Preloader", "source_url": "https://t.me/TSMPRO"},
+            "Hydra Tool": {"operations": ["FRP", "Factory Reset", "Flash", "IMEI", "Bootloader"], "mode": "BROM / Preloader", "source_url": "https://www.hydradongle.com/devices"},
+            "TFM Tool": {"operations": ["FRP", "Factory Reset", "Flash", "MDM/KG"], "mode": "BROM / Preloader", "source_url": "https://t.me/tfmtoolpro"},
+            "Pandora Box": {"operations": ["FRP", "Factory Reset", "Flash", "IMEI", "Bootloader"], "mode": "BROM / Preloader", "source_url": "https://gsmserver.com/en/pandora-box/"},
+            "UMT": {"operations": ["FRP", "Factory Reset", "Flash", "IMEI"], "mode": "BROM / Preloader", "source_url": "https://www.ultimatemultitool.com/downloads"},
+            "Cheetah Tool": {"operations": ["FRP", "Factory Reset", "IMEI", "MDM/KG"], "mode": "BROM / Preloader", "source_url": "https://t.me/cheetahtool"}
+        }
+    },
+    {
+        "brand": "Universal Chipset",
+        "model_name": "Qualcomm Snapdragon (QCOM) Universal All Models",
+        "model_code": "QCOM-UNIVERSAL",
+        "bit": "All Security",
+        "os_version": "Android 9 - Android 16",
+        "cpu": "Qualcomm Snapdragon (SDM439/SDM665/SM6115/SM6225/SM6375/SM7325/SM8550)",
+        "mode": "EDL 9008",
+        "tools": {
+            "UnlockTool": {"operations": ["FRP", "Factory Reset", "Flash", "Screen Lock"], "mode": "EDL 9008", "source_url": "https://t.me/unlocktool_channel"},
+            "UMT": {"operations": ["FRP", "Factory Reset", "Flash", "IMEI"], "mode": "EDL 9008", "source_url": "https://www.ultimatemultitool.com/downloads"},
+            "Hydra Tool": {"operations": ["FRP", "Factory Reset", "Flash", "IMEI"], "mode": "EDL 9008", "source_url": "https://www.hydradongle.com/devices"},
+            "CellTool": {"operations": ["FRP", "Factory Reset", "Flash"], "mode": "EDL 9008", "source_url": "https://celltool.io/qcsupportmodel"},
+            "AMT": {"operations": ["FRP", "Factory Reset", "Flash"], "mode": "EDL 9008 / Server", "source_url": "https://androidmultitool.com/supported_models/"},
+            "EFT Pro": {"operations": ["FRP", "Factory Reset", "Flash"], "mode": "EDL 9008", "source_url": "https://eftprodongle.com/updates"}
+        }
+    },
+    {
+        "brand": "Universal Chipset",
+        "model_name": "Unisoc / Spreadtrum (SPD) Universal All Models — Itel, Tecno, Infinix, Realme",
+        "model_code": "SPD-UNISOC-UNIVERSAL",
+        "bit": "All Security",
+        "os_version": "Android 10 - Android 15",
+        "cpu": "Unisoc / SPD (SC9863A/T310/T606/T612/T616/T618/T700/T760)",
+        "mode": "Unisoc Diag",
+        "tools": {
+            "UnlockTool": {"operations": ["FRP", "Factory Reset", "Flash", "MDM/KG"], "mode": "Unisoc Diag", "source_url": "https://t.me/unlocktool_channel"},
+            "Infinity CM2": {"operations": ["FRP", "Factory Reset", "Flash", "IMEI"], "mode": "Unisoc Diag", "source_url": "https://infinity-box.com/news/"},
+            "TSM Tool": {"operations": ["FRP", "Factory Reset", "MDM/KG"], "mode": "Unisoc Diag", "source_url": "https://t.me/TSMPRO"},
+            "AMT": {"operations": ["FRP", "Factory Reset", "MDM/KG"], "mode": "Unisoc Diag", "source_url": "https://androidmultitool.com/supported_models/"},
+            "Pandora Box": {"operations": ["FRP", "Factory Reset", "Flash", "IMEI"], "mode": "Unisoc Diag", "source_url": "https://gsmserver.com/en/pandora-box/"},
+            "Hydra Tool": {"operations": ["FRP", "Factory Reset", "Flash"], "mode": "Unisoc Diag", "source_url": "https://www.hydradongle.com/devices"}
+        }
+    },
+    {
+        "brand": "Universal Chipset",
+        "model_name": "Samsung Exynos Universal All Models (EUB / MTP / Download)",
+        "model_code": "EXYNOS-UNIVERSAL",
+        "bit": "All BIT",
+        "os_version": "Android 11 - Android 16",
+        "cpu": "Samsung Exynos (850/1280/1330/1380/1480/2400)",
+        "mode": "EUB / MTP / Download Mode",
+        "tools": {
+            "Chimera Tool": {"operations": ["FRP", "Factory Reset", "Flash", "IMEI", "MDM/KG"], "mode": "EUB / MTP", "source_url": "https://chimeratool.com/en/download"},
+            "Z3X": {"operations": ["FRP", "Flash", "IMEI"], "mode": "Download Mode / MTP", "source_url": "https://t.me/z3x_news"},
+            "UnlockTool": {"operations": ["FRP", "Factory Reset", "Flash"], "mode": "MTP / Download Mode", "source_url": "https://t.me/unlocktool_channel"},
+            "Octoplus": {"operations": ["FRP", "Flash", "IMEI"], "mode": "EUB / Download Mode", "source_url": "https://octoplusbox.com/en/news/"}
+        }
+    },
+    {
+        "brand": "Apple",
+        "model_name": "Apple iPhone / iPad Universal (Checkm8 A7-A11 & MDM / Passcode / Hello)",
+        "model_code": "APPLE-IOS-UNIVERSAL",
+        "bit": "iOS 12 - iOS 18",
+        "os_version": "iOS 12 - iOS 18",
+        "cpu": "Apple Bionic (A7 - A19)",
+        "mode": "DFU / Ramdisk / Server",
+        "tools": {
+            "UnlockTool": {"operations": ["Screen Lock", "MDM/KG", "Factory Reset", "Flash"], "mode": "DFU / Ramdisk", "source_url": "https://t.me/unlocktool_channel"},
+            "Griffin-Unlocker Pro": {"operations": ["Screen Lock", "MDM/KG", "Factory Reset"], "mode": "DFU / Ramdisk", "source_url": "https://griffin-unlocker.com/models.html"},
+            "EFT Pro": {"operations": ["Screen Lock", "MDM/KG", "Factory Reset"], "mode": "DFU / Ramdisk", "source_url": "https://eftprodongle.com/updates"}
+        }
+    }
+]
 
 
 def normalize_brand(raw_brand: str) -> str:
@@ -152,9 +282,11 @@ def decode_play_csv(raw_bytes: bytes) -> str:
         return raw_bytes.decode("latin-1", errors="replace")
 
 
-def parse_play_devices_csv(csv_text: str) -> dict:
-    """Builds lookup dict by both Model code and Device codename (e.g. SM-A155F, ruby, fleur)."""
+def parse_play_devices_csv(csv_text: str):
+    """Returns (lookup_dict, world_rows_list) covering every global Android device + Apple."""
     lookup = {}
+    world_map = {}
+
     reader = csv.DictReader(io.StringIO(csv_text))
     for row in reader:
         if not row:
@@ -169,6 +301,13 @@ def parse_play_devices_csv(csv_text: str) -> dict:
         brand = normalize_brand(raw_brand)
         marketing = marketing.replace("\\'", "'").strip()
         entry_name = marketing if marketing else raw_model
+
+        code_for_world = (raw_model or raw_device).upper().strip()
+        if code_for_world:
+            wkey = (brand, code_for_world)
+            prev_w = world_map.get(wkey)
+            if not prev_w or (prev_w[1].upper() == code_for_world and entry_name.upper() != code_for_world):
+                world_map[wkey] = (brand, entry_name, code_for_world)
 
         keys = set()
         if raw_model:
@@ -191,26 +330,66 @@ def parse_play_devices_csv(csv_text: str) -> dict:
                     "marketing_name": entry_name,
                     "model_code": raw_model.upper() if raw_model else ""
                 }
-    return lookup
+
+    for brand, name, code in APPLE_CATALOG:
+        world_map[(brand, code.upper())] = (brand, name, code.upper())
+        lookup[code.upper()] = {"brand": brand, "marketing_name": name, "model_code": code.upper()}
+        lookup[name.upper()] = {"brand": brand, "marketing_name": name, "model_code": code.upper()}
+
+    return lookup, list(world_map.values())
 
 
-def load_play_device_catalog() -> dict:
+def load_play_device_catalog():
     try:
-        resp = requests.get(PLAY_DEVICES_CSV_URL, headers=HEADERS, timeout=30)
+        resp = requests.get(PLAY_DEVICES_CSV_URL, headers=HEADERS, timeout=40)
         resp.raise_for_status()
         text = decode_play_csv(resp.content)
-        catalog = parse_play_devices_csv(text)
-        print(f"[CATALOG] Loaded {len(catalog)} model mappings from Google Play supported_devices.csv")
-        return catalog
+        catalog, world_rows = parse_play_devices_csv(text)
+        print(f"[CATALOG] Loaded {len(catalog)} lookup keys and {len(world_rows)} global world models.")
+        return catalog, world_rows
     except Exception as exc:
         print(f"[WARN] Could not load Google Play supported_devices.csv: {type(exc).__name__}")
-        return {}
+        fallback_world = [(b, n, c.upper()) for b, n, c in APPLE_CATALOG]
+        return {}, fallback_world
+
+
+def write_world_catalog(world_rows: list, out_path: str, now_iso: str):
+    """Writes a compact JSON file of every global phone model (brands indexed by int)."""
+    brand_to_idx = {}
+    brands = []
+    compact_items = []
+
+    priority = {
+        "Samsung": 1, "Xiaomi / Redmi": 2, "Vivo": 3, "Oppo": 4, "Apple": 5,
+        "Realme": 6, "Infinix": 7, "Tecno": 8, "Itel": 9, "Motorola": 10,
+        "Honor": 11, "Huawei": 12, "OnePlus": 13, "Google": 14, "Nokia": 15, "Lenovo": 16
+    }
+    world_rows.sort(key=lambda r: (priority.get(r[0], 99), r[0], r[1]))
+
+    for brand, name, code in world_rows:
+        if brand not in brand_to_idx:
+            brand_to_idx[brand] = len(brands)
+            brands.append(brand)
+        b_idx = brand_to_idx[brand]
+        compact_items.append([b_idx, "" if name.upper() == code else name, code])
+
+    payload = {
+        "updated_at": now_iso,
+        "total": len(compact_items),
+        "brands": brands,
+        "items": compact_items
+    }
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, separators=(",", ":"), ensure_ascii=False)
+    print(f"[WORLD] Wrote {len(compact_items)} global models across {len(brands)} brands to {out_path}")
 
 
 def infer_brand(code: str, context: str) -> str:
     c = code.upper()
     if c.startswith("SM-"):
         return "Samsung"
+    if c.startswith(("IPHONE", "IPAD")):
+        return "Apple"
     if c.startswith(("CPH", "OPD", "PEQ", "PGF", "PGE", "PFF", "PHY", "PKJ", "PKH", "PHN", "PLE", "PCH", "PEM")):
         return "Oppo"
     if c.startswith("RMX"):
@@ -221,18 +400,16 @@ def infer_brand(code: str, context: str) -> str:
         return "Motorola"
     if c.startswith("X"):
         return "Infinix"
+    if re.match(r"^(A66|P66|S66|L\d{4}|W\d{4})", c):
+        return "Itel"
     if re.match(r"^(K[EFGJL]|BG|CK|CL|CM)\d", c):
         return "Tecno"
     if re.match(r"^(2[1-7]\d{4}|M\d{4})", c):
-        return "Xiaomi"
+        return "Xiaomi / Redmi"
     low_ctx = context.lower()
-    for b in [
-        "Samsung", "Xiaomi", "Redmi", "Poco", "Vivo", "Oppo", "Realme",
-        "Tecno", "Infinix", "Motorola", "Honor", "Huawei", "OnePlus",
-        "Nokia", "Google", "Itel", "Lenovo", "Nothing"
-    ]:
-        if b.lower() in low_ctx:
-            return "Xiaomi" if b in ("Redmi", "Poco") else b
+    for key, val in BRAND_NORMALIZE.items():
+        if key in low_ctx:
+            return val
     return "Other"
 
 
@@ -261,7 +438,7 @@ def extract_bits(text: str) -> str:
     return ", ".join(found[:4])
 
 
-def extract_os_versions(text: str) -> str:
+def extract_android_versions(text: str) -> str:
     found = []
     for m in ANDROID_REGEX.findall(text):
         cleaned = re.sub(r"\s+", "", m)
@@ -277,6 +454,15 @@ def extract_os_versions(text: str) -> str:
         ver_str = "Ver " + sw.group(1)
         if ver_str not in found:
             found.append(ver_str)
+    return ", ".join(found[:3])
+
+
+def extract_ios_versions(text: str) -> str:
+    found = []
+    for prefix, ver in IOS_REGEX.findall(text):
+        val = prefix + " " + re.sub(r"\s+", "", ver)
+        if val not in found:
+            found.append(val)
     return ", ".join(found[:3])
 
 
@@ -345,7 +531,7 @@ def parse_hydra_device_item(title: str, note: str, brand_hint: str, post_url: st
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     ops = extract_matches(combined_text, OP_KEYWORDS, default=["FRP", "Factory Reset", "Flash"])
     bit = extract_bits(combined_text)
-    os_ver = extract_os_versions(combined_text)
+    os_ver = extract_android_versions(combined_text)
     patch = extract_patch(combined_text)
     modes = ", ".join(extract_matches(combined_text, MODE_KEYWORDS)[:3])
     cpu = extract_cpu(combined_text)
@@ -378,7 +564,6 @@ def parse_hydra_device_item(title: str, note: str, brand_hint: str, post_url: st
 
 
 def scrape_hydra_brand_page(brand_url: str, source: dict, catalog: dict, max_pages: int = 3):
-    """Scrapes a Hydra Dongle /devices/brand/<id> page (and ?page=2..N if paginated)."""
     m_id = re.search(r"/devices/brand/(\d+)", brand_url)
     brand_hint = HYDRA_BRAND_HINTS.get(m_id.group(1), "") if m_id else ""
     all_records = []
@@ -430,7 +615,6 @@ def scrape_hydra_brand_page(brand_url: str, source: dict, catalog: dict, max_pag
 
 
 def scrape_hydra_devices_hub(hub_url: str, source: dict, catalog: dict):
-    """Discovers /devices/brand/<id> links from https://www.hydradongle.com/devices and scrapes them."""
     brand_urls = []
     seen = set()
     try:
@@ -447,7 +631,6 @@ def scrape_hydra_devices_hub(hub_url: str, source: dict, catalog: dict):
     except Exception as exc:
         print(f"  [WARN] Hydra hub ({hub_url}): {type(exc).__name__}")
 
-    # Always ensure major brands are included even if the hub paginates via JS
     for bid in ("178", "118", "136", "257", "66", "154"):
         u = f"https://www.hydradongle.com/devices/brand/{bid}"
         if u not in seen:
@@ -471,16 +654,21 @@ def parse_entries(entries: list, source: dict, feed_url: str, catalog: dict) -> 
     for item in entries:
         text = item["text"]
         codes = sorted(set(MODEL_CODE_REGEX.findall(text)))
-        if not codes:
+        apple_hits = sorted(set(" ".join(a.split()) for a in APPLE_MODEL_REGEX.findall(text)))
+        if not codes and not apple_hits:
             continue
+
         ops = extract_matches(text, OP_KEYWORDS, default=["FRP", "Factory Reset"])
         bit = extract_bits(text)
-        os_ver = extract_os_versions(text)
+        android_ver = extract_android_versions(text)
+        ios_ver = extract_ios_versions(text)
         patch = extract_patch(text)
-        modes = ", ".join(extract_matches(text, MODE_KEYWORDS)[:3])
+        all_modes = extract_matches(text, MODE_KEYWORDS)
+        android_modes = ", ".join([m for m in all_modes if m != "DFU / Ramdisk"][:3])
         cpu = extract_cpu(text)
         tver = TOOL_VER_REGEX.search(text)
         tool_ver = "v" + tver.group(1) if tver else ""
+
         for code in codes:
             brand, marketing_name = lookup_device_info(code, text, catalog)
             extracted.append({
@@ -488,10 +676,32 @@ def parse_entries(entries: list, source: dict, feed_url: str, catalog: dict) -> 
                 "model_name": marketing_name,
                 "model_code": code.upper(),
                 "bit": bit,
-                "os_version": os_ver,
+                "os_version": android_ver,
                 "security_patch": patch,
-                "mode": modes,
+                "mode": android_modes,
                 "cpu": cpu,
+                "tool": source["name"],
+                "tool_id": source["id"],
+                "tool_version": tool_ver,
+                "operations": ops,
+                "source_url": source.get("display_url") or source.get("url") or feed_url,
+                "post_url": item.get("post_url") or feed_url,
+                "updated_at": item.get("date") or today
+            })
+
+        for ap in apple_hits:
+            ap_info = catalog.get(ap.upper())
+            ap_code = ap_info["model_code"] if ap_info and ap_info.get("model_code") else re.sub(r"[^A-Z0-9]+", "-", ap.upper()).strip("-")
+            ap_name = ap_info["marketing_name"] if ap_info else ap
+            extracted.append({
+                "brand": "Apple",
+                "model_name": ap_name,
+                "model_code": ap_code,
+                "bit": "",
+                "os_version": ios_ver,
+                "security_patch": "",
+                "mode": "DFU / Ramdisk" if "DFU / Ramdisk" in all_modes else "DFU / Server",
+                "cpu": "Apple Bionic",
                 "tool": source["name"],
                 "tool_id": source["id"],
                 "tool_version": tool_ver,
@@ -595,9 +805,38 @@ def backfill_marketing_names(existing_db: dict, catalog: dict) -> int:
         if (not cur_name or cur_name.upper() == code.upper()) and info["marketing_name"].upper() != code.upper():
             entry["model_name"] = info["marketing_name"]
             upgraded += 1
-        if cur_brand == "Other" and info["brand"] != "Other":
+        if cur_brand in ("Other", "Xiaomi"):
             entry["brand"] = info["brand"]
     return upgraded
+
+
+def ensure_universal_models(existing_db: dict, today: str):
+    for item in UNIVERSAL_CHIPSET_MODELS:
+        key = item["model_code"]
+        if key not in existing_db:
+            tools_copy = {}
+            for tname, tmeta in item["tools"].items():
+                tools_copy[tname] = {
+                    "operations": list(tmeta["operations"]),
+                    "bit": item["bit"],
+                    "os_version": item["os_version"],
+                    "security_patch": "",
+                    "mode": tmeta["mode"],
+                    "tool_version": "",
+                    "source_url": tmeta["source_url"],
+                    "post_url": tmeta["source_url"],
+                    "updated_at": today
+                }
+            existing_db[key] = {
+                "brand": item["brand"],
+                "model_name": item["model_name"],
+                "model_code": key,
+                "bit": item["bit"],
+                "os_version": item["os_version"],
+                "cpu": item["cpu"],
+                "mode": item["mode"],
+                "tools": tools_copy
+            }
 
 
 def merge_into_db(existing_db: dict, new_records: list):
@@ -717,8 +956,10 @@ def safe_load_json(path: str, default):
 def main():
     os.makedirs("data", exist_ok=True)
     now_iso = datetime.now(timezone.utc).isoformat()
+    today = now_iso[:10]
 
-    catalog = load_play_device_catalog()
+    catalog, world_rows = load_play_device_catalog()
+    write_world_catalog(world_rows, "data/world_catalog.json", now_iso)
 
     sources_payload = safe_load_json("sources.json", {"sources": []})
     sources = sources_payload.get("sources", []) if isinstance(sources_payload, dict) else []
@@ -731,6 +972,7 @@ def main():
         if isinstance(s, dict) and "id" in s
     }
 
+    ensure_universal_models(existing_db, today)
     upgraded_count = backfill_marketing_names(existing_db, catalog)
     if upgraded_count:
         print(f"[CATALOG] Backfilled marketing names for {upgraded_count} existing models.")
@@ -771,9 +1013,10 @@ def main():
             "last_sync": now_iso,
             "refresh_interval_minutes": 30,
             "total_models": len(merged_db),
+            "world_catalog_total": len(world_rows),
             "sources": source_statuses,
             "models": merged_db
-        }, f, indent=2)
+        }, f, separators=(",", ":"), ensure_ascii=False)
 
     cl_path = "data/changelog.json"
     old_cl = safe_load_json(cl_path, [])
@@ -783,7 +1026,7 @@ def main():
         json.dump((new_changes + old_cl)[:150], f, indent=2)
 
     post_updates_to_channel(new_changes)
-    print(f"Sync complete: {len(merged_db)} total models, {len(new_changes)} new entries.")
+    print(f"Sync complete: {len(merged_db)} tool-mapped models + {len(world_rows)} global world models.")
 
 
 if __name__ == "__main__":
